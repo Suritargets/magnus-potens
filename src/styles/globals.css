@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ─── Shadcn/ui standard tokens ─────────────────────────────── */
+    --background: 0 0% 100%;
+    --foreground: 224 71% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 220 14% 96%;
+    --accent-foreground: 224 71% 4%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 37 45% 59%;
+    --radius: 0.25rem;
+    --primary: 37 45% 59%;
+    --primary-foreground: 24 10% 7%;
+    --secondary: 37 20% 20%;
+    --secondary-foreground: 37 60% 85%;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+    --primary: 37 45% 59%;
+    --primary-foreground: 24 10% 7%;
+    --card: 224 71% 7%;
+    --card-foreground: 213 31% 91%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215 16% 57%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+
+  body {
+    background-color: #0F1014;
+    color: #E9E3D6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: #C79E6B;
+    color: #0F1014;
+  }
+}
+
+/* ─── Magnus & Potens CSS custom properties ──────────────────────── */
+:root {
+  --mp-dark: #0F1014;
+  --mp-dark-2: #15171C;
+  --mp-light: #F2ECE0;
+  --mp-gold: #C79E6B;
+  --mp-gold-hover: #DDBB85;
+  --mp-gold-dark: #A67C3E;
+  --mp-text: #E9E3D6;
+  --mp-text-2: #F3EEE4;
+  --mp-muted: #A7A29A;
+  --mp-subtle: #8C877F;
+  --mp-faint: #6E6A63;
+  --mp-dim: #5E5A53;
+  --mp-heading-light: #1A1814;
+}
+
+/* ─── Scroll reveal animation ────────────────────────────────────── */
+.mp-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mp-reveal.mp-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── Gold glow keyframe ─────────────────────────────────────────── */
+@keyframes mpGlow {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 0.85; }
+}
+
+/* ─── Utility: section separator chip ───────────────────────────── */
+.mp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-jost), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mp-gold);
+}
+
+/* ─── Gold rule line ─────────────────────────────────────────────── */
+.mp-rule {
+  display: block;
+  width: 30px;
+  height: 1px;
+  background-color: var(--mp-gold);
+  flex-shrink: 0;
+}

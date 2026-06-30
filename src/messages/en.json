@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "firm": "The Firm",
+    "practice": "Practice",
+    "approach": "Approach",
+    "consultation": "Consultation"
+  },
+  "hero": {
+    "tagline": "Your Shield. Our Purpose.",
+    "headline": "Legal counsel and strategic advisory for those who move with purpose.",
+    "subtitle": "Magnus & Potens protects rights, guides decisions, and supports clients with discretion, strength, and purpose — across borders and beyond the predictable.",
+    "cta_primary": "Request a consultation",
+    "cta_secondary": "Our practice"
+  },
+  "firm": {
+    "label": "The Firm",
+    "statement": "A boutique legal and advisory firm built for clients who require clarity in complexity — trusted counsel for high-net-worth individuals, entrepreneurs, family businesses, and those who lead.",
+    "description": "We are not a traditional law office. Magnus & Potens combines the discretion of private counsel with the foresight of strategic advisory — opening the right path, and protecting it."
+  },
+  "practice": {
+    "label": "Practice",
+    "headline": "Counsel across the matters that define a future.",
+    "subtitle": "Six disciplines, one standard. Every engagement is led personally, with the rigour and confidentiality our clients expect.",
+    "areas": [
+      {"num": "01", "title": "Corporate & Commercial", "desc": "Structuring, governance, and the agreements that hold enterprises together."},
+      {"num": "02", "title": "Private Wealth & Family Business", "desc": "Succession, estates, and the quiet stewardship of legacy across generations."},
+      {"num": "03", "title": "Strategic Advisory", "desc": "Counsel beyond the legal — guidance on the decisions that shape direction."},
+      {"num": "04", "title": "Transactions & M&A", "desc": "Acquisitions, investments, and deals negotiated with precision and discretion."},
+      {"num": "05", "title": "Dispute Resolution", "desc": "Measured, resolute representation when protection demands a firm stand."},
+      {"num": "06", "title": "Regulatory & Compliance", "desc": "Navigating frameworks across jurisdictions with foresight, not friction."}
+    ]
+  },
+  "approach": {
+    "label": "The Approach",
+    "headline": "Four principles, drawn from the mark itself.",
+    "pillars": [
+      {"num": "01", "tag": "ACCESS", "title": "The Open Door", "desc": "An entry into possibility. We open the right path through complex legal and advisory matters — with confidence and care."},
+      {"num": "02", "tag": "DIRECTION", "title": "The Path Forward", "desc": "Movement with intent. Our advisory role is to guide clients toward clear, purposeful decisions — never merely react to them."},
+      {"num": "03", "tag": "PROTECTION", "title": "The Shield", "desc": "Structure and security. The strength of our counsel is a form of protection — the foundation beneath every decision we guide."},
+      {"num": "04", "tag": "EXCELLENCE", "title": "Strength with Elegance", "desc": "Prestige, discretion, and timeless authority — counsel that is executive, refined, and unmistakably international."}
+    ]
+  },
+  "slogan": {
+    "label": "The promise we are built on",
+    "headline": "Your Shield.\nOur Purpose."
+  },
+  "contact": {
+    "label": "Contact",
+    "headline": "Begin the conversation.",
+    "description": "Every engagement begins in confidence. Share what you are facing, and we will respond personally — with discretion, and without obligation.",
+    "enquiries_label": "Enquiries",
+    "email": "counsel@magnus-potens.com",
+    "appointment_label": "By appointment",
+    "website": "magnus-potens.com",
+    "form": {
+      "name": "Full name",
+      "email": "Email",
+      "message": "How can we help",
+      "submit": "Send in confidence",
+      "disclaimer": "Protected by client confidentiality. We respond to every enquiry personally.",
+      "success_title": "Thank you.",
+      "success_message": "Your message has reached us. A member of the firm will respond in confidence shortly."
+    }
+  },
+  "footer": {
+    "tagline": "Your Shield. Our Purpose.",
+    "firm_col": "Firm",
+    "reach_col": "Reach us",
+    "copyright": "© 2026 Magnus & Potens. All rights reserved.",
+    "motto": "Discretion · Protection · Purpose"
+  }
+}
