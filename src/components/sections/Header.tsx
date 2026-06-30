@@ -9,10 +9,10 @@ import { Menu, X } from 'lucide-react'
 
 const LOCALES = ['en', 'nl', 'es', 'fr'] as const
 
-const anchorLinks = [
-  { href: '#firm',     labelKey: 'firm' },
-  { href: '#practice', labelKey: 'practice' },
-  { href: '#approach', labelKey: 'approach' },
+const anchorSections = [
+  { hash: 'firm',     labelKey: 'firm' },
+  { hash: 'practice', labelKey: 'practice' },
+  { hash: 'approach', labelKey: 'approach' },
 ] as const
 
 export function Header() {
@@ -93,10 +93,10 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-7">
-          {anchorLinks.map((link) => (
+          {anchorSections.map((link) => (
             <a
-              key={link.href}
-              href={link.href}
+              key={link.hash}
+              href={`/${locale}#${link.hash}`}
               className="text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
               style={navLinkStyle}
             >
@@ -210,10 +210,10 @@ export function Header() {
           }}
         >
           <nav className="max-w-[1280px] mx-auto px-8 flex flex-col gap-1 py-6">
-            {anchorLinks.map((link) => (
+            {anchorSections.map((link) => (
               <a
-                key={link.href}
-                href={link.href}
+                key={link.hash}
+                href={`/${locale}#${link.hash}`}
                 onClick={() => setOpen(false)}
                 className="px-3 py-3 text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors"
                 style={navLinkStyle}
