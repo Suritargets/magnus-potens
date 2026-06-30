@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
 export function Hero() {
@@ -118,41 +119,34 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right column — logo mark placeholder */}
-          <div className="hidden md:flex items-center justify-center">
+          {/* Right column — logo mark */}
+          <div className="hidden md:flex items-center justify-center relative">
+            {/* Gold glow blob */}
             <div
-              className="relative flex items-center justify-center"
-              style={{ width: 320, height: 320 }}
-            >
-              {/* Outer ring */}
-              <div
-                className="absolute inset-0 rounded-full"
-                style={{ border: '1px solid rgba(199,158,107,0.12)' }}
-              />
-              {/* Inner ring */}
-              <div
-                className="absolute rounded-full"
-                style={{
-                  inset: '20%',
-                  border: '1px solid rgba(199,158,107,0.07)',
-                }}
-              />
-              {/* Logo mark — clients add public/assets/logo-mark.png */}
-              <div className="relative z-10 text-center">
-                <p
-                  className="text-[42px] tracking-[0.08em]"
-                  style={{ fontFamily: 'var(--font-marcellus)', color: 'rgba(199,158,107,0.6)' }}
-                >
-                  M&amp;P
-                </p>
-                <p
-                  className="text-[9px] tracking-[0.3em] mt-1"
-                  style={{ fontFamily: 'var(--font-jost)', color: 'rgba(199,158,107,0.4)', fontWeight: 300 }}
-                >
-                  EST. MMXXVI
-                </p>
-              </div>
-            </div>
+              className="absolute pointer-events-none"
+              aria-hidden
+              style={{
+                width: 420,
+                height: 420,
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(199,158,107,0.28) 0%, transparent 65%)',
+                filter: 'blur(20px)',
+                animation: 'mpGlow 6s ease-in-out infinite',
+              }}
+            />
+            <Image
+              src="/images/logo-mark.png"
+              alt="Magnus & Potens monogram"
+              width={340}
+              height={420}
+              priority
+              style={{
+                position: 'relative',
+                height: 'clamp(260px, 46vh, 440px)',
+                width: 'auto',
+                filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
+              }}
+            />
           </div>
         </div>
       </div>

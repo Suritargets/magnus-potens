@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
 const firmLinks = [
@@ -28,27 +29,35 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mb-14">
           {/* Brand column */}
           <div className="md:col-span-1">
-            {/* Logo */}
-            <div className="mb-5">
-              <p
-                className="text-[15px] tracking-[0.22em] mb-1"
-                style={{ fontFamily: 'var(--font-marcellus)', color: '#F3EEE4' }}
-              >
-                MAGNUS &amp; POTENS
-              </p>
-              <p
-                className="text-[9px] tracking-[0.28em]"
-                style={{ fontFamily: 'var(--font-jost)', fontWeight: 300, color: '#C79E6B' }}
-              >
-                LAW &nbsp;|&nbsp; ADVISORS
-              </p>
+            <div className="flex items-center gap-4 mb-5">
+              <Image
+                src="/images/logo-mark.png"
+                alt="Magnus & Potens"
+                width={44}
+                height={54}
+                style={{ height: 54, width: 'auto' }}
+              />
+              <div className="flex flex-col leading-tight">
+                <p
+                  className="text-[18px] tracking-[0.26em]"
+                  style={{ fontFamily: 'var(--font-marcellus)', color: '#E9E3D6' }}
+                >
+                  MAGNUS &amp; POTENS
+                </p>
+                <p
+                  className="text-[9.5px] tracking-[0.42em] mt-1"
+                  style={{ fontFamily: 'var(--font-jost)', fontWeight: 400, color: '#C79E6B' }}
+                >
+                  LAW &nbsp;&nbsp;|&nbsp;&nbsp; ADVISORS
+                </p>
+                <p
+                  className="text-[17px] mt-3"
+                  style={{ fontFamily: 'var(--font-cormorant)', fontStyle: 'italic', color: '#8C877F' }}
+                >
+                  {t('tagline')}
+                </p>
+              </div>
             </div>
-            <p
-              className="text-[13px] leading-relaxed mt-5 max-w-[240px]"
-              style={{ fontFamily: 'var(--font-jost)', fontWeight: 300, color: '#5E5A53' }}
-            >
-              {t('tagline')}
-            </p>
           </div>
 
           {/* Firm links */}

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
 export function SloganBand() {
@@ -11,20 +12,18 @@ export function SloganBand() {
       className="relative py-28 md:py-40 overflow-hidden"
       style={{ backgroundColor: '#15171C' }}
     >
-      {/* Watermark logo text */}
+      {/* Watermark — logo mark image */}
       <div
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
         aria-hidden
       >
-        <p
-          className="text-[22vw] md:text-[16vw] leading-none font-normal tracking-widest opacity-[0.025]"
-          style={{
-            fontFamily: 'var(--font-marcellus)',
-            color: '#C79E6B',
-          }}
-        >
-          M&amp;P
-        </p>
+        <Image
+          src="/images/logo-mark.png"
+          alt=""
+          width={500}
+          height={620}
+          style={{ height: '130%', width: 'auto', opacity: 0.05 }}
+        />
       </div>
 
       {/* Content */}
