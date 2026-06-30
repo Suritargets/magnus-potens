@@ -296,3 +296,150 @@ export async function sendContactNotification(data: {
     }),
   ])
 }
+
+// ── Appointment email templates ────────────────────────────────────────────────
+
+function apptClientHtml(d: { name: string; date: string; time: string; topic: string }): string {
+  return layout('Appointment confirmed — Magnus & Potens', `
+    <p style="margin:0 0 6px;font-family:Arial,sans-serif;font-size:11px;letter-spacing:0.42em;color:${C.gold};text-transform:uppercase;">Appointment confirmed</p>
+    <h2 style="margin:0 0 28px;font-size:38px;font-weight:400;color:${C.text};line-height:1.08;">${escHtml(d.name)}.</h2>
+    <p style="margin:0 0 24px;font-family:Arial,sans-serif;font-size:15px;line-height:1.85;color:#A7A29A;">
+      Your consultation request has been received. We will confirm your appointment and be in touch shortly.
+    </p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${C.border};">
+      <tr><td style="padding:18px 22px;border-bottom:1px solid ${C.border};">
+        <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.3em;color:${C.muted};text-transform:uppercase;">Date</p>
+        <p style="margin:0;font-size:18px;color:${C.text};">${escHtml(d.date)}</p>
+      </td></tr>
+      <tr><td style="padding:18px 22px;border-bottom:1px solid ${C.border};">
+        <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.3em;color:${C.muted};text-transform:uppercase;">Time</p>
+        <p style="margin:0;font-size:18px;color:${C.text};">${escHtml(d.time)}</p>
+      </td></tr>
+      <tr><td style="padding:18px 22px;">
+        <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.3em;color:${C.muted};text-transform:uppercase;">Topic</p>
+        <p style="margin:0;font-size:18px;color:${C.text};">${escHtml(d.topic)}</p>
+      </td></tr>
+    </table>
+    <p style="margin:28px 0 0;font-family:Arial,sans-serif;font-size:12px;color:${C.dim};">
+      To reschedule or cancel, contact us at
+      <a href="mailto:counsel@magnus-potens.com" style="color:${C.gold};text-decoration:none;">counsel@magnus-potens.com</a>.
+    </p>`)
+}
+
+function apptClientText(d: { name: string; date: string; time: string; topic: string }): string {
+  return `Appointment confirmed — Magnus & Potens
+=========================================
+Dear ${d.name},
+
+Your consultation request has been received.
+
+Date:  ${d.date}
+Time:  ${d.time}
+Topic: ${d.topic}
+
+We will confirm your appointment and be in touch shortly.
+To reschedule or cancel: counsel@magnus-potens.com
+
+— Magnus & Potens | Law & Advisors
+  Discretion · Protection · Purpose
+  magnus-potens.com
+`
+}
+
+function apptOwnerHtml(d: {
+  name: string
+  email: string
+  phone?: string
+  date: string
+  time: string
+  topic: string
+  notes?: string
+}): string {
+  return layout(`New appointment request — ${d.name}`, `
+    <h2 style="margin:0 0 6px;font-size:30px;font-weight:400;color:${C.text};">New appointment</h2>
+    <p style="margin:0 0 32px;font-family:Arial,sans-serif;font-size:11px;letter-spacing:0.3em;color:${C.gold};text-transform:uppercase;">Via magnus-potens.com</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${C.border};">
+      <tr><td style="padding:14px 22px;border-bottom:1px solid ${C.border};">
+        <p style="margin:0 0 3px;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.3em;color:${C.muted};text-transform:uppercase;">Client</p>
+        <p style="margin:0;font-size:17px;color:${C.text};">${escHtml(d.name)}</p>
+      </td></tr>
+      <tr><td style="padding:14px 22px;border-bottom:1px solid ${C.border};">
+        <p style="margin:0 0 3px;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.3em;color:${C.muted};text-transform:uppercase;">Email</p>
+        <p style="margin:0;font-size:17px;"><a href="mailto:${escHtml(d.email)}" style="color:${C.gold};text-decoration:none;">${escHtml(d.email)}</a></p>
+      </td></tr>
+      ${d.phone ? `<tr><td style="padding:14px 22px;border-bottom:1px solid ${C.border};">
+        <p style="margin:0 0 3px;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.3em;color:${C.muted};text-transform:uppercase;">Phone</p>
+        <p style="margin:0;font-size:17px;color:${C.text};">${escHtml(d.phone)}</p>
+      </td></tr>` : ''}
+      <tr><td style="padding:14px 22px;border-bottom:1px solid ${C.border};">
+        <p style="margin:0 0 3px;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.3em;color:${C.muted};text-transform:uppercase;">Requested date &amp; time</p>
+        <p style="margin:0;font-size:17px;color:${C.text};">${escHtml(d.date)} at ${escHtml(d.time)}</p>
+      </td></tr>
+      <tr><td style="padding:14px 22px;${d.notes ? `border-bottom:1px solid ${C.border};` : ''}">
+        <p style="margin:0 0 3px;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.3em;color:${C.muted};text-transform:uppercase;">Topic</p>
+        <p style="margin:0;font-size:17px;color:${C.text};">${escHtml(d.topic)}</p>
+      </td></tr>
+      ${d.notes ? `<tr><td style="padding:14px 22px;">
+        <p style="margin:0 0 6px;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.3em;color:${C.muted};text-transform:uppercase;">Notes</p>
+        <p style="margin:0;font-size:14px;line-height:1.75;color:#B7B1A6;border-left:2px solid ${C.gold};padding-left:12px;">${escHtml(d.notes).replace(/\n/g, '<br>')}</p>
+      </td></tr>` : ''}
+    </table>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px;">
+      <tr><td align="center">
+        <a href="mailto:${escHtml(d.email)}?subject=Re%3A%20Consultation%20Request%20%E2%80%94%20Magnus%20%26%20Potens"
+           style="display:inline-block;background:${C.gold};color:${C.dark};font-family:Arial,sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;padding:13px 28px;">
+          Reply to client
+        </a>
+      </td></tr>
+    </table>`)
+}
+
+function apptOwnerText(d: {
+  name: string
+  email: string
+  phone?: string
+  date: string
+  time: string
+  topic: string
+  notes?: string
+}): string {
+  return `NEW APPOINTMENT — Magnus & Potens
+=====================================
+Client: ${d.name}
+Email:  ${d.email}
+${d.phone ? `Phone:  ${d.phone}\n` : ''}Date:   ${d.date} at ${d.time}
+Topic:  ${d.topic}
+${d.notes ? `\nNotes:\n${d.notes}\n` : ''}
+-------------------------------------
+Reply: ${d.email}
+`
+}
+
+export async function sendAppointmentEmails(data: {
+  name:   string
+  email:  string
+  phone?: string
+  date:   string
+  time:   string
+  topic:  string
+  notes?: string
+}): Promise<void> {
+  const firm = process.env.CONTACT_EMAIL ?? 'counsel@magnus-potens.com'
+
+  await Promise.allSettled([
+    sendMail({
+      to:      firm,
+      subject: `Appointment request: ${data.name} — ${data.date} ${data.time}`,
+      html:    apptOwnerHtml(data),
+      text:    apptOwnerText(data),
+      replyTo: data.email,
+    }),
+    sendMail({
+      to:      data.email,
+      subject: 'Your appointment request — Magnus & Potens',
+      html:    apptClientHtml(data),
+      text:    apptClientText(data),
+      replyTo: firm,
+    }),
+  ])
+}
