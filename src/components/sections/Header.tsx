@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTranslations, useLocale } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
@@ -64,19 +65,30 @@ export function Header() {
     >
       <div className="max-w-[1280px] mx-auto px-8 md:px-14 flex h-[72px] items-center justify-between">
         {/* Logo */}
-        <Link href={`/${locale}`} className="flex flex-col leading-none group">
-          <span
-            className="text-[15px] tracking-[0.22em] text-mp-text-2 group-hover:text-mp-gold transition-colors duration-300"
-            style={{ fontFamily: 'var(--font-marcellus)' }}
-          >
-            MAGNUS &amp; POTENS
-          </span>
-          <span
-            className="text-[9px] tracking-[0.28em] text-mp-gold mt-[2px]"
-            style={{ fontFamily: 'var(--font-jost)', fontWeight: 300 }}
-          >
-            LAW &nbsp;|&nbsp; ADVISORS
-          </span>
+        <Link href={`/${locale}`} className="flex items-center gap-3 group">
+          <Image
+            src="/images/logo-mark.png"
+            alt="Magnus & Potens"
+            width={36}
+            height={44}
+            className="object-contain"
+            style={{ filter: 'drop-shadow(0 0 6px rgba(199,158,107,0.25))' }}
+            priority
+          />
+          <div className="flex flex-col leading-none">
+            <span
+              className="text-[14px] tracking-[0.22em] text-mp-text-2 group-hover:text-mp-gold transition-colors duration-300"
+              style={{ fontFamily: 'var(--font-marcellus)' }}
+            >
+              MAGNUS &amp; POTENS
+            </span>
+            <span
+              className="text-[9px] tracking-[0.28em] text-mp-gold mt-[2px]"
+              style={{ fontFamily: 'var(--font-jost)', fontWeight: 300 }}
+            >
+              LAW &nbsp;|&nbsp; ADVISORS
+            </span>
+          </div>
         </Link>
 
         {/* Desktop nav */}
