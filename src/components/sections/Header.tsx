@@ -1,12 +1,15 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
+import { usePathname, useRouter } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 
-const navLinks = [
-  { href: '#firm', labelKey: 'firm' },
+const LOCALES = ['en', 'nl', 'es', 'fr'] as const
+
+const anchorLinks = [
+  { href: '#firm',     labelKey: 'firm' },
   { href: '#practice', labelKey: 'practice' },
   { href: '#approach', labelKey: 'approach' },
 ] as const
@@ -14,13 +17,40 @@ const navLinks = [
 export function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [langOpen, setLangOpen] = useState(false)
+  const langRef = useRef<HTMLDivElement>(null)
   const t = useTranslations('nav')
+  const locale = useLocale()
+  const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  function switchLocale(newLocale: string) {
+    const segments = pathname.split('/')
+    segments[1] = newLocale
+    router.push(segments.join('/'))
+    setLangOpen(false)
+  }
+
+  const navLinkStyle = {
+    fontFamily: 'var(--font-jost)',
+    fontWeight: 400 as const,
+  }
 
   return (
     <header
@@ -34,10 +64,10 @@ export function Header() {
     >
       <div className="max-w-[1280px] mx-auto px-8 md:px-14 flex h-[72px] items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex flex-col leading-none group">
+        <Link href={`/${locale}`} className="flex flex-col leading-none group">
           <span
             className="text-[15px] tracking-[0.22em] text-mp-text-2 group-hover:text-mp-gold transition-colors duration-300"
-            style={{ fontFamily: 'var(--font-marcellus)', }}
+            style={{ fontFamily: 'var(--font-marcellus)' }}
           >
             MAGNUS &amp; POTENS
           </span>
@@ -50,19 +80,30 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-9">
-          {navLinks.map((link) => (
+        <nav className="hidden md:flex items-center gap-7">
+          {anchorLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               className="text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
-              style={{ fontFamily: 'var(--font-jost)', fontWeight: 400 }}
+              style={navLinkStyle}
             >
               {t(link.labelKey)}
             </a>
           ))}
-          <a
-            href="#contact"
+
+          {/* Blog link */}
+          <Link
+            href={`/${locale}/blog`}
+            className="text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
+            style={navLinkStyle}
+          >
+            {t('blog')}
+          </Link>
+
+          {/* Consultation CTA */}
+          <Link
+            href={`/${locale}/consultation`}
             className="text-[11px] tracking-[0.18em] uppercase px-5 py-2.5 border transition-all duration-300 hover:bg-mp-gold hover:border-mp-gold hover:text-mp-dark"
             style={{
               fontFamily: 'var(--font-jost)',
@@ -72,7 +113,69 @@ export function Header() {
             }}
           >
             {t('consultation')}
-          </a>
+          </Link>
+
+          {/* Language switcher */}
+          <div ref={langRef} style={{ position: 'relative' }}>
+            <button
+              type="button"
+              onClick={() => setLangOpen((v) => !v)}
+              style={{
+                fontFamily: 'var(--font-jost)',
+                fontSize: 11,
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                color: '#6E6A63',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '4px 0',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 5,
+              }}
+            >
+              {locale.toUpperCase()}
+              <span style={{ fontSize: 8 }}>▾</span>
+            </button>
+            {langOpen && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 8px)',
+                  right: 0,
+                  background: '#15171C',
+                  border: '1px solid rgba(199,158,107,0.15)',
+                  minWidth: 64,
+                  zIndex: 100,
+                }}
+              >
+                {LOCALES.map((l) => (
+                  <button
+                    key={l}
+                    type="button"
+                    onClick={() => switchLocale(l)}
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      padding: '8px 14px',
+                      fontFamily: 'var(--font-jost)',
+                      fontSize: 11,
+                      letterSpacing: '0.16em',
+                      textTransform: 'uppercase',
+                      color: l === locale ? '#C79E6B' : '#8C877F',
+                      background: l === locale ? 'rgba(199,158,107,0.08)' : 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                    }}
+                  >
+                    {l.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </nav>
 
         {/* Mobile toggle */}
@@ -95,25 +198,62 @@ export function Header() {
           }}
         >
           <nav className="max-w-[1280px] mx-auto px-8 flex flex-col gap-1 py-6">
-            {navLinks.map((link) => (
+            {anchorLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="px-3 py-3 text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors"
-                style={{ fontFamily: 'var(--font-jost)' }}
+                style={navLinkStyle}
               >
                 {t(link.labelKey)}
               </a>
             ))}
-            <a
-              href="#contact"
+            <Link
+              href={`/${locale}/blog`}
+              onClick={() => setOpen(false)}
+              className="px-3 py-3 text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors"
+              style={navLinkStyle}
+            >
+              {t('blog')}
+            </Link>
+            <Link
+              href={`/${locale}/consultation`}
               onClick={() => setOpen(false)}
               className="mt-3 px-3 py-3 text-[11px] tracking-[0.18em] uppercase text-mp-gold border border-mp-gold/40 hover:bg-mp-gold hover:text-mp-dark transition-all text-center"
               style={{ fontFamily: 'var(--font-jost)', fontWeight: 500 }}
             >
               {t('consultation')}
-            </a>
+            </Link>
+
+            {/* Mobile language switcher */}
+            <div style={{ marginTop: 16, paddingTop: 12, borderTop: '1px solid rgba(199,158,107,0.1)' }}>
+              <p style={{ fontFamily: 'var(--font-jost)', fontSize: 9, letterSpacing: '0.26em', textTransform: 'uppercase', color: '#5E5A53', marginBottom: 8 }}>
+                {t('language')}
+              </p>
+              <div style={{ display: 'flex', gap: 8 }}>
+                {LOCALES.map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => { switchLocale(l); setOpen(false) }}
+                    style={{
+                      fontFamily: 'var(--font-jost)',
+                      fontSize: 11,
+                      letterSpacing: '0.14em',
+                      textTransform: 'uppercase',
+                      color: l === locale ? '#C79E6B' : '#6E6A63',
+                      background: l === locale ? 'rgba(199,158,107,0.1)' : 'none',
+                      border: `1px solid ${l === locale ? 'rgba(199,158,107,0.3)' : 'rgba(255,255,255,0.06)'}`,
+                      padding: '6px 12px',
+                      cursor: 'pointer',
+                      borderRadius: 1,
+                    }}
+                  >
+                    {l.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+            </div>
           </nav>
         </div>
       )}
