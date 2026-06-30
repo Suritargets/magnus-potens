@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "firm": "Het Kantoor",
+    "practice": "Praktijk",
+    "approach": "Aanpak",
+    "consultation": "Consultatie",
+    "blog": "Inzichten",
+    "language": "Taal"
+  },
+  "hero": {
+    "tagline": "Uw Schild. Ons Doel.",
+    "headline": "Juridisch advies en strategische begeleiding voor wie met overtuiging handelt.",
+    "subtitle": "Magnus & Potens beschermt rechten, begeleidt beslissingen en ondersteunt cliënten met discretie, kracht en doelgerichtheid — over grenzen en buiten het voorspelbare.",
+    "cta_primary": "Consultatie aanvragen",
+    "cta_secondary": "Onze praktijk"
+  },
+  "firm": {
+    "label": "Het Kantoor",
+    "statement": "Een boutique juridisch en adviesbureau voor cliënten die duidelijkheid zoeken in complexiteit — vertrouwd advies voor vermogende particulieren, ondernemers, familiebedrijven en leidinggevenden.",
+    "description": "Wij zijn geen traditioneel advocatenkantoor. Magnus & Potens combineert de discretie van privé-advies met de vooruitziende blik van strategisch advies — de juiste weg openen en beschermen."
+  },
+  "practice": {
+    "label": "Praktijk",
+    "headline": "Advies over de zaken die een toekomst bepalen.",
+    "subtitle": "Zes disciplines, één norm. Elke opdracht wordt persoonlijk geleid, met de nauwkeurigheid en vertrouwelijkheid die onze cliënten verwachten.",
+    "areas": [
+      {"num": "01", "title": "Corporate & Commercieel", "desc": "Structurering, governance en de overeenkomsten die ondernemingen bij elkaar houden."},
+      {"num": "02", "title": "Privévermogen & Familiebedrijf", "desc": "Successie, nalatenschap en de stille hoede van erfgoed over generaties."},
+      {"num": "03", "title": "Strategisch Advies", "desc": "Advies voorbij het juridische — begeleiding bij beslissingen die richting bepalen."},
+      {"num": "04", "title": "Transacties & M&A", "desc": "Overnames, investeringen en deals onderhandeld met precisie en discretie."},
+      {"num": "05", "title": "Geschillenbeslechting", "desc": "Gemeten, vastberaden vertegenwoordiging wanneer bescherming een standpunt vereist."},
+      {"num": "06", "title": "Regelgeving & Compliance", "desc": "Navigeren door kaders over jurisdicties heen met vooruitziendheid, niet met wrijving."}
+    ]
+  },
+  "approach": {
+    "label": "De Aanpak",
+    "headline": "Vier principes, ontleend aan het merk zelf.",
+    "pillars": [
+      {"num": "01", "tag": "TOEGANG", "title": "De Open Deur", "desc": "Een ingang naar mogelijkheden. Wij openen het juiste pad door complexe juridische en adviesvraagstukken — met vertrouwen en zorg."},
+      {"num": "02", "tag": "RICHTING", "title": "Het Pad Vooruit", "desc": "Beweging met intentie. Onze adviserende rol is om cliënten naar heldere, doelgerichte beslissingen te leiden — nooit slechts te reageren."},
+      {"num": "03", "tag": "BESCHERMING", "title": "Het Schild", "desc": "Structuur en zekerheid. De kracht van ons advies is een vorm van bescherming — het fundament onder elke beslissing die wij begeleiden."},
+      {"num": "04", "tag": "UITMUNTENDHEID", "title": "Kracht met Elegantie", "desc": "Prestige, discretie en tijdloze autoriteit — advies dat uitvoerend, verfijnd en onmiskenbaar internationaal is."}
+    ]
+  },
+  "slogan": {
+    "label": "De belofte waarop wij gebouwd zijn",
+    "headline": "Uw Schild.\nOns Doel."
+  },
+  "contact": {
+    "label": "Contact",
+    "headline": "Begin het gesprek.",
+    "description": "Elke opdracht begint in vertrouwen. Deel wat u bezighoudt, en wij reageren persoonlijk — met discretie en zonder verplichting.",
+    "enquiries_label": "Vragen",
+    "email": "counsel@magnus-potens.com",
+    "appointment_label": "Op afspraak",
+    "website": "magnus-potens.com",
+    "form": {
+      "name": "Volledige naam",
+      "email": "E-mail",
+      "message": "Hoe kunnen wij helpen",
+      "submit": "Vertrouwelijk versturen",
+      "disclaimer": "Beschermd door cliëntvertrouwelijkheid. Wij reageren persoonlijk op elk verzoek.",
+      "success_title": "Dank u.",
+      "success_message": "Uw bericht heeft ons bereikt. Een medewerker van het kantoor zal spoedig vertrouwelijk reageren."
+    }
+  },
+  "footer": {
+    "tagline": "Uw Schild. Ons Doel.",
+    "firm_col": "Kantoor",
+    "reach_col": "Bereik ons",
+    "copyright": "© 2026 Magnus & Potens. Alle rechten voorbehouden.",
+    "motto": "Discretie · Bescherming · Doel"
+  },
+  "blog": {
+    "label": "Blog",
+    "headline": "Inzichten & Perspectieven",
+    "subtitle": "Thought leadership van het kantoor — juridisch inzicht, strategisch perspectief en begeleiding voor leidinggevenden.",
+    "read_more": "Artikel lezen",
+    "published": "Gepubliceerd",
+    "back": "← Terug naar inzichten",
+    "no_posts": "Nog geen artikelen gepubliceerd."
+  },
+  "consultation": {
+    "label": "Consultatie",
+    "headline": "Consultatie aanvragen",
+    "subtitle": "Plan een vertrouwelijke eerste consultatie. Selecteer een datum en tijd die u uitkomt.",
+    "topics": {
+      "label": "Aard van het verzoek",
+      "corporate": "Corporate & Commercieel",
+      "private_wealth": "Privévermogen & Familiebedrijf",
+      "strategic": "Strategisch Advies",
+      "transactions": "Transacties & M&A",
+      "dispute": "Geschillenbeslechting",
+      "regulatory": "Regelgeving & Compliance",
+      "other": "Anders"
+    },
+    "form": {
+      "name": "Volledige naam",
+      "email": "E-mailadres",
+      "phone": "Telefoon (optioneel)",
+      "topic": "Aard van het verzoek",
+      "notes": "Aanvullende opmerkingen (optioneel)",
+      "submit": "Consultatie aanvragen",
+      "disclaimer": "Alle consultaties worden uitgevoerd met volledige discretie. U ontvangt spoedig een e-mailbevestiging.",
+      "success_title": "Consultatie aangevraagd.",
+      "success_message": "Wij hebben uw verzoek ontvangen. U ontvangt spoedig een bevestigingsmail."
+    },
+    "no_slots": "Geen beschikbaarheid op deze datum.",
+    "select_date_first": "Selecteer eerst een datum."
+  }
+}

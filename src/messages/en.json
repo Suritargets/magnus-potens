@@ -3,7 +3,9 @@
     "firm": "The Firm",
     "practice": "Practice",
     "approach": "Approach",
-    "consultation": "Consultation"
+    "consultation": "Consultation",
+    "blog": "Insights",
+    "language": "Language"
   },
   "hero": {
     "tagline": "Your Shield. Our Purpose.",
@@ -68,5 +70,42 @@
     "reach_col": "Reach us",
     "copyright": "© 2026 Magnus & Potens. All rights reserved.",
     "motto": "Discretion · Protection · Purpose"
+  },
+  "blog": {
+    "label": "Blog",
+    "headline": "Insights & Perspectives",
+    "subtitle": "Thought leadership from the firm — legal insight, strategic perspective, and guidance for those who lead.",
+    "read_more": "Read article",
+    "published": "Published",
+    "back": "← Back to insights",
+    "no_posts": "No articles published yet."
+  },
+  "consultation": {
+    "label": "Consultation",
+    "headline": "Request a Consultation",
+    "subtitle": "Schedule a confidential initial consultation. Select a date and time that suits you.",
+    "topics": {
+      "label": "Nature of enquiry",
+      "corporate": "Corporate & Commercial",
+      "private_wealth": "Private Wealth & Family Business",
+      "strategic": "Strategic Advisory",
+      "transactions": "Transactions & M&A",
+      "dispute": "Dispute Resolution",
+      "regulatory": "Regulatory & Compliance",
+      "other": "Other"
+    },
+    "form": {
+      "name": "Full name",
+      "email": "Email address",
+      "phone": "Phone (optional)",
+      "topic": "Nature of enquiry",
+      "notes": "Additional notes (optional)",
+      "submit": "Request consultation",
+      "disclaimer": "All consultations are conducted with full discretion. You will receive an email confirmation shortly.",
+      "success_title": "Consultation requested.",
+      "success_message": "We have received your request. You will receive a confirmation email shortly."
+    },
+    "no_slots": "No availability on this date.",
+    "select_date_first": "Please select a date first."
   }
 }

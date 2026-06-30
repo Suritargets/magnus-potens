@@ -32,6 +32,63 @@ export const quoteSchema = z.object({
 
 export type QuoteFormData = z.infer<typeof quoteSchema>
 
+// ─── CMS PAGE ─────────────────────────────────────────────────────────────────
+export const pageSchema = z.object({
+  title: z.string().min(1, 'Title is required'),
+  slug: z
+    .string()
+    .min(1, 'Slug is required')
+    .regex(/^[a-z0-9-]+$/, 'Slug must be lowercase letters, numbers, and hyphens only'),
+  content: z.string().optional(),
+  metaTitle: z.string().optional(),
+  metaDescription: z.string().optional(),
+  published: z.boolean().optional(),
+})
+
+export type PageFormData = z.infer<typeof pageSchema>
+
+// ─── BLOG POST ────────────────────────────────────────────────────────────────
+export const blogPostSchema = z.object({
+  title: z.string().min(1, 'Title is required').max(200),
+  slug: z
+    .string()
+    .min(1, 'Slug is required')
+    .regex(/^[a-z0-9-]+$/, 'Slug must be lowercase letters, numbers, and hyphens only'),
+  excerpt: z.string().max(400).optional(),
+  content: z.string().min(1, 'Content is required'),
+  coverImage: z.string().url('Invalid URL').optional().or(z.literal('')),
+  tags: z.string().optional(),
+  locale: z.enum(['en', 'nl', 'es', 'fr']).default('en'),
+  status: z.enum(['draft', 'published', 'archived']).default('draft'),
+  publishedAt: z.string().optional(),
+})
+
+export type BlogPostFormData = z.infer<typeof blogPostSchema>
+
+// ─── APPOINTMENT ──────────────────────────────────────────────────────────────
+export const appointmentSchema = z.object({
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Invalid date format'),
+  time: z.string().regex(/^\d{2}:\d{2}$/, 'Invalid time format'),
+  name: z.string().min(2, 'Name must be at least 2 characters').max(100),
+  email: z.string().email('Invalid email address'),
+  phone: z.string().max(30).optional(),
+  topic: z.string().min(1, 'Please select a topic').max(100),
+  notes: z.string().max(1000).optional(),
+})
+
+export type AppointmentFormData = z.infer<typeof appointmentSchema>
+
+// ─── AVAILABILITY CONFIG ──────────────────────────────────────────────────────
+export const availabilityConfigSchema = z.object({
+  dayOfWeek: z.coerce.number().int().min(0).max(6),
+  startTime: z.string().regex(/^\d{2}:\d{2}$/, 'Invalid time format'),
+  endTime: z.string().regex(/^\d{2}:\d{2}$/, 'Invalid time format'),
+  slotDuration: z.coerce.number().int().min(15).max(240).default(60),
+  isActive: z.boolean().default(true),
+})
+
+export type AvailabilityConfigFormData = z.infer<typeof availabilityConfigSchema>
+
 // ─── HELPERS ──────────────────────────────────────────────────────────────────
 export type ActionResult<T = void> = {
   success: boolean

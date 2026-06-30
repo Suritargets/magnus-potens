@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "firm": "El Bufete",
+    "practice": "Práctica",
+    "approach": "Enfoque",
+    "consultation": "Consulta",
+    "blog": "Perspectivas",
+    "language": "Idioma"
+  },
+  "hero": {
+    "tagline": "Su Escudo. Nuestro Propósito.",
+    "headline": "Asesoramiento jurídico y orientación estratégica para quienes actúan con propósito.",
+    "subtitle": "Magnus & Potens protege derechos, guía decisiones y apoya a clientes con discreción, fortaleza y propósito — a través de fronteras y más allá de lo predecible.",
+    "cta_primary": "Solicitar una consulta",
+    "cta_secondary": "Nuestra práctica"
+  },
+  "firm": {
+    "label": "El Bufete",
+    "statement": "Un bufete jurídico y de asesoramiento boutique para clientes que requieren claridad en la complejidad — consejo de confianza para personas de alto patrimonio, empresarios, empresas familiares y líderes.",
+    "description": "No somos un despacho de abogados tradicional. Magnus & Potens combina la discreción del asesoramiento privado con la visión del asesoramiento estratégico — abriendo el camino correcto y protegiéndolo."
+  },
+  "practice": {
+    "label": "Práctica",
+    "headline": "Asesoramiento en los asuntos que definen un futuro.",
+    "subtitle": "Seis disciplinas, un estándar. Cada compromiso es liderado personalmente, con el rigor y la confidencialidad que nuestros clientes esperan.",
+    "areas": [
+      {"num": "01", "title": "Corporativo y Comercial", "desc": "Estructuración, gobernanza y los acuerdos que mantienen unidas las empresas."},
+      {"num": "02", "title": "Patrimonio Privado y Empresa Familiar", "desc": "Sucesión, patrimonio y la gestión discreta del legado a través de generaciones."},
+      {"num": "03", "title": "Asesoramiento Estratégico", "desc": "Consejo más allá de lo jurídico — orientación en las decisiones que dan dirección."},
+      {"num": "04", "title": "Transacciones y M&A", "desc": "Adquisiciones, inversiones y acuerdos negociados con precisión y discreción."},
+      {"num": "05", "title": "Resolución de Disputas", "desc": "Representación mesurada y firme cuando la protección exige una posición sólida."},
+      {"num": "06", "title": "Regulación y Cumplimiento", "desc": "Navegando marcos en distintas jurisdicciones con previsión, no con fricción."}
+    ]
+  },
+  "approach": {
+    "label": "El Enfoque",
+    "headline": "Cuatro principios, extraídos de la propia marca.",
+    "pillars": [
+      {"num": "01", "tag": "ACCESO", "title": "La Puerta Abierta", "desc": "Una entrada a la posibilidad. Abrimos el camino correcto a través de asuntos jurídicos y de asesoramiento complejos — con confianza y cuidado."},
+      {"num": "02", "tag": "DIRECCIÓN", "title": "El Camino a Seguir", "desc": "Movimiento con intención. Nuestro papel asesor es guiar a los clientes hacia decisiones claras y con propósito — nunca simplemente reaccionar ante ellas."},
+      {"num": "03", "tag": "PROTECCIÓN", "title": "El Escudo", "desc": "Estructura y seguridad. La fortaleza de nuestro consejo es una forma de protección — el fundamento bajo cada decisión que guiamos."},
+      {"num": "04", "tag": "EXCELENCIA", "title": "Fortaleza con Elegancia", "desc": "Prestigio, discreción y autoridad atemporal — asesoramiento ejecutivo, refinado e inconfundiblemente internacional."}
+    ]
+  },
+  "slogan": {
+    "label": "La promesa sobre la que estamos construidos",
+    "headline": "Su Escudo.\nNuestro Propósito."
+  },
+  "contact": {
+    "label": "Contacto",
+    "headline": "Inicie la conversación.",
+    "description": "Cada compromiso comienza en la confianza. Comparta lo que enfrenta y responderemos personalmente — con discreción y sin obligación.",
+    "enquiries_label": "Consultas",
+    "email": "counsel@magnus-potens.com",
+    "appointment_label": "Bajo cita previa",
+    "website": "magnus-potens.com",
+    "form": {
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "message": "Cómo podemos ayudar",
+      "submit": "Enviar con confianza",
+      "disclaimer": "Protegido por la confidencialidad del cliente. Respondemos a cada consulta personalmente.",
+      "success_title": "Gracias.",
+      "success_message": "Su mensaje nos ha llegado. Un miembro del bufete responderá con discreción en breve."
+    }
+  },
+  "footer": {
+    "tagline": "Su Escudo. Nuestro Propósito.",
+    "firm_col": "Bufete",
+    "reach_col": "Contáctenos",
+    "copyright": "© 2026 Magnus & Potens. Todos los derechos reservados.",
+    "motto": "Discreción · Protección · Propósito"
+  },
+  "blog": {
+    "label": "Blog",
+    "headline": "Perspectivas e Insights",
+    "subtitle": "Liderazgo de pensamiento del bufete — perspectiva jurídica, estratégica y orientación para quienes lideran.",
+    "read_more": "Leer artículo",
+    "published": "Publicado",
+    "back": "← Volver a perspectivas",
+    "no_posts": "Aún no hay artículos publicados."
+  },
+  "consultation": {
+    "label": "Consulta",
+    "headline": "Solicitar una Consulta",
+    "subtitle": "Programe una consulta inicial confidencial. Seleccione una fecha y hora que le convenga.",
+    "topics": {
+      "label": "Naturaleza de la consulta",
+      "corporate": "Corporativo y Comercial",
+      "private_wealth": "Patrimonio Privado y Empresa Familiar",
+      "strategic": "Asesoramiento Estratégico",
+      "transactions": "Transacciones y M&A",
+      "dispute": "Resolución de Disputas",
+      "regulatory": "Regulación y Cumplimiento",
+      "other": "Otro"
+    },
+    "form": {
+      "name": "Nombre completo",
+      "email": "Dirección de correo electrónico",
+      "phone": "Teléfono (opcional)",
+      "topic": "Naturaleza de la consulta",
+      "notes": "Notas adicionales (opcional)",
+      "submit": "Solicitar consulta",
+      "disclaimer": "Todas las consultas se realizan con plena discreción. Recibirá una confirmación por correo electrónico en breve.",
+      "success_title": "Consulta solicitada.",
+      "success_message": "Hemos recibido su solicitud. Recibirá un correo de confirmación en breve."
+    },
+    "no_slots": "No hay disponibilidad en esta fecha.",
+    "select_date_first": "Por favor seleccione una fecha primero."
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "firm": "Le Cabinet",
+    "practice": "Pratique",
+    "approach": "Approche",
+    "consultation": "Consultation",
+    "blog": "Perspectives",
+    "language": "Langue"
+  },
+  "hero": {
+    "tagline": "Votre Bouclier. Notre Mission.",
+    "headline": "Conseil juridique et accompagnement stratégique pour ceux qui agissent avec détermination.",
+    "subtitle": "Magnus & Potens protège les droits, guide les décisions et accompagne ses clients avec discrétion, force et détermination — au-delà des frontières et de l'imprévisible.",
+    "cta_primary": "Demander une consultation",
+    "cta_secondary": "Notre pratique"
+  },
+  "firm": {
+    "label": "Le Cabinet",
+    "statement": "Un cabinet juridique et de conseil boutique conçu pour des clients qui requièrent clarté dans la complexité — conseil de confiance pour les personnes fortunées, entrepreneurs, entreprises familiales et dirigeants.",
+    "description": "Nous ne sommes pas un cabinet d'avocats traditionnel. Magnus & Potens allie la discrétion du conseil privé à la prescience du conseil stratégique — ouvrant la bonne voie et la protégeant."
+  },
+  "practice": {
+    "label": "Pratique",
+    "headline": "Conseil sur les affaires qui définissent un avenir.",
+    "subtitle": "Six disciplines, une norme. Chaque mission est dirigée personnellement, avec la rigueur et la confidentialité que nos clients attendent.",
+    "areas": [
+      {"num": "01", "title": "Droit des affaires et Commercial", "desc": "Structuration, gouvernance et les accords qui maintiennent les entreprises ensemble."},
+      {"num": "02", "title": "Patrimoine Privé et Entreprise Familiale", "desc": "Succession, patrimoine et la gestion discrète d'un héritage à travers les générations."},
+      {"num": "03", "title": "Conseil Stratégique", "desc": "Conseil au-delà du juridique — guidance sur les décisions qui façonnent la direction."},
+      {"num": "04", "title": "Transactions et M&A", "desc": "Acquisitions, investissements et transactions négociés avec précision et discrétion."},
+      {"num": "05", "title": "Résolution des Litiges", "desc": "Représentation mesurée et résolue lorsque la protection exige une position ferme."},
+      {"num": "06", "title": "Réglementation et Conformité", "desc": "Navigation dans les cadres réglementaires de différentes juridictions avec prévoyance, sans friction."}
+    ]
+  },
+  "approach": {
+    "label": "L'Approche",
+    "headline": "Quatre principes, tirés de la marque elle-même.",
+    "pillars": [
+      {"num": "01", "tag": "ACCÈS", "title": "La Porte Ouverte", "desc": "Une entrée vers la possibilité. Nous ouvrons la bonne voie à travers des questions juridiques et de conseil complexes — avec confiance et soin."},
+      {"num": "02", "tag": "DIRECTION", "title": "La Voie à Suivre", "desc": "Mouvement avec intention. Notre rôle consultatif est de guider les clients vers des décisions claires et déterminées — jamais simplement y réagir."},
+      {"num": "03", "tag": "PROTECTION", "title": "Le Bouclier", "desc": "Structure et sécurité. La force de notre conseil est une forme de protection — le fondement sous chaque décision que nous guidons."},
+      {"num": "04", "tag": "EXCELLENCE", "title": "Force et Élégance", "desc": "Prestige, discrétion et autorité intemporelle — conseil exécutif, raffiné et incontestablement international."}
+    ]
+  },
+  "slogan": {
+    "label": "La promesse sur laquelle nous sommes fondés",
+    "headline": "Votre Bouclier.\nNotre Mission."
+  },
+  "contact": {
+    "label": "Contact",
+    "headline": "Commencez la conversation.",
+    "description": "Chaque mission commence dans la confiance. Partagez ce que vous traversez, et nous répondrons personnellement — avec discrétion et sans obligation.",
+    "enquiries_label": "Demandes",
+    "email": "counsel@magnus-potens.com",
+    "appointment_label": "Sur rendez-vous",
+    "website": "magnus-potens.com",
+    "form": {
+      "name": "Nom complet",
+      "email": "E-mail",
+      "message": "Comment pouvons-nous vous aider",
+      "submit": "Envoyer en toute confiance",
+      "disclaimer": "Protégé par la confidentialité client. Nous répondons personnellement à chaque demande.",
+      "success_title": "Merci.",
+      "success_message": "Votre message nous est parvenu. Un membre du cabinet vous répondra en toute confidentialité sous peu."
+    }
+  },
+  "footer": {
+    "tagline": "Votre Bouclier. Notre Mission.",
+    "firm_col": "Cabinet",
+    "reach_col": "Nous contacter",
+    "copyright": "© 2026 Magnus & Potens. Tous droits réservés.",
+    "motto": "Discrétion · Protection · Mission"
+  },
+  "blog": {
+    "label": "Blog",
+    "headline": "Perspectives & Analyses",
+    "subtitle": "Leadership éclairé du cabinet — perspective juridique, stratégique et orientations pour ceux qui dirigent.",
+    "read_more": "Lire l'article",
+    "published": "Publié le",
+    "back": "← Retour aux perspectives",
+    "no_posts": "Aucun article publié pour le moment."
+  },
+  "consultation": {
+    "label": "Consultation",
+    "headline": "Demander une Consultation",
+    "subtitle": "Planifiez une consultation initiale confidentielle. Sélectionnez une date et une heure qui vous conviennent.",
+    "topics": {
+      "label": "Nature de la demande",
+      "corporate": "Droit des affaires et Commercial",
+      "private_wealth": "Patrimoine Privé et Entreprise Familiale",
+      "strategic": "Conseil Stratégique",
+      "transactions": "Transactions et M&A",
+      "dispute": "Résolution des Litiges",
+      "regulatory": "Réglementation et Conformité",
+      "other": "Autre"
+    },
+    "form": {
+      "name": "Nom complet",
+      "email": "Adresse e-mail",
+      "phone": "Téléphone (facultatif)",
+      "topic": "Nature de la demande",
+      "notes": "Notes supplémentaires (facultatif)",
+      "submit": "Demander une consultation",
+      "disclaimer": "Toutes les consultations sont menées en toute discrétion. Vous recevrez une confirmation par e-mail sous peu.",
+      "success_title": "Consultation demandée.",
+      "success_message": "Nous avons reçu votre demande. Vous recevrez un e-mail de confirmation sous peu."
+    },
+    "no_slots": "Aucune disponibilité à cette date.",
+    "select_date_first": "Veuillez d'abord sélectionner une date."
+  }
+}

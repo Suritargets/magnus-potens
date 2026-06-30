@@ -44,8 +44,8 @@ export const apiRateLimit = new Ratelimit({
 })
 
 // ─── HELPER ───────────────────────────────────────────────────────────────────
-export function getClientIp(): string {
-  const headersList = headers()
+export async function getClientIp(): Promise<string> {
+  const headersList = await headers()
   return (
     headersList.get('x-forwarded-for')?.split(',')[0].trim() ??
     headersList.get('x-real-ip') ??

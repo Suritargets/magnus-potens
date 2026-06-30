@@ -12,7 +12,7 @@ export async function submitContact(
   formData: FormData
 ): Promise<ActionResult> {
   // 1. Rate limiting
-  const ip = getClientIp()
+  const ip = await getClientIp()
   const { success: allowed } = await contactRateLimit.limit(ip)
   if (!allowed) {
     return { success: false, error: 'Too many requests. Please try again in 10 minutes.' }
