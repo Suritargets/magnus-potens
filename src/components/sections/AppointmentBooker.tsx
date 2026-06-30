@@ -1,6 +1,6 @@
 'use client'
 
-import { useActionState, useState, useCallback } from 'react'
+import { useActionState, useState, useCallback, useMemo } from 'react'
 import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/style.css'
 import { bookAppointment } from '@/actions/appointment'
@@ -53,7 +53,10 @@ export function AppointmentBooker({ availabilityConfigs, t }: Props) {
 
   const [state, action, pending] = useActionState(bookAppointment, initialState)
 
-  const activeDays = new Set(availabilityConfigs.filter((c) => c.isActive).map((c) => c.dayOfWeek))
+  const activeDays = useMemo(
+    () => new Set(availabilityConfigs.filter((c) => c.isActive).map((c) => c.dayOfWeek)),
+    [availabilityConfigs]
+  )
 
   const isDisabledDay = useCallback(
     (date: Date) => {

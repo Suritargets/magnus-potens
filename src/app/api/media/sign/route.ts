@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { requireRole } from '@/lib/auth'
 import crypto from 'crypto'
 
 export const runtime = 'nodejs'
 
-export async function POST(_req: NextRequest): Promise<NextResponse> {
+export async function POST(): Promise<NextResponse> {
   try {
     await requireRole('admin', 'super_admin')
   } catch {

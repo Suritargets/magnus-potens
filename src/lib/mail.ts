@@ -93,7 +93,7 @@ export async function sendMail(payload: MailPayload): Promise<MailResult> {
       },
     })
 
-    console.log(`[mail] ✓ ${Array.isArray(payload.to) ? payload.to.join(', ') : payload.to} | ${info.messageId}`)
+    console.warn(`[mail] ✓ ${Array.isArray(payload.to) ? payload.to.join(', ') : payload.to} | ${info.messageId}`)
     return { success: true, messageId: info.messageId }
   } catch (error) {
     console.error('[mail] ✗ send failed:', error)
@@ -106,7 +106,7 @@ export async function sendMail(payload: MailPayload): Promise<MailResult> {
 export async function verifyMailConnection(): Promise<boolean> {
   try {
     await getTransporter().verify()
-    console.log('[mail] ✓ SMTP verbinding OK')
+    console.warn('[mail] ✓ SMTP verbinding OK')
     return true
   } catch (error) {
     console.error('[mail] ✗ SMTP verbinding mislukt:', error)
