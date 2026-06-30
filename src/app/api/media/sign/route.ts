@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
+import { requireRole } from '@/lib/auth'
 import crypto from 'crypto'
 
 export const runtime = 'nodejs'
 
 export async function POST(_req: NextRequest): Promise<NextResponse> {
-  const { userId } = await auth()
-  if (!userId) {
+  try {
+    await requireRole('admin', 'super_admin')
+  } catch {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 

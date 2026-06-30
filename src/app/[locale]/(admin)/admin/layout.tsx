@@ -3,11 +3,14 @@ import Link from 'next/link'
 import { getCurrentUser } from '@/lib/auth'
 
 const adminNav = [
-  { href: '/admin',            label: 'Dashboard',   icon: '◈' },
-  { href: '/admin/berichten',  label: 'Enquiries',   icon: '✉' },
-  { href: '/admin/gebruikers', label: 'Users',       icon: '⊹' },
-  { href: '/admin/cms',        label: 'CMS Pages',   icon: '◻' },
-  { href: '/admin/fouten',     label: 'Error logs',  icon: '△' },
+  { href: '/admin',                         label: 'Dashboard',      icon: '◈' },
+  { href: '/admin/berichten',               label: 'Enquiries',      icon: '✉' },
+  { href: '/admin/blog',                    label: 'Blog',           icon: '◧' },
+  { href: '/admin/afspraken',               label: 'Afspraken',      icon: '◷' },
+  { href: '/admin/media',                   label: 'Media',          icon: '⊡' },
+  { href: '/admin/gebruikers',              label: 'Users',          icon: '⊹' },
+  { href: '/admin/cms',                     label: 'CMS Pages',      icon: '◻' },
+  { href: '/admin/fouten',                  label: 'Error logs',     icon: '△' },
 ]
 
 export default async function AdminLayout({
