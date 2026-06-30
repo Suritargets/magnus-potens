@@ -10,11 +10,16 @@ export default async function BlogPage() {
   const locale = await getLocale()
   const t = await getTranslations('blog')
 
-  const posts = await db
-    .select()
-    .from(blogPosts)
-    .where(and(eq(blogPosts.status, 'published'), eq(blogPosts.locale, locale)))
-    .orderBy(desc(blogPosts.publishedAt))
+  let posts: typeof blogPosts.$inferSelect[] = []
+  try {
+    posts = await db
+      .select()
+      .from(blogPosts)
+      .where(and(eq(blogPosts.status, 'published'), eq(blogPosts.locale, locale)))
+      .orderBy(desc(blogPosts.publishedAt))
+  } catch {
+    // DB not configured yet — show empty state
+  }
 
   return (
     <main style={{ background: '#0F1014', minHeight: '100vh', paddingTop: 120 }}>

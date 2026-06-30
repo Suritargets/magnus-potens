@@ -1,8 +1,9 @@
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 
 export function Hero() {
   const t = useTranslations('hero')
+  const locale = useLocale()
 
   return (
     <section
@@ -93,7 +94,7 @@ export function Hero() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="#contact"
+                href={`/${locale}/consultation`}
                 className="inline-flex items-center justify-center px-8 py-3.5 text-[11px] tracking-[0.18em] uppercase transition-all duration-300 hover:bg-mp-gold-hover"
                 style={{
                   fontFamily: 'var(--font-jost)',
