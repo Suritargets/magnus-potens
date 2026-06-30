@@ -1,6 +1,7 @@
 'use client'
 
 import { useActionState } from 'react'
+import Link from 'next/link'
 import { savePage } from './actions'
 import type { Page } from '@/db/schema'
 
@@ -159,7 +160,7 @@ export function CmsEditor({ page }: Props) {
           >
             {pending ? 'Saving…' : 'Save'}
           </button>
-          <a
+          <Link
             href="/admin/cms"
             style={{
               fontFamily: "'Jost', sans-serif",
@@ -174,7 +175,7 @@ export function CmsEditor({ page }: Props) {
             }}
           >
             Cancel
-          </a>
+          </Link>
         </div>
       </form>
     </div>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useActionState, useState } from 'react'
+import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { saveBlogPost, deleteBlogPost } from './actions'
@@ -216,7 +217,7 @@ export function BlogEditor({ post }: Props) {
             >
               {pending ? 'Saving…' : 'Save'}
             </button>
-            <a
+            <Link
               href="/admin/blog"
               style={{
                 fontFamily: "'Jost', sans-serif",
@@ -231,7 +232,7 @@ export function BlogEditor({ post }: Props) {
               }}
             >
               Cancel
-            </a>
+            </Link>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <label style={{ fontFamily: "'Jost', sans-serif", fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8C877F' }}>
