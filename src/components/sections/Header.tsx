@@ -116,11 +116,10 @@ export function Header() {
           {/* Consultation CTA */}
           <Link
             href={`/${locale}/consultation`}
-            className="text-[11px] tracking-[0.18em] uppercase px-5 py-2.5 border transition-all duration-300 hover:bg-mp-gold hover:border-mp-gold hover:text-mp-dark"
+            className="text-[11px] tracking-[0.18em] uppercase px-5 py-2.5 border text-mp-gold transition-all duration-300 hover:bg-mp-gold hover:border-mp-gold hover:text-mp-dark"
             style={{
               fontFamily: 'var(--font-jost)',
               fontWeight: 500,
-              color: '#C79E6B',
               borderColor: 'rgba(199, 158, 107, 0.5)',
             }}
           >
@@ -148,7 +147,7 @@ export function Header() {
               }}
             >
               {locale.toUpperCase()}
-              <span style={{ fontSize: 8 }}>▾</span>
+              <span style={{ fontSize: 8 }}>&#9662;</span>
             </button>
             {langOpen && (
               <div
