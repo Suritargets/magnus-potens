@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { getCurrentUser } from '@/lib/auth'
+import { logout } from '@/actions/auth'
 
 const adminNav = [
   { href: '/admin',                         label: 'Dashboard',      icon: '◈' },
@@ -90,6 +91,17 @@ export default async function AdminLayout({
 
         {/* Footer */}
         <div style={{ paddingTop: 16, borderTop: '1px solid rgba(199,158,107,0.1)' }}>
+          <p
+            style={{
+              fontFamily: "'Jost', sans-serif",
+              fontSize: 11,
+              color: '#8C877F',
+              margin: '0 0 10px',
+              wordBreak: 'break-word',
+            }}
+          >
+            {user.name ?? user.email}
+          </p>
           <Link
             href={`/${locale}`}
             style={{
@@ -98,10 +110,29 @@ export default async function AdminLayout({
               letterSpacing: '0.12em',
               color: '#6E6A63',
               textDecoration: 'none',
+              display: 'block',
+              marginBottom: 8,
             }}
           >
             ← Back to site
           </Link>
+          <form action={logout.bind(null, locale)}>
+            <button
+              type="submit"
+              style={{
+                fontFamily: "'Jost', sans-serif",
+                fontSize: 11,
+                letterSpacing: '0.12em',
+                color: '#E87777',
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                cursor: 'pointer',
+              }}
+            >
+              Sign out
+            </button>
+          </form>
         </div>
       </aside>
 

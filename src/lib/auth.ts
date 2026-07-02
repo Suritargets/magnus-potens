@@ -1,13 +1,11 @@
 import 'server-only'
-import { auth } from '@clerk/nextjs/server'
+import { cookies } from 'next/headers'
 import { cache } from 'react'
-import { db } from '@/db'
-import { users } from '@/db/schema'
-import { eq } from 'drizzle-orm'
+import { SESSION_COOKIE, verifySession } from '@/lib/session'
 import type { User } from '@/db/schema'
 
 export const getCurrentUser = cache(async (): Promise<User | null> => {
-  // Dev-only preview: bekijk de admin UI lokaal zonder Clerk.
+  // Dev-only preview: bekijk de admin UI lokaal zonder in te loggen.
   // Werkt uitsluitend met NODE_ENV=development én DEV_ADMIN_PREVIEW=true in .env.local.
   if (process.env.NODE_ENV === 'development' && process.env.DEV_ADMIN_PREVIEW === 'true') {
     return {
@@ -21,16 +19,22 @@ export const getCurrentUser = cache(async (): Promise<User | null> => {
     }
   }
 
-  const { userId } = await auth()
-  if (!userId) return null
+  const cookieStore = await cookies()
+  const token = cookieStore.get(SESSION_COOKIE)?.value
+  if (!token) return null
 
-  const [user] = await db
-    .select()
-    .from(users)
-    .where(eq(users.clerkId, userId))
-    .limit(1)
+  const session = await verifySession(token)
+  if (!session) return null
 
-  return user ?? null
+  return {
+    id: session.id,
+    clerkId: session.username,
+    email: `${session.username}@magnus-potens.local`,
+    name: session.name,
+    role: session.role,
+    createdAt: new Date(0),
+    updatedAt: new Date(0),
+  }
 })
 
 export async function requireAuth(): Promise<User> {

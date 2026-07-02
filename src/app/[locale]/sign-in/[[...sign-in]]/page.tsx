@@ -1,6 +1,12 @@
-import { SignIn } from '@clerk/nextjs'
+import { SignInForm } from './SignInForm'
 
-export default function SignInPage() {
+interface Props {
+  params: Promise<{ locale: string }>
+}
+
+export default async function SignInPage({ params }: Props) {
+  const { locale } = await params
+
   return (
     <main
       style={{ background: '#0F1014', minHeight: '100vh' }}
@@ -32,7 +38,7 @@ export default function SignInPage() {
         </p>
       </div>
 
-      <SignIn />
+      <SignInForm locale={locale} />
     </main>
   )
 }

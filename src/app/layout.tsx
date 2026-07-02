@@ -1,8 +1,5 @@
 import type { Metadata } from 'next'
-import { ClerkProvider } from '@clerk/nextjs'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-
-const hasClerkKey = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY?.startsWith('pk_')
 
 export const metadata: Metadata = {
   title: {
@@ -38,6 +35,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const body = <>{children}<SpeedInsights /></>
-  return hasClerkKey ? <ClerkProvider>{body}</ClerkProvider> : body
+  return (
+    <>
+      {children}
+      <SpeedInsights />
+    </>
+  )
 }
