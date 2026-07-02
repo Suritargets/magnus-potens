@@ -97,15 +97,34 @@
     "form": {
       "name": "Nom complet",
       "email": "Adresse e-mail",
-      "phone": "Téléphone (facultatif)",
+      "phone": "Numéro de téléphone",
+      "address": "Adresse (facultatif)",
       "topic": "Nature de la demande",
-      "notes": "Notes supplémentaires (facultatif)",
-      "submit": "Demander une consultation",
+      "notes": "Message ou remarques (facultatif)",
+      "submit": "Confirmer le rendez-vous",
       "disclaimer": "Toutes les consultations sont menées en toute discrétion. Vous recevrez une confirmation par e-mail sous peu.",
-      "success_title": "Consultation demandée.",
-      "success_message": "Nous avons reçu votre demande. Vous recevrez un e-mail de confirmation sous peu."
+      "success_title": "Merci — votre demande a bien été reçue.",
+      "success_message": "Vous serez contacté dans les 24 heures pour confirmer votre rendez-vous."
     },
     "no_slots": "Aucune disponibilité à cette date.",
-    "select_date_first": "Veuillez d'abord sélectionner une date."
+    "select_date_first": "Veuillez d'abord sélectionner une date.",
+    "calendar": {
+      "step_date": "Choisissez une date",
+      "step_time": "Choisissez une heure",
+      "step_service": "Choisissez un service",
+      "step_details": "Vos coordonnées",
+      "free_short": "libres",
+      "booked": "Réservé",
+      "closed": "Fermé",
+      "today": "Aujourd'hui",
+      "back": "Retour",
+      "continue": "Continuer",
+      "your_selection": "Votre sélection",
+      "service": "Service",
+      "date": "Date",
+      "time": "Heure",
+      "message_label": "Message ou remarques (facultatif)",
+      "message_placeholder": "Décrivez brièvement votre affaire — traitée en toute confidentialité."
+    }
   }
 }

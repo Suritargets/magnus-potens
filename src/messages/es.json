@@ -97,15 +97,34 @@
     "form": {
       "name": "Nombre completo",
       "email": "Dirección de correo electrónico",
-      "phone": "Teléfono (opcional)",
+      "phone": "Número de teléfono",
+      "address": "Dirección (opcional)",
       "topic": "Naturaleza de la consulta",
-      "notes": "Notas adicionales (opcional)",
-      "submit": "Solicitar consulta",
+      "notes": "Mensaje u observaciones (opcional)",
+      "submit": "Confirmar cita",
       "disclaimer": "Todas las consultas se realizan con plena discreción. Recibirá una confirmación por correo electrónico en breve.",
-      "success_title": "Consulta solicitada.",
-      "success_message": "Hemos recibido su solicitud. Recibirá un correo de confirmación en breve."
+      "success_title": "Gracias — hemos recibido su solicitud.",
+      "success_message": "Le contactaremos dentro de 24 horas para confirmar su cita."
     },
     "no_slots": "No hay disponibilidad en esta fecha.",
-    "select_date_first": "Por favor seleccione una fecha primero."
+    "select_date_first": "Por favor seleccione una fecha primero.",
+    "calendar": {
+      "step_date": "Elija una fecha",
+      "step_time": "Elija una hora",
+      "step_service": "Elija un servicio",
+      "step_details": "Sus datos",
+      "free_short": "libres",
+      "booked": "Ocupado",
+      "closed": "Cerrado",
+      "today": "Hoy",
+      "back": "Atrás",
+      "continue": "Continuar",
+      "your_selection": "Su selección",
+      "service": "Servicio",
+      "date": "Fecha",
+      "time": "Hora",
+      "message_label": "Mensaje u observaciones (opcional)",
+      "message_placeholder": "Describa brevemente su asunto — tratado con plena confidencialidad."
+    }
   }
 }

@@ -71,8 +71,9 @@ export const appointmentSchema = z.object({
   time: z.string().regex(/^\d{2}:\d{2}$/, 'Invalid time format'),
   name: z.string().min(2, 'Name must be at least 2 characters').max(100),
   email: z.string().email('Invalid email address'),
-  phone: z.string().max(30).optional(),
-  topic: z.string().min(1, 'Please select a topic').max(100),
+  phone: z.string().min(5, 'Please enter a phone number').max(30),
+  address: z.string().max(200).optional(),
+  topic: z.string().min(1, 'Please select a service').max(100),
   notes: z.string().max(1000).optional(),
 })
 

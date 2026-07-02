@@ -125,6 +125,7 @@ export const appointments = pgTable('appointments', {
   name: text('name').notNull(),
   email: text('email').notNull(),
   phone: text('phone'),
+  address: text('address'),
   topic: text('topic'),
   notes: text('notes'),
   locale: text('locale').default('en').notNull(),
@@ -143,6 +144,17 @@ export const availabilityConfig = pgTable('availability_config', {
   endTime: text('end_time').notNull(),
   slotDuration: integer('slot_duration').default(60).notNull(),
   isActive: boolean('is_active').default(true).notNull(),
+})
+
+// --- AVAILABILITY OVERRIDES (datum-specifiek: vakantie, feestdag, afwijkende tijden) ---
+export const availabilityOverrides = pgTable('availability_overrides', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  date: text('date').unique().notNull(),        // 'YYYY-MM-DD'
+  isClosed: boolean('is_closed').default(true).notNull(),
+  startTime: text('start_time'),                // alleen bij afwijkende tijden
+  endTime: text('end_time'),
+  note: text('note'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
 })
 
 // --- MEDIA ASSETS ---
@@ -168,6 +180,8 @@ export type Appointment = typeof appointments.$inferSelect
 export type NewAppointment = typeof appointments.$inferInsert
 export type AvailabilityConfig = typeof availabilityConfig.$inferSelect
 export type NewAvailabilityConfig = typeof availabilityConfig.$inferInsert
+export type AvailabilityOverride = typeof availabilityOverrides.$inferSelect
+export type NewAvailabilityOverride = typeof availabilityOverrides.$inferInsert
 export type MediaAsset = typeof mediaAssets.$inferSelect
 export type NewMediaAsset = typeof mediaAssets.$inferInsert
 

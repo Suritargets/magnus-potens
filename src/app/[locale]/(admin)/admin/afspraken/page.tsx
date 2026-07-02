@@ -1,7 +1,8 @@
 import { db } from '@/db'
-import { appointments } from '@/db/schema'
-import { desc } from 'drizzle-orm'
+import { appointments, availabilityOverrides } from '@/db/schema'
+import { desc, eq } from 'drizzle-orm'
 import Link from 'next/link'
+import { AdminCalendar } from './AdminCalendar'
 
 const STATUS_STYLES: Record<string, { bg: string; color: string }> = {
   pending:   { bg: 'rgba(199,158,107,0.1)', color: '#C79E6B' },
@@ -10,10 +11,13 @@ const STATUS_STYLES: Record<string, { bg: string; color: string }> = {
 }
 
 export default async function AfsprakenPage() {
-  const all = await db
-    .select()
-    .from(appointments)
-    .orderBy(desc(appointments.createdAt))
+  const [all, blocks] = await Promise.all([
+    db.select().from(appointments).orderBy(desc(appointments.createdAt)),
+    db
+      .select({ date: availabilityOverrides.date })
+      .from(availabilityOverrides)
+      .where(eq(availabilityOverrides.isClosed, true)),
+  ])
 
   return (
     <div>
@@ -33,6 +37,16 @@ export default async function AfsprakenPage() {
           Beschikbaarheid →
         </Link>
       </div>
+
+      {/* Maandkalender met klantnamen (alleen zichtbaar in admin) */}
+      <AdminCalendar
+        appointments={all.map((a) => ({ id: a.id, date: a.date, time: a.time, name: a.name, status: a.status }))}
+        blockedDates={blocks.map((b) => b.date)}
+      />
+
+      <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 20, fontWeight: 400, color: '#E9E3D6', margin: '0 0 14px' }}>
+        Binnengekomen aanvragen
+      </h2>
 
       {all.length === 0 ? (
         <div style={{ background: '#15171C', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 2, padding: '48px 24px', textAlign: 'center' }}>

@@ -1,12 +1,13 @@
 'use server'
 
 import { db } from '@/db'
-import { appointments, availabilityConfig } from '@/db/schema'
-import { eq, and } from 'drizzle-orm'
+import { appointments } from '@/db/schema'
+import { eq, and, ne } from 'drizzle-orm'
 import { parseFormData, appointmentSchema, type ActionResult } from '@/lib/validations'
 import { sendAppointmentEmails } from '@/lib/mail'
 import { apiRateLimit, getClientIp } from '@/lib/rate-limit'
 import { getLocale } from 'next-intl/server'
+import { getDayAvailability } from '@/lib/availability'
 
 export async function bookAppointment(
   _prev: ActionResult,
@@ -20,13 +21,14 @@ export async function bookAppointment(
   }
 
   const raw = {
-    date:  formData.get('date'),
-    time:  formData.get('time'),
-    name:  formData.get('name'),
-    email: formData.get('email'),
-    phone: formData.get('phone') || undefined,
-    topic: formData.get('topic'),
-    notes: formData.get('notes') || undefined,
+    date:    formData.get('date'),
+    time:    formData.get('time'),
+    name:    formData.get('name'),
+    email:   formData.get('email'),
+    phone:   formData.get('phone'),
+    address: formData.get('address') || undefined,
+    topic:   formData.get('topic'),
+    notes:   formData.get('notes') || undefined,
   }
 
   const parsed = parseFormData(appointmentSchema, raw)
@@ -37,23 +39,28 @@ export async function bookAppointment(
   const data = parsed.data
   const locale = await getLocale()
 
-  // Verify the selected date's day-of-week is active
-  const dayOfWeek = new Date(data.date).getUTCDay()
-  const [config] = await db
-    .select()
-    .from(availabilityConfig)
-    .where(and(eq(availabilityConfig.dayOfWeek, dayOfWeek), eq(availabilityConfig.isActive, true)))
-    .limit(1)
+  // Beschikbaarheid: weekschema + datum-overrides + al geboekte slots
+  const day = await getDayAvailability(data.date)
+  const slot = day.slots.find((s) => s.time === data.time)
 
-  if (!config) {
+  if (!day.open || !slot) {
     return { success: false, error: 'The selected date is not available for appointments.' }
   }
+  if (!slot.free) {
+    return { success: false, error: 'This time slot is no longer available. Please choose another.' }
+  }
 
-  // Check the slot is not already taken
+  // Dubbele-boeking race check
   const existing = await db
     .select({ id: appointments.id })
     .from(appointments)
-    .where(and(eq(appointments.date, data.date), eq(appointments.time, data.time)))
+    .where(
+      and(
+        eq(appointments.date, data.date),
+        eq(appointments.time, data.time),
+        ne(appointments.status, 'cancelled')
+      )
+    )
     .limit(1)
 
   if (existing.length > 0) {
@@ -66,7 +73,8 @@ export async function bookAppointment(
       time: data.time,
       name: data.name,
       email: data.email,
-      phone: data.phone ?? null,
+      phone: data.phone,
+      address: data.address ?? null,
       topic: data.topic,
       notes: data.notes ?? null,
       locale,

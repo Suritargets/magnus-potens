@@ -97,15 +97,34 @@
     "form": {
       "name": "Volledige naam",
       "email": "E-mailadres",
-      "phone": "Telefoon (optioneel)",
+      "phone": "Telefoonnummer",
+      "address": "Adres (optioneel)",
       "topic": "Aard van het verzoek",
-      "notes": "Aanvullende opmerkingen (optioneel)",
-      "submit": "Consultatie aanvragen",
+      "notes": "Bericht of opmerkingen (optioneel)",
+      "submit": "Afspraak bevestigen",
       "disclaimer": "Alle consultaties worden uitgevoerd met volledige discretie. U ontvangt spoedig een e-mailbevestiging.",
-      "success_title": "Consultatie aangevraagd.",
-      "success_message": "Wij hebben uw verzoek ontvangen. U ontvangt spoedig een bevestigingsmail."
+      "success_title": "Dank u — uw aanvraag is ontvangen.",
+      "success_message": "U wordt binnen 24 uur gecontacteerd om uw afspraak te bevestigen."
     },
     "no_slots": "Geen beschikbaarheid op deze datum.",
-    "select_date_first": "Selecteer eerst een datum."
+    "select_date_first": "Selecteer eerst een datum.",
+    "calendar": {
+      "step_date": "Kies een datum",
+      "step_time": "Kies een tijd",
+      "step_service": "Kies een dienst",
+      "step_details": "Uw gegevens",
+      "free_short": "vrij",
+      "booked": "Bezet",
+      "closed": "Gesloten",
+      "today": "Vandaag",
+      "back": "Terug",
+      "continue": "Verder",
+      "your_selection": "Uw selectie",
+      "service": "Dienst",
+      "date": "Datum",
+      "time": "Tijd",
+      "message_label": "Bericht of opmerkingen (optioneel)",
+      "message_placeholder": "Omschrijf kort uw kwestie — volledig vertrouwelijk behandeld."
+    }
   }
 }

@@ -18,6 +18,7 @@ const STATUS_STYLES: Record<string, { bg: string; color: string }> = {
 const FIELDS = (appt: Awaited<ReturnType<typeof getAppointment>>): [string, string | null | undefined][] => [
   ['Email', appt!.email],
   ['Phone', appt!.phone],
+  ['Address', appt!.address],
   ['Date', appt!.date],
   ['Time', appt!.time],
   ['Topic', appt!.topic],

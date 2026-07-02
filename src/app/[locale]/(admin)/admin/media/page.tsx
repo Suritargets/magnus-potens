@@ -35,7 +35,7 @@ async function DeleteButton({ id }: { id: string }) {
 
 export default async function MediaPage() {
   const assets = await db.select().from(mediaAssets).orderBy(desc(mediaAssets.createdAt))
-  const cloudinaryConfigured = !!process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+  const blobConfigured = !!process.env.BLOB_READ_WRITE_TOKEN
 
   return (
     <div>
@@ -48,11 +48,11 @@ export default async function MediaPage() {
             {assets.length} asset{assets.length !== 1 ? 's' : ''}
           </p>
         </div>
-        {cloudinaryConfigured ? (
+        {blobConfigured ? (
           <MediaUploadButton />
         ) : (
-          <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 12, color: '#C79E6B', margin: 0, maxWidth: 320, textAlign: 'right' }}>
-            Cloudinary is nog niet geconfigureerd — zet NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME (en API keys) in de environment om uploads te activeren.
+          <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 12, color: '#C79E6B', margin: 0, maxWidth: 340, textAlign: 'right' }}>
+            Vercel Blob is nog niet gekoppeld — maak in het Vercel dashboard een Blob store aan (Storage → Blob) en de BLOB_READ_WRITE_TOKEN wordt automatisch gezet.
           </p>
         )}
       </div>
