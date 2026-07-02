@@ -24,7 +24,7 @@ const devAdminPreview =
 // keys echt gezet zijn. Zonder Clerk blijft de rest van de site gewoon werken.
 const hasClerkKey = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY?.startsWith('pk_')
 
-function rewriteLocalelessAppRoutes(req: NextRequest): NextResponse | null {
+function handleNonApiRoute(req: NextRequest): NextResponse {
   // App-routes zonder taalprefix (bv. /admin/blog, /sign-in) intern
   // herschrijven naar de default locale, zodat interne links blijven werken.
   const { pathname } = req.nextUrl
@@ -33,13 +33,15 @@ function rewriteLocalelessAppRoutes(req: NextRequest): NextResponse | null {
     url.pathname = `/${defaultLocale}${pathname}`
     return NextResponse.rewrite(url)
   }
-  return null
+  return intlMiddleware(req)
 }
 
 export default hasClerkKey
   ? clerkMiddleware(async (auth, req: NextRequest) => {
       if (isProtectedRoute(req) && !devAdminPreview) await auth.protect()
-      return rewriteLocalelessAppRoutes(req) ?? intlMiddleware(req)
+      // API-routes hebben geen locale-prefix nodig en mogen next-intl niet raken.
+      if (req.nextUrl.pathname.startsWith('/api')) return NextResponse.next()
+      return handleNonApiRoute(req)
     })
   : function middleware(req: NextRequest) {
       // Geen Clerk geconfigureerd: admin/dashboard blijven onbereikbaar
@@ -49,7 +51,8 @@ export default hasClerkKey
         url.pathname = '/'
         return NextResponse.redirect(url)
       }
-      return rewriteLocalelessAppRoutes(req) ?? intlMiddleware(req)
+      if (req.nextUrl.pathname.startsWith('/api')) return NextResponse.next()
+      return handleNonApiRoute(req)
     }
 
 export const config = {
