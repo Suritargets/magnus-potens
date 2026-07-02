@@ -25,9 +25,9 @@
     "subtitle": "Zes disciplines, één norm. Elke opdracht wordt persoonlijk geleid, met de nauwkeurigheid en vertrouwelijkheid die onze cliënten verwachten.",
     "areas": [
       {"num": "01", "title": "Corporate & Commercieel", "desc": "Structurering, governance en de overeenkomsten die ondernemingen bij elkaar houden."},
-      {"num": "02", "title": "Privévermogen & Familiebedrijf", "desc": "Successie, nalatenschap en de stille hoede van erfgoed over generaties."},
+      {"num": "02", "title": "Procesrecht", "desc": "Procesvoering in het civiel en strafrecht."},
       {"num": "03", "title": "Strategisch Advies", "desc": "Advies voorbij het juridische — begeleiding bij beslissingen die richting bepalen."},
-      {"num": "04", "title": "Transacties & M&A", "desc": "Overnames, investeringen en deals onderhandeld met precisie en discretie."},
+      {"num": "04", "title": "Digitale Transformatie", "desc": "Begeleiding bij uw digitale transformatie met vooruitziendheid en gegarandeerde resultaten."},
       {"num": "05", "title": "Geschillenbeslechting", "desc": "Gemeten, vastberaden vertegenwoordiging wanneer bescherming een standpunt vereist."},
       {"num": "06", "title": "Regelgeving & Compliance", "desc": "Navigeren door kaders over jurisdicties heen met vooruitziendheid, niet met wrijving."}
     ]
@@ -51,7 +51,7 @@
     "headline": "Begin het gesprek.",
     "description": "Elke opdracht begint in vertrouwen. Deel wat u bezighoudt, en wij reageren persoonlijk — met discretie en zonder verplichting.",
     "enquiries_label": "Vragen",
-    "email": "counsel@magnus-potens.com",
+    "email": "info@magnus-potens.com",
     "appointment_label": "Op afspraak",
     "website": "magnus-potens.com",
     "form": {

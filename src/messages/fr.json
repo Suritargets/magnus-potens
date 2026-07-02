@@ -25,9 +25,9 @@
     "subtitle": "Six disciplines, une norme. Chaque mission est dirigée personnellement, avec la rigueur et la confidentialité que nos clients attendent.",
     "areas": [
       {"num": "01", "title": "Droit des affaires et Commercial", "desc": "Structuration, gouvernance et les accords qui maintiennent les entreprises ensemble."},
-      {"num": "02", "title": "Patrimoine Privé et Entreprise Familiale", "desc": "Succession, patrimoine et la gestion discrète d'un héritage à travers les générations."},
+      {"num": "02", "title": "Contentieux", "desc": "Contentieux en droit civil et pénal."},
       {"num": "03", "title": "Conseil Stratégique", "desc": "Conseil au-delà du juridique — guidance sur les décisions qui façonnent la direction."},
-      {"num": "04", "title": "Transactions et M&A", "desc": "Acquisitions, investissements et transactions négociés avec précision et discrétion."},
+      {"num": "04", "title": "Transformation Digitale", "desc": "Accompagnement de votre transformation digitale avec prévoyance et des résultats garantis."},
       {"num": "05", "title": "Résolution des Litiges", "desc": "Représentation mesurée et résolue lorsque la protection exige une position ferme."},
       {"num": "06", "title": "Réglementation et Conformité", "desc": "Navigation dans les cadres réglementaires de différentes juridictions avec prévoyance, sans friction."}
     ]
@@ -51,7 +51,7 @@
     "headline": "Commencez la conversation.",
     "description": "Chaque mission commence dans la confiance. Partagez ce que vous traversez, et nous répondrons personnellement — avec discrétion et sans obligation.",
     "enquiries_label": "Demandes",
-    "email": "counsel@magnus-potens.com",
+    "email": "info@magnus-potens.com",
     "appointment_label": "Sur rendez-vous",
     "website": "magnus-potens.com",
     "form": {

@@ -25,9 +25,9 @@
     "subtitle": "Seis disciplinas, un estándar. Cada compromiso es liderado personalmente, con el rigor y la confidencialidad que nuestros clientes esperan.",
     "areas": [
       {"num": "01", "title": "Corporativo y Comercial", "desc": "Estructuración, gobernanza y los acuerdos que mantienen unidas las empresas."},
-      {"num": "02", "title": "Patrimonio Privado y Empresa Familiar", "desc": "Sucesión, patrimonio y la gestión discreta del legado a través de generaciones."},
+      {"num": "02", "title": "Litigios", "desc": "Litigios en derecho civil y penal."},
       {"num": "03", "title": "Asesoramiento Estratégico", "desc": "Consejo más allá de lo jurídico — orientación en las decisiones que dan dirección."},
-      {"num": "04", "title": "Transacciones y M&A", "desc": "Adquisiciones, inversiones y acuerdos negociados con precisión y discreción."},
+      {"num": "04", "title": "Transformación Digital", "desc": "Orientación en sus marcos de transformación digital con previsión y resultados garantizados."},
       {"num": "05", "title": "Resolución de Disputas", "desc": "Representación mesurada y firme cuando la protección exige una posición sólida."},
       {"num": "06", "title": "Regulación y Cumplimiento", "desc": "Navegando marcos en distintas jurisdicciones con previsión, no con fricción."}
     ]
@@ -51,7 +51,7 @@
     "headline": "Inicie la conversación.",
     "description": "Cada compromiso comienza en la confianza. Comparta lo que enfrenta y responderemos personalmente — con discreción y sin obligación.",
     "enquiries_label": "Consultas",
-    "email": "counsel@magnus-potens.com",
+    "email": "info@magnus-potens.com",
     "appointment_label": "Bajo cita previa",
     "website": "magnus-potens.com",
     "form": {

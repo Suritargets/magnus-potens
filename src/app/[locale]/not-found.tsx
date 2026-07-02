@@ -68,10 +68,10 @@ export default function NotFound() {
       >
         Return to the firm&apos;s homepage, or reach us directly at{' '}
         <a
-          href="mailto:counsel@magnus-potens.com"
+          href="mailto:info@magnus-potens.com"
           style={{ color: '#C79E6B', textDecoration: 'none' }}
         >
-          counsel@magnus-potens.com
+          info@magnus-potens.com
         </a>
         .
       </p>

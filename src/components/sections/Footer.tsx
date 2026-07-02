@@ -109,7 +109,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="mailto:counsel@magnus-potens.com"
+                  href="mailto:info@magnus-potens.com"
                   className="text-[13px] transition-colors duration-200"
                   style={{
                     fontFamily: 'var(--font-jost)',
@@ -119,7 +119,7 @@ export function Footer() {
                   onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#C79E6B' }}
                   onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#6E6A63' }}
                 >
-                  counsel@magnus-potens.com
+                  info@magnus-potens.com
                 </a>
               </li>
               {legalLinks.map((link) => (

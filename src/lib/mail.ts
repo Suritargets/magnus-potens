@@ -158,7 +158,7 @@ function layout(title: string, body: string): string {
       <!-- Footer -->
       <tr><td style="padding-top:24px;border-top:1px solid ${C.border};text-align:center;">
         <p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:11px;color:${C.muted};">
-          <a href="mailto:counsel@magnus-potens.com" style="color:${C.gold};text-decoration:none;">counsel@magnus-potens.com</a>
+          <a href="mailto:info@magnus-potens.com" style="color:${C.gold};text-decoration:none;">info@magnus-potens.com</a>
           &nbsp;·&nbsp;
           <a href="https://magnus-potens.com" style="color:${C.gold};text-decoration:none;">magnus-potens.com</a>
         </p>
@@ -218,7 +218,7 @@ Bericht:
 ${d.message}
 
 -------------------------------------
-Beantwoord via: counsel@magnus-potens.com
+Beantwoord via: info@magnus-potens.com
 `
 }
 
@@ -246,7 +246,7 @@ function clientHtml(name: string): string {
 
     <p style="margin:28px 0 0;font-family:Arial,sans-serif;font-size:12px;color:${C.dim};">
       If this is urgent, reach us directly at
-      <a href="mailto:counsel@magnus-potens.com" style="color:${C.gold};text-decoration:none;">counsel@magnus-potens.com</a>.
+      <a href="mailto:info@magnus-potens.com" style="color:${C.gold};text-decoration:none;">info@magnus-potens.com</a>.
     </p>`)
 }
 
@@ -259,7 +259,7 @@ in confidence shortly.
 Every enquiry is handled with the discretion and personal
 attention our clients expect.
 
-For urgent matters: counsel@magnus-potens.com
+For urgent matters: info@magnus-potens.com
 
 — Magnus & Potens | Law & Advisors
   Discretion · Protection · Purpose
@@ -275,7 +275,7 @@ export async function sendContactNotification(data: {
   message:  string
   subject?: string
 }): Promise<void> {
-  const firm = process.env.CONTACT_EMAIL ?? 'counsel@magnus-potens.com'
+  const firm = process.env.CONTACT_EMAIL ?? 'info@magnus-potens.com'
 
   await Promise.allSettled([
     // 1. Notificatie aan het kantoor
@@ -322,7 +322,7 @@ function apptClientHtml(d: { name: string; date: string; time: string; topic: st
     </table>
     <p style="margin:28px 0 0;font-family:Arial,sans-serif;font-size:12px;color:${C.dim};">
       To reschedule or cancel, contact us at
-      <a href="mailto:counsel@magnus-potens.com" style="color:${C.gold};text-decoration:none;">counsel@magnus-potens.com</a>.
+      <a href="mailto:info@magnus-potens.com" style="color:${C.gold};text-decoration:none;">info@magnus-potens.com</a>.
     </p>`)
 }
 
@@ -338,7 +338,7 @@ Time:  ${d.time}
 Topic: ${d.topic}
 
 We will confirm your appointment and be in touch shortly.
-To reschedule or cancel: counsel@magnus-potens.com
+To reschedule or cancel: info@magnus-potens.com
 
 — Magnus & Potens | Law & Advisors
   Discretion · Protection · Purpose
@@ -424,7 +424,7 @@ export async function sendAppointmentEmails(data: {
   topic:  string
   notes?: string
 }): Promise<void> {
-  const firm = process.env.CONTACT_EMAIL ?? 'counsel@magnus-potens.com'
+  const firm = process.env.CONTACT_EMAIL ?? 'info@magnus-potens.com'
 
   await Promise.allSettled([
     sendMail({
