@@ -50,6 +50,7 @@ export function BookingCalendar() {
 
   // Selectie state
   const [step, setStep] = useState<Step>('date')
+  const [calendarOpen, setCalendarOpen] = useState(true)
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
   const [daySlots, setDaySlots] = useState<Slot[] | null>(null)
   const [loadingSlots, setLoadingSlots] = useState(false)
@@ -132,6 +133,7 @@ export function BookingCalendar() {
     setSelectedTime(null)
     setDaySlots(null)
     setLoadingSlots(true)
+    setCalendarOpen(false) // accordion dicht: tijdslots komen naar boven
     fetch(`/api/appointments/slots?date=${dateStr}`)
       .then((r) => r.json())
       .then((json) => setDaySlots(json.slots ?? []))
@@ -216,184 +218,213 @@ export function BookingCalendar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.45, ease: EASE }}
-            className="mp-booking-grid"
           >
-            {/* Linkerkolom: kalender */}
-            <div>
-            {/* Maandnavigatie */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
-              <button
-                type="button"
-                onClick={() => changeMonth(-1)}
-                aria-label="Previous month"
-                style={{
-                  fontFamily: "'Jost', sans-serif", fontSize: 18, color: GOLD,
-                  background: 'none', border: `1px solid ${BORDER}`, width: 42, height: 42,
-                  cursor: 'pointer', borderRadius: 1,
-                }}
-              >
-                ←
-              </button>
-              <h2
-                style={{
-                  fontFamily: "'Cormorant Garamond', Georgia, serif",
-                  fontSize: 'clamp(24px, 3.5vw, 34px)',
-                  fontWeight: 400,
-                  color: TEXT,
-                  margin: 0,
-                  textTransform: 'capitalize',
-                }}
-              >
-                {monthLabel}
-              </h2>
-              <button
-                type="button"
-                onClick={() => changeMonth(1)}
-                aria-label="Next month"
-                style={{
-                  fontFamily: "'Jost', sans-serif", fontSize: 18, color: GOLD,
-                  background: 'none', border: `1px solid ${BORDER}`, width: 42, height: 42,
-                  cursor: 'pointer', borderRadius: 1,
-                }}
-              >
-                →
-              </button>
-            </div>
-
-            {/* Weekdag headers */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 6, marginBottom: 6 }}>
-              {weekdayLabels.map((w) => (
-                <p
-                  key={w}
-                  style={{
-                    fontFamily: "'Jost', sans-serif", fontSize: 10, letterSpacing: '0.22em',
-                    textTransform: 'uppercase', color: FAINT, textAlign: 'center', margin: 0, padding: '8px 0',
-                  }}
+            {/* Kalender — accordion: klapt dicht zodra een datum gekozen is */}
+            <AnimatePresence initial={false} mode="wait">
+              {calendarOpen ? (
+                <motion.div
+                  key="calendar-open"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.5, ease: EASE }}
+                  style={{ overflow: 'hidden' }}
                 >
-                  {w}
-                </p>
-              ))}
-            </div>
-
-            {/* Dagen grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 6, opacity: loadingMonth && !days ? 0.5 : 1 }}>
-              {gridCells.map((d, i) => {
-                if (d === null) return <div key={`x${i}`} />
-                const dateStr = toDateStr(viewYear, viewMonth, d)
-                const info = dayByDate.get(dateStr)
-                const isPast = dateStr < todayStr
-                const isToday = dateStr === todayStr
-                const bookable = !isPast && !!info?.open && info.freeCount > 0
-                const isSelected = selectedDate === dateStr
-
-                return (
-                  <button
-                    key={dateStr}
-                    type="button"
-                    disabled={!bookable}
-                    onClick={() => selectDay(dateStr)}
-                    style={{
-                      aspectRatio: '1.15',
-                      minHeight: 64,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: 4,
-                      background: isSelected ? 'rgba(199,158,107,0.14)' : bookable ? CARD_BG : 'transparent',
-                      border: isSelected
-                        ? `1px solid ${GOLD}`
-                        : bookable
-                          ? `1px solid ${BORDER}`
-                          : '1px solid rgba(255,255,255,0.04)',
-                      cursor: bookable ? 'pointer' : 'default',
-                      borderRadius: 1,
-                      transition: 'border-color 0.25s, background 0.25s, transform 0.25s',
-                    }}
-                    onMouseEnter={(e) => {
-                      if (bookable && !isSelected) {
-                        e.currentTarget.style.borderColor = GOLD
-                        e.currentTarget.style.transform = 'translateY(-2px)'
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (bookable && !isSelected) {
-                        e.currentTarget.style.borderColor = BORDER
-                        e.currentTarget.style.transform = 'none'
-                      }
-                    }}
-                  >
-                    <span
+                  {/* Maandnavigatie */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
+                    <button
+                      type="button"
+                      onClick={() => changeMonth(-1)}
+                      aria-label="Previous month"
+                      style={{
+                        fontFamily: "'Jost', sans-serif", fontSize: 18, color: GOLD,
+                        background: 'none', border: `1px solid ${BORDER}`, width: 42, height: 42,
+                        cursor: 'pointer', borderRadius: 1,
+                      }}
+                    >
+                      ←
+                    </button>
+                    <h2
                       style={{
                         fontFamily: "'Cormorant Garamond', Georgia, serif",
-                        fontSize: 20,
-                        color: bookable ? TEXT : 'rgba(233,227,214,0.22)',
-                        lineHeight: 1,
-                        borderBottom: isToday ? `1px solid ${GOLD}` : 'none',
-                        paddingBottom: isToday ? 2 : 0,
+                        fontSize: 'clamp(24px, 3.5vw, 34px)',
+                        fontWeight: 400,
+                        color: TEXT,
+                        margin: 0,
+                        textTransform: 'capitalize',
                       }}
                     >
-                      {d}
-                    </span>
-                    {bookable && (
-                      <span
+                      {monthLabel}
+                    </h2>
+                    <button
+                      type="button"
+                      onClick={() => changeMonth(1)}
+                      aria-label="Next month"
+                      style={{
+                        fontFamily: "'Jost', sans-serif", fontSize: 18, color: GOLD,
+                        background: 'none', border: `1px solid ${BORDER}`, width: 42, height: 42,
+                        cursor: 'pointer', borderRadius: 1,
+                      }}
+                    >
+                      →
+                    </button>
+                  </div>
+
+                  {/* Weekdag headers */}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 6, marginBottom: 6 }}>
+                    {weekdayLabels.map((w) => (
+                      <p
+                        key={w}
                         style={{
-                          fontFamily: "'Jost', sans-serif",
-                          fontSize: 9,
-                          letterSpacing: '0.1em',
-                          color: GOLD,
+                          fontFamily: "'Jost', sans-serif", fontSize: 10, letterSpacing: '0.22em',
+                          textTransform: 'uppercase', color: FAINT, textAlign: 'center', margin: 0, padding: '8px 0',
                         }}
                       >
-                        {info!.freeCount} {t('calendar.free_short')}
-                      </span>
-                    )}
-                  </button>
-                )
-              })}
-            </div>
+                        {w}
+                      </p>
+                    ))}
+                  </div>
 
-            </div>
+                  {/* Dagen grid */}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 6, opacity: loadingMonth && !days ? 0.5 : 1 }}>
+                    {gridCells.map((d, i) => {
+                      if (d === null) return <div key={`x${i}`} />
+                      const dateStr = toDateStr(viewYear, viewMonth, d)
+                      const info = dayByDate.get(dateStr)
+                      const isPast = dateStr < todayStr
+                      const isToday = dateStr === todayStr
+                      const bookable = !isPast && !!info?.open && info.freeCount > 0
+                      const isSelected = selectedDate === dateStr
 
-            {/* Rechterkolom: tijdslots sidebar */}
-            <div
-              className="mp-booking-slots"
-              style={{
-                background: CARD_BG,
-                border: `1px solid ${BORDER}`,
-                borderRadius: 1,
-                padding: '24px 22px',
-                minHeight: 320,
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "'Jost', sans-serif", fontSize: 11, letterSpacing: '0.22em',
-                  textTransform: 'uppercase', color: GOLD, margin: '0 0 6px',
-                }}
-              >
-                {t('calendar.step_time')}
-              </p>
-
-              {!selectedDate ? (
-                <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 13, lineHeight: 1.8, color: FAINT, margin: '18px 0 0' }}>
-                  {t('select_date_first')}
-                </p>
+                      return (
+                        <button
+                          key={dateStr}
+                          type="button"
+                          disabled={!bookable}
+                          onClick={() => selectDay(dateStr)}
+                          style={{
+                            aspectRatio: '1.15',
+                            minHeight: 64,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: 4,
+                            background: isSelected ? 'rgba(199,158,107,0.14)' : bookable ? CARD_BG : 'transparent',
+                            border: isSelected
+                              ? `1px solid ${GOLD}`
+                              : bookable
+                                ? `1px solid ${BORDER}`
+                                : '1px solid rgba(255,255,255,0.04)',
+                            cursor: bookable ? 'pointer' : 'default',
+                            borderRadius: 1,
+                            transition: 'border-color 0.25s, background 0.25s, transform 0.25s',
+                          }}
+                          onMouseEnter={(e) => {
+                            if (bookable && !isSelected) {
+                              e.currentTarget.style.borderColor = GOLD
+                              e.currentTarget.style.transform = 'translateY(-2px)'
+                            }
+                          }}
+                          onMouseLeave={(e) => {
+                            if (bookable && !isSelected) {
+                              e.currentTarget.style.borderColor = BORDER
+                              e.currentTarget.style.transform = 'none'
+                            }
+                          }}
+                        >
+                          <span
+                            style={{
+                              fontFamily: "'Cormorant Garamond', Georgia, serif",
+                              fontSize: 20,
+                              color: bookable ? TEXT : 'rgba(233,227,214,0.22)',
+                              lineHeight: 1,
+                              borderBottom: isToday ? `1px solid ${GOLD}` : 'none',
+                              paddingBottom: isToday ? 2 : 0,
+                            }}
+                          >
+                            {d}
+                          </span>
+                          {bookable && (
+                            <span
+                              style={{
+                                fontFamily: "'Jost', sans-serif",
+                                fontSize: 9,
+                                letterSpacing: '0.1em',
+                                color: GOLD,
+                              }}
+                            >
+                              {info!.freeCount} {t('calendar.free_short')}
+                            </span>
+                          )}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </motion.div>
               ) : (
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={selectedDate}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.35, ease: EASE }}
+                <motion.button
+                  key="calendar-collapsed"
+                  type="button"
+                  onClick={() => setCalendarOpen(true)}
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.4, ease: EASE }}
+                  style={{
+                    width: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: 16,
+                    background: CARD_BG,
+                    border: `1px solid ${BORDER}`,
+                    borderRadius: 1,
+                    padding: '18px 22px',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <div>
+                    <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, margin: '0 0 4px' }}>
+                      {t('calendar.step_date')}
+                    </p>
+                    <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 20, color: TEXT, margin: 0, textTransform: 'capitalize' }}>
+                      {selectedDateLabel}
+                    </p>
+                  </div>
+                  <span
+                    style={{
+                      fontFamily: "'Jost', sans-serif", fontSize: 11, letterSpacing: '0.14em',
+                      textTransform: 'uppercase', color: MUTED, display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0,
+                    }}
                   >
+                    {t('calendar.change_date')} <span style={{ fontSize: 14 }}>✎</span>
+                  </span>
+                </motion.button>
+              )}
+            </AnimatePresence>
+
+            {/* Tijdslots — komt naar boven zodra de kalender dichtklapt */}
+            <AnimatePresence>
+              {selectedDate && !calendarOpen && (
+                <motion.div
+                  key={selectedDate}
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.5, ease: EASE, delay: 0.08 }}
+                  style={{ overflow: 'hidden', marginTop: 16 }}
+                >
+                  <div style={{ background: CARD_BG, border: `1px solid ${BORDER}`, borderRadius: 1, padding: '24px 22px' }}>
                     <p
                       style={{
-                        fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 20,
-                        color: TEXT, margin: '0 0 18px', textTransform: 'capitalize',
+                        fontFamily: "'Jost', sans-serif", fontSize: 11, letterSpacing: '0.22em',
+                        textTransform: 'uppercase', color: GOLD, margin: '0 0 18px',
                       }}
                     >
-                      {selectedDateLabel}
+                      {t('calendar.step_time')}
                     </p>
 
                     {loadingSlots ? (
@@ -401,7 +432,7 @@ export function BookingCalendar() {
                     ) : daySlots && daySlots.length === 0 ? (
                       <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 14, color: MUTED }}>{t('no_slots')}</p>
                     ) : (
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: 10 }}>
                         {(daySlots ?? []).map((slot) => (
                           <button
                             key={slot.time}
@@ -412,7 +443,7 @@ export function BookingCalendar() {
                               setStep('service')
                             }}
                             style={{
-                              padding: '12px 8px',
+                              padding: '13px 8px',
                               fontFamily: "'Jost', sans-serif",
                               fontSize: 13,
                               letterSpacing: '0.06em',
@@ -450,10 +481,10 @@ export function BookingCalendar() {
                         ))}
                       </div>
                     )}
-                  </motion.div>
-                </AnimatePresence>
+                  </div>
+                </motion.div>
               )}
-            </div>
+            </AnimatePresence>
           </motion.div>
         )}
 

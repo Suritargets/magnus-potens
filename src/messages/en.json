@@ -124,7 +124,8 @@
       "date": "Date",
       "time": "Time",
       "message_label": "Message or remarks (optional)",
-      "message_placeholder": "Briefly describe your matter — treated in full confidence."
+      "message_placeholder": "Briefly describe your matter — treated in full confidence.",
+      "change_date": "Change date"
     }
   }
 }

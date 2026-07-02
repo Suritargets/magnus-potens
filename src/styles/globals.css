@@ -182,24 +182,6 @@
   transform: scale(1.045);
 }
 
-/* ─── Booking layout: kalender 75% + tijdslots 25% ───────────────── */
-.mp-booking-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 36px;
-  align-items: start;
-}
-
-@media (min-width: 1024px) {
-  .mp-booking-grid {
-    grid-template-columns: 3fr 1fr;
-  }
-  .mp-booking-slots {
-    position: sticky;
-    top: 96px;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .mp-shimmer::after,
   .mp-underline::after,

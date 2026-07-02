@@ -124,7 +124,8 @@
       "date": "Fecha",
       "time": "Hora",
       "message_label": "Mensaje u observaciones (opcional)",
-      "message_placeholder": "Describa brevemente su asunto — tratado con plena confidencialidad."
+      "message_placeholder": "Describa brevemente su asunto — tratado con plena confidencialidad.",
+      "change_date": "Cambiar fecha"
     }
   }
 }

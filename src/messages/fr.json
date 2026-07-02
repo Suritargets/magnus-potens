@@ -124,7 +124,8 @@
       "date": "Date",
       "time": "Heure",
       "message_label": "Message ou remarques (facultatif)",
-      "message_placeholder": "Décrivez brièvement votre affaire — traitée en toute confidentialité."
+      "message_placeholder": "Décrivez brièvement votre affaire — traitée en toute confidentialité.",
+      "change_date": "Changer la date"
     }
   }
 }

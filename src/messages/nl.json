@@ -124,7 +124,8 @@
       "date": "Datum",
       "time": "Tijd",
       "message_label": "Bericht of opmerkingen (optioneel)",
-      "message_placeholder": "Omschrijf kort uw kwestie — volledig vertrouwelijk behandeld."
+      "message_placeholder": "Omschrijf kort uw kwestie — volledig vertrouwelijk behandeld.",
+      "change_date": "Wijzig datum"
     }
   }
 }
