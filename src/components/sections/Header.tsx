@@ -97,7 +97,7 @@ export function Header() {
             <a
               key={link.hash}
               href={`/${locale}#${link.hash}`}
-              className="text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
+              className="mp-underline text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
               style={navLinkStyle}
             >
               {t(link.labelKey)}
@@ -107,7 +107,7 @@ export function Header() {
           {/* Blog link */}
           <Link
             href={`/${locale}/blog`}
-            className="text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
+            className="mp-underline text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
             style={navLinkStyle}
           >
             {t('blog')}
@@ -116,7 +116,7 @@ export function Header() {
           {/* Consultation CTA */}
           <Link
             href={`/${locale}/consultation`}
-            className="text-[11px] tracking-[0.18em] uppercase px-5 py-2.5 border text-mp-gold transition-all duration-300 hover:bg-mp-gold hover:border-mp-gold hover:text-mp-dark"
+            className="mp-shimmer text-[11px] tracking-[0.18em] uppercase px-5 py-2.5 border text-mp-gold transition-all duration-300 hover:bg-mp-gold hover:border-mp-gold hover:text-mp-dark"
             style={{
               fontFamily: 'var(--font-jost)',
               fontWeight: 500,

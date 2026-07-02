@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { Stagger, StaggerItem } from '@/components/motion/Stagger'
 
 const firmLinks = [
   { label: 'The Firm', href: '#firm' },
@@ -26,9 +27,9 @@ export function Footer() {
       }}
     >
       <div className="max-w-[1280px] mx-auto px-8 md:px-14">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mb-14">
+        <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mb-14">
           {/* Brand column */}
-          <div className="md:col-span-1">
+          <StaggerItem className="md:col-span-1">
             <div className="flex items-center gap-4 mb-5">
               <Image
                 src="/images/logo-mark.png"
@@ -58,10 +59,10 @@ export function Footer() {
                 </p>
               </div>
             </div>
-          </div>
+          </StaggerItem>
 
           {/* Firm links */}
-          <div>
+          <StaggerItem>
             <p
               className="text-[9px] tracking-[0.25em] uppercase mb-6"
               style={{
@@ -91,10 +92,10 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </StaggerItem>
 
           {/* Reach us */}
-          <div>
+          <StaggerItem>
             <p
               className="text-[9px] tracking-[0.25em] uppercase mb-6"
               style={{
@@ -139,8 +140,8 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
+          </StaggerItem>
+        </Stagger>
 
         {/* Bottom bar */}
         <div

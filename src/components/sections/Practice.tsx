@@ -1,6 +1,10 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { motion, useReducedMotion } from 'motion/react'
+import { Reveal } from '@/components/motion/Reveal'
+
+const EASE = [0.22, 1, 0.36, 1] as const
 
 interface PracticeArea {
   num: string
@@ -11,6 +15,7 @@ interface PracticeArea {
 export function Practice() {
   const t = useTranslations('practice')
   const areas = t.raw('areas') as PracticeArea[]
+  const reduce = useReducedMotion()
 
   return (
     <section
@@ -21,43 +26,60 @@ export function Practice() {
       <div className="max-w-[1280px] mx-auto px-8 md:px-14">
         {/* Header */}
         <div className="mb-16">
-          <div className="mp-chip mb-6" style={{ color: '#A67C3E' }}>
-            <span className="mp-rule" style={{ backgroundColor: '#A67C3E' }} />
-            {t('label')}
-          </div>
-          <h2
-            className="text-[2rem] md:text-[2.6rem] leading-[1.1] font-normal max-w-[520px] mb-5"
-            style={{
-              fontFamily: 'var(--font-cormorant)',
-              color: '#1A1814',
-            }}
-          >
-            {t('headline')}
-          </h2>
-          <p
-            className="text-[14px] leading-relaxed max-w-[480px]"
-            style={{
-              fontFamily: 'var(--font-jost)',
-              fontWeight: 300,
-              color: '#6E6A63',
-            }}
-          >
-            {t('subtitle')}
-          </p>
+          <Reveal>
+            <div className="mp-chip mb-6" style={{ color: '#A67C3E' }}>
+              <span className="mp-rule" style={{ backgroundColor: '#A67C3E' }} />
+              {t('label')}
+            </div>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <h2
+              className="text-[2rem] md:text-[2.6rem] leading-[1.1] font-normal max-w-[520px] mb-5"
+              style={{
+                fontFamily: 'var(--font-cormorant)',
+                color: '#1A1814',
+              }}
+            >
+              {t('headline')}
+            </h2>
+          </Reveal>
+          <Reveal delay={0.22}>
+            <p
+              className="text-[14px] leading-relaxed max-w-[480px]"
+              style={{
+                fontFamily: 'var(--font-jost)',
+                fontWeight: 300,
+                color: '#6E6A63',
+              }}
+            >
+              {t('subtitle')}
+            </p>
+          </Reveal>
         </div>
 
         {/* 3x2 grid */}
-        <div
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-3"
           style={{ borderTop: '1px solid rgba(26, 24, 20, 0.14)' }}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.1 } },
+          }}
         >
           {areas.map((area, index) => {
             const isLastRow = index >= 3
             const isLastInRow = (index + 1) % 3 === 0
             return (
-              <div
+              <motion.div
                 key={area.num}
                 className="p-8 md:p-10 group"
+                variants={{
+                  hidden: { opacity: 0, y: reduce ? 0 : 24 },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } },
+                }}
                 style={{
                   borderRight: !isLastInRow ? '1px solid rgba(26, 24, 20, 0.14)' : 'none',
                   borderBottom: !isLastRow ? '1px solid rgba(26, 24, 20, 0.14)' : 'none',
@@ -99,10 +121,10 @@ export function Practice() {
                 >
                   {area.desc}
                 </p>
-              </div>
+              </motion.div>
             )
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

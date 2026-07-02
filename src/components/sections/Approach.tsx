@@ -1,4 +1,10 @@
+'use client'
+
 import { useTranslations } from 'next-intl'
+import { motion, useReducedMotion } from 'motion/react'
+import { Reveal } from '@/components/motion/Reveal'
+
+const EASE = [0.22, 1, 0.36, 1] as const
 
 interface Pillar {
   num: string
@@ -10,6 +16,7 @@ interface Pillar {
 export function Approach() {
   const t = useTranslations('approach')
   const pillars = t.raw('pillars') as Pillar[]
+  const reduce = useReducedMotion()
 
   return (
     <section
@@ -20,31 +27,46 @@ export function Approach() {
       <div className="max-w-[1280px] mx-auto px-8 md:px-14">
         {/* Header */}
         <div className="mb-16 md:mb-20">
-          <div className="mp-chip mb-6">
-            <span className="mp-rule" />
-            {t('label')}
-          </div>
-          <h2
-            className="text-[2rem] md:text-[2.6rem] leading-[1.1] font-normal max-w-[460px]"
-            style={{
-              fontFamily: 'var(--font-cormorant)',
-              color: '#F3EEE4',
-            }}
-          >
-            {t('headline')}
-          </h2>
+          <Reveal>
+            <div className="mp-chip mb-6">
+              <span className="mp-rule" />
+              {t('label')}
+            </div>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <h2
+              className="text-[2rem] md:text-[2.6rem] leading-[1.1] font-normal max-w-[460px]"
+              style={{
+                fontFamily: 'var(--font-cormorant)',
+                color: '#F3EEE4',
+              }}
+            >
+              {t('headline')}
+            </h2>
+          </Reveal>
         </div>
 
         {/* 4-col pillars — gold gap technique for divider lines */}
-        <div
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-4 gap-px"
           style={{ backgroundColor: 'rgba(199,158,107,0.16)' }}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.12 } },
+          }}
         >
           {pillars.map((pillar) => (
-            <div
+            <motion.div
               key={pillar.num}
               className="p-8 md:p-10 flex flex-col"
               style={{ backgroundColor: '#0F1014' }}
+              variants={{
+                hidden: { opacity: 0, y: reduce ? 0 : 24 },
+                show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } },
+              }}
             >
               {/* Number */}
               <p
@@ -103,9 +125,9 @@ export function Approach() {
               >
                 {pillar.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -17,6 +17,7 @@ export function BlogCard({ post, locale, readMoreLabel = 'Read article', publish
 
   return (
     <article
+      className="mp-card"
       style={{
         background: '#15171C',
         border: '1px solid rgba(199,158,107,0.1)',

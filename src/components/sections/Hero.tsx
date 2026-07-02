@@ -1,9 +1,24 @@
+'use client'
+
 import Image from 'next/image'
 import { useTranslations, useLocale } from 'next-intl'
+import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
+
+const EASE = [0.22, 1, 0.36, 1] as const
 
 export function Hero() {
   const t = useTranslations('hero')
   const locale = useLocale()
+  const reduce = useReducedMotion()
+  const { scrollY } = useScroll()
+  const logoY = useTransform(scrollY, [0, 700], [0, -70])
+  const contentY = useTransform(scrollY, [0, 700], [0, 40])
+
+  const entrance = (delay: number) => ({
+    initial: { opacity: 0, y: reduce ? 0 : 28 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 1, delay, ease: EASE },
+  })
 
   return (
     <section
@@ -24,13 +39,16 @@ export function Hero() {
       />
 
       {/* Gold glow ring — decorative */}
-      <div
+      <motion.div
         className="absolute pointer-events-none"
         aria-hidden
+        initial={{ opacity: 0, scale: 0.92 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2, delay: 0.6, ease: EASE }}
         style={{
           right: '-8vw',
           top: '50%',
-          transform: 'translateY(-50%)',
+          translateY: '-50%',
           width: '52vw',
           height: '52vw',
           maxWidth: 820,
@@ -40,13 +58,16 @@ export function Hero() {
           animation: 'mpGlow 6s ease-in-out infinite',
         }}
       />
-      <div
+      <motion.div
         className="absolute pointer-events-none"
         aria-hidden
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2, delay: 0.9, ease: EASE }}
         style={{
           right: '-5vw',
           top: '50%',
-          transform: 'translateY(-50%)',
+          translateY: '-50%',
           width: '38vw',
           height: '38vw',
           maxWidth: 600,
@@ -60,16 +81,17 @@ export function Hero() {
       <div className="relative z-10 max-w-[1280px] mx-auto px-8 md:px-14 w-full py-32">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Left column */}
-          <div>
+          <motion.div style={{ y: reduce ? 0 : contentY }}>
             {/* Tagline chip */}
-            <div className="mp-chip mb-10">
+            <motion.div className="mp-chip mb-10" {...entrance(0.15)}>
               <span className="mp-rule" />
               {t('tagline')}
-            </div>
+            </motion.div>
 
             {/* Headline */}
-            <h1
+            <motion.h1
               className="text-[2.4rem] md:text-[3.2rem] leading-[1.08] font-normal mb-8"
+              {...entrance(0.35)}
               style={{
                 fontFamily: 'var(--font-cormorant)',
                 color: '#F3EEE4',
@@ -77,11 +99,12 @@ export function Hero() {
               }}
             >
               {t('headline')}
-            </h1>
+            </motion.h1>
 
             {/* Subtitle */}
-            <p
+            <motion.p
               className="text-[15px] leading-relaxed mb-12 max-w-[440px]"
+              {...entrance(0.55)}
               style={{
                 fontFamily: 'var(--font-jost)',
                 fontWeight: 300,
@@ -89,13 +112,13 @@ export function Hero() {
               }}
             >
               {t('subtitle')}
-            </p>
+            </motion.p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <motion.div className="flex flex-col sm:flex-row gap-4" {...entrance(0.75)}>
               <a
                 href={`/${locale}/consultation`}
-                className="inline-flex items-center justify-center px-8 py-3.5 text-[11px] tracking-[0.18em] uppercase transition-all duration-300 hover:bg-mp-gold-hover"
+                className="mp-shimmer inline-flex items-center justify-center px-8 py-3.5 text-[11px] tracking-[0.18em] uppercase transition-all duration-300 hover:bg-mp-gold-hover"
                 style={{
                   fontFamily: 'var(--font-jost)',
                   fontWeight: 500,
@@ -117,15 +140,21 @@ export function Hero() {
               >
                 {t('cta_secondary')}
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right column — logo mark */}
-          <div className="hidden md:flex items-center justify-center relative">
+          <motion.div
+            className="hidden md:flex items-center justify-center relative"
+            style={{ y: reduce ? 0 : logoY }}
+          >
             {/* Gold glow blob */}
-            <div
+            <motion.div
               className="absolute pointer-events-none"
               aria-hidden
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2.4, delay: 1.1, ease: 'easeOut' }}
               style={{
                 width: 420,
                 height: 420,
@@ -135,20 +164,26 @@ export function Hero() {
                 animation: 'mpGlow 6s ease-in-out infinite',
               }}
             />
-            <Image
-              src="/images/logo-mark.png"
-              alt="Magnus & Potens monogram"
-              width={340}
-              height={420}
-              priority
-              style={{
-                position: 'relative',
-                height: 'clamp(260px, 46vh, 440px)',
-                width: 'auto',
-                filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
-              }}
-            />
-          </div>
+            <motion.div
+              initial={{ opacity: 0, scale: reduce ? 1 : 0.96, y: reduce ? 0 : 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1.4, delay: 0.9, ease: EASE }}
+              style={{ position: 'relative' }}
+            >
+              <Image
+                src="/images/logo-mark.png"
+                alt="Magnus & Potens monogram"
+                width={340}
+                height={420}
+                priority
+                style={{
+                  height: 'clamp(260px, 46vh, 440px)',
+                  width: 'auto',
+                  filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
+                }}
+              />
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 

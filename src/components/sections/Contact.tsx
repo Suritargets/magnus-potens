@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl'
 import { ContactForm } from './ContactForm'
+import { Reveal } from '@/components/motion/Reveal'
 
 export function Contact() {
   const t = useTranslations('contact')
@@ -12,15 +13,17 @@ export function Contact() {
     >
       <div className="max-w-[1280px] mx-auto px-8 md:px-14">
         {/* Chip */}
-        <div className="mp-chip mb-8">
-          <span className="mp-rule" />
-          {t('label')}
-        </div>
+        <Reveal>
+          <div className="mp-chip mb-8">
+            <span className="mp-rule" />
+            {t('label')}
+          </div>
+        </Reveal>
 
         {/* 2-col layout */}
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
           {/* Left — info */}
-          <div>
+          <Reveal delay={0.1}>
             <h2
               className="text-[2.2rem] md:text-[3rem] leading-[1.1] font-normal mb-7"
               style={{
@@ -90,18 +93,20 @@ export function Contact() {
                 </p>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Right — contact form card */}
-          <div
-            className="rounded-none p-8 md:p-10"
-            style={{
-              backgroundColor: '#15171C',
-              border: '1px solid rgba(199,158,107,0.14)',
-            }}
-          >
-            <ContactForm />
-          </div>
+          <Reveal delay={0.25}>
+            <div
+              className="rounded-none p-8 md:p-10"
+              style={{
+                backgroundColor: '#15171C',
+                border: '1px solid rgba(199,158,107,0.14)',
+              }}
+            >
+              <ContactForm />
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

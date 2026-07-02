@@ -1,6 +1,7 @@
 'use client'
 
 import { useActionState, useState, useCallback, useMemo } from 'react'
+import { motion } from 'motion/react'
 import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/style.css'
 import { bookAppointment } from '@/actions/appointment'
@@ -116,7 +117,7 @@ export function AppointmentBooker({ availabilityConfigs, t }: Props) {
           {t.form.success_message}
         </p>
         <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 13, color: '#8C877F', margin: 0 }}>
-          {dateStr} · {selectedTime}
+          {dateStr} &middot; {selectedTime}
         </p>
       </div>
     )
@@ -139,19 +140,20 @@ export function AppointmentBooker({ availabilityConfigs, t }: Props) {
         ))}
       </div>
 
-      {/* ── Step 1: Calendar ── */}
+      {/* Step 1: Calendar */}
       {step === 1 && (
-        <div>
+        <motion.div initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}>
           <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#C79E6B', margin: '0 0 8px' }}>
-            Step 1 — Select a date
+            Step 1 - Select a date
           </p>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <style>{`
-              .rdp { --rdp-accent-color: #C79E6B; --rdp-background-color: rgba(199,158,107,0.1); color: #E9E3D6; font-family: 'Jost', sans-serif; font-size: 13px; }
+              /* react-day-picker v10 class names */
+              .rdp-root { --rdp-accent-color: #C79E6B; --rdp-accent-background-color: rgba(199,158,107,0.1); color: #E9E3D6; font-family: 'Jost', sans-serif; font-size: 13px; }
               .rdp-day { border-radius: 1px !important; }
-              .rdp-nav_button, .rdp-caption_label { color: #E9E3D6 !important; }
-              .rdp-head_cell { color: #8C877F !important; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
-              .rdp-day_disabled { color: #3C3A36 !important; opacity: 1 !important; }
+              .rdp-button_previous, .rdp-button_next, .rdp-month_caption { color: #E9E3D6 !important; }
+              .rdp-weekday { color: #8C877F !important; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
+              .rdp-day[aria-disabled="true"] { color: #3C3A36 !important; opacity: 1 !important; }
             `}</style>
             <DayPicker
               mode="single"
@@ -163,24 +165,24 @@ export function AppointmentBooker({ availabilityConfigs, t }: Props) {
           </div>
           {loadingSlots && (
             <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 12, color: '#8C877F', textAlign: 'center', marginTop: 16 }}>
-              Loading availability…
+              Loading availability...
             </p>
           )}
-        </div>
+        </motion.div>
       )}
 
-      {/* ── Step 2: Time slots ── */}
+      {/* Step 2: Time slots */}
       {step === 2 && (
-        <div>
+        <motion.div initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
             <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#C79E6B', margin: 0 }}>
-              Step 2 — Select a time
+              Step 2 - Select a time
             </p>
             <button
               onClick={() => setStep(1)}
               style={{ fontFamily: "'Jost', sans-serif", fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8C877F', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
             >
-              ← Back
+              &larr; Back
             </button>
           </div>
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 20, color: '#E9E3D6', margin: '0 0 28px' }}>
@@ -222,21 +224,21 @@ export function AppointmentBooker({ availabilityConfigs, t }: Props) {
               ))}
             </div>
           )}
-        </div>
+        </motion.div>
       )}
 
-      {/* ── Step 3: Form ── */}
+      {/* Step 3: Form */}
       {step === 3 && (
-        <div>
+        <motion.div initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
             <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#C79E6B', margin: 0 }}>
-              Step 3 — Your details
+              Step 3 - Your details
             </p>
             <button
               onClick={() => setStep(2)}
               style={{ fontFamily: "'Jost', sans-serif", fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8C877F', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
             >
-              ← Back
+              &larr; Back
             </button>
           </div>
 
@@ -281,7 +283,7 @@ export function AppointmentBooker({ availabilityConfigs, t }: Props) {
               <div>
                 <label style={labelStyle}>{t.form.topic} *</label>
                 <select name="topic" required style={{ ...fieldStyle, appearance: 'none', cursor: 'pointer' }}>
-                  <option value="">— select —</option>
+                  <option value="">- select -</option>
                   {Object.entries(t.topics)
                     .filter(([key]) => key !== 'label')
                     .map(([key, label]) => (
@@ -317,10 +319,10 @@ export function AppointmentBooker({ availabilityConfigs, t }: Props) {
                 alignSelf: 'flex-start',
               }}
             >
-              {pending ? 'Sending…' : t.form.submit}
+              {pending ? 'Sending...' : t.form.submit}
             </button>
           </form>
-        </div>
+        </motion.div>
       )}
     </div>
   )
