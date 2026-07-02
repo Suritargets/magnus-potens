@@ -62,7 +62,7 @@ export default async function BlogPage() {
             }}
           >
             {posts.map((post) => (
-              <StaggerItem key={post.id}>
+              <StaggerItem key={post.id} style={{ height: '100%' }}>
                 <BlogCard
                   post={post}
                   locale={locale}

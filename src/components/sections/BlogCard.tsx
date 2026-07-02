@@ -24,6 +24,7 @@ export function BlogCard({ post, locale, readMoreLabel = 'Read article', publish
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
+        height: '100%',
       }}
     >
       {post.coverImage && (
