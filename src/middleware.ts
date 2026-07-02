@@ -20,9 +20,11 @@ const isProtectedRoute = createRouteMatcher([
 const devAdminPreview =
   process.env.NODE_ENV === 'development' && process.env.DEV_ADMIN_PREVIEW === 'true'
 
-export default clerkMiddleware(async (auth, req: NextRequest) => {
-  if (isProtectedRoute(req) && !devAdminPreview) await auth.protect()
+// clerkMiddleware() zelf crasht zonder publishableKey — pas activeren als de
+// keys echt gezet zijn. Zonder Clerk blijft de rest van de site gewoon werken.
+const hasClerkKey = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY?.startsWith('pk_')
 
+function rewriteLocalelessAppRoutes(req: NextRequest): NextResponse | null {
   // App-routes zonder taalprefix (bv. /admin/blog, /sign-in) intern
   // herschrijven naar de default locale, zodat interne links blijven werken.
   const { pathname } = req.nextUrl
@@ -31,9 +33,24 @@ export default clerkMiddleware(async (auth, req: NextRequest) => {
     url.pathname = `/${defaultLocale}${pathname}`
     return NextResponse.rewrite(url)
   }
+  return null
+}
 
-  return intlMiddleware(req)
-})
+export default hasClerkKey
+  ? clerkMiddleware(async (auth, req: NextRequest) => {
+      if (isProtectedRoute(req) && !devAdminPreview) await auth.protect()
+      return rewriteLocalelessAppRoutes(req) ?? intlMiddleware(req)
+    })
+  : function middleware(req: NextRequest) {
+      // Geen Clerk geconfigureerd: admin/dashboard blijven onbereikbaar
+      // (geen auth backend) — de rest van de site werkt gewoon door.
+      if (isProtectedRoute(req) && !devAdminPreview) {
+        const url = req.nextUrl.clone()
+        url.pathname = '/'
+        return NextResponse.redirect(url)
+      }
+      return rewriteLocalelessAppRoutes(req) ?? intlMiddleware(req)
+    }
 
 export const config = {
   matcher: [
