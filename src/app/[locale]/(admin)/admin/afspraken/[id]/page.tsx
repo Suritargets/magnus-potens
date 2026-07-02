@@ -4,6 +4,7 @@ import { eq } from 'drizzle-orm'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { AppointmentActions } from './AppointmentActions'
+import { CopySummary } from './CopySummary'
 
 interface Props {
   params: Promise<{ id: string }>
@@ -54,6 +55,8 @@ export default async function AfspraakDetailPage({ params }: Props) {
           ← Back
         </Link>
       </div>
+
+      <CopySummary appointment={appt} />
 
       <div style={{ background: '#15171C', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 2, overflow: 'hidden', marginBottom: 28 }}>
         {FIELDS(appt)
