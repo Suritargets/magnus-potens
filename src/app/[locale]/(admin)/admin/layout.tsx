@@ -17,13 +17,16 @@ const adminNav = [
 
 export default async function AdminLayout({
   children,
+  params,
 }: {
   children: React.ReactNode
+  params: Promise<{ locale: string }>
 }) {
+  const { locale } = await params
   const user = await getCurrentUser()
 
-  if (!user) redirect('/sign-in')
-  if (user.role !== 'admin' && user.role !== 'super_admin') redirect('/')
+  if (!user) redirect(`/${locale}/sign-in`)
+  if (user.role !== 'admin' && user.role !== 'super_admin') redirect(`/${locale}`)
 
   return (
     <div
@@ -69,7 +72,7 @@ export default async function AdminLayout({
           {adminNav.map((link) => (
             <Link
               key={link.href}
-              href={link.href}
+              href={`/${locale}${link.href}`}
               className="flex items-center gap-3 rounded px-3 py-2 text-sm transition-colors hover:bg-white/5"
               style={{
                 fontFamily: "'Jost', sans-serif",
@@ -88,7 +91,7 @@ export default async function AdminLayout({
         {/* Footer */}
         <div style={{ paddingTop: 16, borderTop: '1px solid rgba(199,158,107,0.1)' }}>
           <Link
-            href="/"
+            href={`/${locale}`}
             style={{
               fontFamily: "'Jost', sans-serif",
               fontSize: 11,

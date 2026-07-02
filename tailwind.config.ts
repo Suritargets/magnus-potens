@@ -15,7 +15,7 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // ─── Boilerplate shadcn tokens ───────────────────────────────
+        // --- Boilerplate shadcn tokens ---
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -45,7 +45,7 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-        // ─── Magnus & Potens design tokens ───────────────────────────
+        // --- Magnus & Potens design tokens ---
         'mp-dark': '#0F1014',
         'mp-dark-2': '#15171C',
         'mp-light': '#F2ECE0',
@@ -84,7 +84,7 @@ const config: Config = {
           from: { opacity: '0', transform: 'translateY(8px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
-        // ─── M&P animations ──────────────────────────────────────────
+        // --- M&P animations ---
         'mp-glow': {
           '0%, 100%': { opacity: '0.5' },
           '50%': { opacity: '0.85' },

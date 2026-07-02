@@ -35,6 +35,7 @@ async function DeleteButton({ id }: { id: string }) {
 
 export default async function MediaPage() {
   const assets = await db.select().from(mediaAssets).orderBy(desc(mediaAssets.createdAt))
+  const cloudinaryConfigured = !!process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
 
   return (
     <div>
@@ -47,7 +48,13 @@ export default async function MediaPage() {
             {assets.length} asset{assets.length !== 1 ? 's' : ''}
           </p>
         </div>
-        <MediaUploadButton />
+        {cloudinaryConfigured ? (
+          <MediaUploadButton />
+        ) : (
+          <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 12, color: '#C79E6B', margin: 0, maxWidth: 320, textAlign: 'right' }}>
+            Cloudinary is nog niet geconfigureerd — zet NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME (en API keys) in de environment om uploads te activeren.
+          </p>
+        )}
       </div>
 
       {assets.length === 0 ? (

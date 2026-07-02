@@ -7,6 +7,20 @@ import { eq } from 'drizzle-orm'
 import type { User } from '@/db/schema'
 
 export const getCurrentUser = cache(async (): Promise<User | null> => {
+  // Dev-only preview: bekijk de admin UI lokaal zonder Clerk.
+  // Werkt uitsluitend met NODE_ENV=development én DEV_ADMIN_PREVIEW=true in .env.local.
+  if (process.env.NODE_ENV === 'development' && process.env.DEV_ADMIN_PREVIEW === 'true') {
+    return {
+      id: 'dev-preview',
+      clerkId: 'dev-preview',
+      email: 'dev@localhost',
+      name: 'Dev Preview',
+      role: 'admin',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }
+  }
+
   const { userId } = await auth()
   if (!userId) return null
 

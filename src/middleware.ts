@@ -1,6 +1,6 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 import createIntlMiddleware from 'next-intl/middleware'
-import { NextRequest } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { locales, defaultLocale } from '@/lib/i18n'
 
 const intlMiddleware = createIntlMiddleware({
@@ -16,8 +16,22 @@ const isProtectedRoute = createRouteMatcher([
   '/admin(.*)',
 ])
 
+// Dev-only preview: admin UI lokaal bekijken zonder Clerk (zie src/lib/auth.ts)
+const devAdminPreview =
+  process.env.NODE_ENV === 'development' && process.env.DEV_ADMIN_PREVIEW === 'true'
+
 export default clerkMiddleware(async (auth, req: NextRequest) => {
-  if (isProtectedRoute(req)) await auth.protect()
+  if (isProtectedRoute(req) && !devAdminPreview) await auth.protect()
+
+  // App-routes zonder taalprefix (bv. /admin/blog, /sign-in) intern
+  // herschrijven naar de default locale, zodat interne links blijven werken.
+  const { pathname } = req.nextUrl
+  if (/^\/(admin|dashboard|sign-in|sign-up)(\/|$)/.test(pathname)) {
+    const url = req.nextUrl.clone()
+    url.pathname = `/${defaultLocale}${pathname}`
+    return NextResponse.rewrite(url)
+  }
+
   return intlMiddleware(req)
 })
 

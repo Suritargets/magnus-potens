@@ -8,8 +8,6 @@ import { revalidatePath } from 'next/cache'
 
 type SaveAvailabilityState = { success: boolean; error: string | null }
 
-const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-
 export async function saveAvailability(
   _prev: SaveAvailabilityState,
   formData: FormData
@@ -48,5 +46,3 @@ export async function saveAvailability(
     return { success: false, error: message }
   }
 }
-
-export { DAY_NAMES }

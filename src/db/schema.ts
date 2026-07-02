@@ -6,12 +6,13 @@ import {
   integer,
   pgEnum,
 } from 'drizzle-orm/pg-core'
+import { relations } from 'drizzle-orm'
 
-// ─── ENUMS ────────────────────────────────────────────────────────────────────
+// --- ENUMS ---
 export const userRoleEnum = pgEnum('user_role', ['user', 'admin', 'super_admin'])
 export const submissionStatusEnum = pgEnum('submission_status', ['new', 'read', 'replied', 'archived'])
 
-// ─── USERS ────────────────────────────────────────────────────────────────────
+// --- USERS ---
 export const users = pgTable('users', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   clerkId: text('clerk_id').notNull().unique(),
@@ -22,7 +23,7 @@ export const users = pgTable('users', {
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 })
 
-// ─── CONTACT SUBMISSIONS ──────────────────────────────────────────────────────
+// --- CONTACT SUBMISSIONS ---
 export const contactSubmissions = pgTable('contact_submissions', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   name: text('name').notNull(),
@@ -35,7 +36,7 @@ export const contactSubmissions = pgTable('contact_submissions', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 })
 
-// ─── AUDIT LOG ────────────────────────────────────────────────────────────────
+// --- AUDIT LOG ---
 export const auditLog = pgTable('audit_log', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   userId: text('user_id').references(() => users.id),
@@ -48,7 +49,7 @@ export const auditLog = pgTable('audit_log', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 })
 
-// ─── RATE LIMIT EVENTS ────────────────────────────────────────────────────────
+// --- RATE LIMIT EVENTS ---
 export const rateLimitEvents = pgTable('rate_limit_events', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   identifier: text('identifier').notNull(),
@@ -58,7 +59,7 @@ export const rateLimitEvents = pgTable('rate_limit_events', {
   blocked: boolean('blocked').default(false).notNull(),
 })
 
-// ─── ERROR LOGS ───────────────────────────────────────────────────────────────
+// --- ERROR LOGS ---
 export const errorLogs = pgTable('error_logs', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   message: text('message').notNull(),
@@ -71,7 +72,7 @@ export const errorLogs = pgTable('error_logs', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 })
 
-// ─── CMS PAGES ────────────────────────────────────────────────────────────────
+// --- CMS PAGES ---
 export const pages = pgTable('pages', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   slug: text('slug').unique().notNull(),
@@ -85,7 +86,7 @@ export const pages = pgTable('pages', {
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 })
 
-// ─── TYPES ────────────────────────────────────────────────────────────────────
+// --- TYPES ---
 export type User = typeof users.$inferSelect
 export type NewUser = typeof users.$inferInsert
 export type ContactSubmission = typeof contactSubmissions.$inferSelect
@@ -95,11 +96,11 @@ export type ErrorLog = typeof errorLogs.$inferSelect
 export type Page = typeof pages.$inferSelect
 export type NewPage = typeof pages.$inferInsert
 
-// ─── BLOG / APPOINTMENT ENUMS ─────────────────────────────────────────────────
+// --- BLOG / APPOINTMENT ENUMS ---
 export const postStatusEnum = pgEnum('post_status', ['draft', 'published', 'archived'])
 export const appointmentStatusEnum = pgEnum('appointment_status', ['pending', 'confirmed', 'cancelled'])
 
-// ─── BLOG POSTS ───────────────────────────────────────────────────────────────
+// --- BLOG POSTS ---
 export const blogPosts = pgTable('blog_posts', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   slug: text('slug').unique().notNull(),
@@ -116,7 +117,7 @@ export const blogPosts = pgTable('blog_posts', {
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 })
 
-// ─── APPOINTMENTS ─────────────────────────────────────────────────────────────
+// --- APPOINTMENTS ---
 export const appointments = pgTable('appointments', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   date: text('date').notNull(),
@@ -134,7 +135,7 @@ export const appointments = pgTable('appointments', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 })
 
-// ─── AVAILABILITY CONFIG ──────────────────────────────────────────────────────
+// --- AVAILABILITY CONFIG ---
 export const availabilityConfig = pgTable('availability_config', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   dayOfWeek: integer('day_of_week').notNull(),
@@ -144,7 +145,7 @@ export const availabilityConfig = pgTable('availability_config', {
   isActive: boolean('is_active').default(true).notNull(),
 })
 
-// ─── MEDIA ASSETS ─────────────────────────────────────────────────────────────
+// --- MEDIA ASSETS ---
 export const mediaAssets = pgTable('media_assets', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   publicId: text('public_id').notNull(),
@@ -160,7 +161,7 @@ export const mediaAssets = pgTable('media_assets', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 })
 
-// ─── NEW TYPES ────────────────────────────────────────────────────────────────
+// --- NEW TYPES ---
 export type BlogPost = typeof blogPosts.$inferSelect
 export type NewBlogPost = typeof blogPosts.$inferInsert
 export type Appointment = typeof appointments.$inferSelect
@@ -169,3 +170,41 @@ export type AvailabilityConfig = typeof availabilityConfig.$inferSelect
 export type NewAvailabilityConfig = typeof availabilityConfig.$inferInsert
 export type MediaAsset = typeof mediaAssets.$inferSelect
 export type NewMediaAsset = typeof mediaAssets.$inferInsert
+
+// --- RELATIONS (Drizzle Relations v2) ---
+// Enables: db.query.users.findMany({ with: { blogPosts: true } })
+
+export const usersRelations = relations(users, ({ many }) => ({
+  blogPosts: many(blogPosts),
+  mediaAssets: many(mediaAssets),
+  auditLogs: many(auditLog),
+  pages: many(pages),
+}))
+
+export const blogPostsRelations = relations(blogPosts, ({ one }) => ({
+  author: one(users, {
+    fields: [blogPosts.authorId],
+    references: [users.id],
+  }),
+}))
+
+export const mediaAssetsRelations = relations(mediaAssets, ({ one }) => ({
+  uploader: one(users, {
+    fields: [mediaAssets.uploadedBy],
+    references: [users.id],
+  }),
+}))
+
+export const auditLogRelations = relations(auditLog, ({ one }) => ({
+  user: one(users, {
+    fields: [auditLog.userId],
+    references: [users.id],
+  }),
+}))
+
+export const pagesRelations = relations(pages, ({ one }) => ({
+  creator: one(users, {
+    fields: [pages.createdBy],
+    references: [users.id],
+  }),
+}))
