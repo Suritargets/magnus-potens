@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { Stagger, StaggerItem } from '@/components/motion/Stagger'
 
 const firmLinks = [
@@ -11,12 +11,13 @@ const firmLinks = [
 ]
 
 const legalLinks = [
-  { label: 'Privacy Policy', href: '/privacy' },
-  { label: 'Terms of Service', href: '/terms' },
+  { label: 'Privacy Policy', slug: 'privacy' },
+  { label: 'Terms of Service', slug: 'terms' },
 ]
 
 export function Footer() {
   const t = useTranslations('footer')
+  const locale = useLocale()
 
   return (
     <footer
@@ -123,9 +124,9 @@ export function Footer() {
                 </a>
               </li>
               {legalLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.slug}>
                   <a
-                    href={link.href}
+                    href={`/${locale}/${link.slug}`}
                     className="text-[13px] transition-colors duration-200"
                     style={{
                       fontFamily: 'var(--font-jost)',
