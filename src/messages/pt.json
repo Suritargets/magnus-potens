@@ -54,6 +54,8 @@
     "email": "info@magnus-potens.com",
     "appointment_label": "Mediante marcação",
     "website": "magnus-potens.com",
+    "address_label": "Morada",
+    "address": "Ming Doelmanstraat # 15, Paramaribo, Suriname",
     "form": {
       "name": "Nome completo",
       "email": "E-mail",

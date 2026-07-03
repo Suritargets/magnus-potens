@@ -27,6 +27,7 @@ The site is available in English, Dutch, Spanish, French, Portuguese, and Simpli
 
 - Email: info@magnus-potens.com
 - Website: ${BASE_URL}
+- Address: Ming Doelmanstraat # 15, Paramaribo, Suriname
 
 ## Notes
 

@@ -138,6 +138,8 @@ function LocaleForm({ locale, data }: { locale: string; data: Required<HomepageO
           <Field label="Email" name="contact_email" defaultValue={data.contact.email ?? ''} />
           <Field label="Appointment label" name="contact_appointment_label" defaultValue={data.contact.appointment_label ?? ''} />
           <Field label="Website" name="contact_website" defaultValue={data.contact.website ?? ''} />
+          <Field label="Address label" name="contact_address_label" defaultValue={data.contact.address_label ?? ''} />
+          <Field label="Address" name="contact_address" defaultValue={data.contact.address ?? ''} />
         </div>
       </SectionCard>
 

@@ -66,6 +66,12 @@ export default async function LocaleLayout({
     image: `${BASE_URL}/images/logo-mark.png`,
     email: 'info@magnus-potens.com',
     knowsLanguage: locales,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Ming Doelmanstraat # 15',
+      addressLocality: 'Paramaribo',
+      addressCountry: 'SR',
+    },
   }
 
   return (

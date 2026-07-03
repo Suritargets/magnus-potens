@@ -92,6 +92,29 @@ export function Contact() {
                   {t('website')}
                 </p>
               </div>
+
+              <div>
+                <p
+                  className="text-[9px] tracking-[0.25em] uppercase mb-2"
+                  style={{
+                    fontFamily: 'var(--font-jost)',
+                    fontWeight: 500,
+                    color: 'rgba(199,158,107,0.6)',
+                  }}
+                >
+                  {t('address_label')}
+                </p>
+                <p
+                  className="text-[14px]"
+                  style={{
+                    fontFamily: 'var(--font-jost)',
+                    fontWeight: 300,
+                    color: '#8C877F',
+                  }}
+                >
+                  {t('address')}
+                </p>
+              </div>
             </div>
           </Reveal>
 

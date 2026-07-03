@@ -54,6 +54,8 @@
     "email": "info@magnus-potens.com",
     "appointment_label": "Op afspraak",
     "website": "magnus-potens.com",
+    "address_label": "Adres",
+    "address": "Ming Doelmanstraat # 15, Paramaribo, Suriname",
     "form": {
       "name": "Volledige naam",
       "email": "E-mail",

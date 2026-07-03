@@ -54,6 +54,8 @@
     "email": "info@magnus-potens.com",
     "appointment_label": "预约制",
     "website": "magnus-potens.com",
+    "address_label": "地址",
+    "address": "苏里南,帕拉马里博,Ming Doelmanstraat # 15",
     "form": {
       "name": "姓名",
       "email": "电子邮箱",

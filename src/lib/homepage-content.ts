@@ -30,6 +30,8 @@ export interface HomepageOverride {
     email: string
     appointment_label: string
     website: string
+    address_label: string
+    address: string
   }>
 }
 

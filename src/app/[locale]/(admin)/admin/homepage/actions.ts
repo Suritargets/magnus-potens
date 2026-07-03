@@ -67,6 +67,8 @@ export async function saveHomepageContent(
         email: get('contact_email'),
         appointment_label: get('contact_appointment_label'),
         website: get('contact_website'),
+        address_label: get('contact_address_label'),
+        address: get('contact_address'),
       },
     }
 
