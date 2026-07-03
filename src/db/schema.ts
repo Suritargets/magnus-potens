@@ -112,6 +112,9 @@ export const blogPosts = pgTable('blog_posts', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   slug: text('slug').unique().notNull(),
   locale: text('locale').default('en').notNull(),
+  // Groepeert taalvarianten van hetzelfde artikel (voor de tab-editor in
+  // admin/blog); null = losstaand artikel zonder vertalingen.
+  translationGroupId: text('translation_group_id'),
   title: text('title').notNull(),
   excerpt: text('excerpt'),
   content: text('content').notNull(),

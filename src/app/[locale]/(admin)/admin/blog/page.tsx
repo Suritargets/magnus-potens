@@ -1,5 +1,5 @@
 import { db } from '@/db'
-import { blogPosts } from '@/db/schema'
+import { blogPosts, type BlogPost } from '@/db/schema'
 import { desc } from 'drizzle-orm'
 import Link from 'next/link'
 import { CATEGORY_LABELS, CATEGORY_COLORS } from '@/lib/blog-categories'
@@ -11,11 +11,52 @@ const STATUS_STYLES: Record<string, { bg: string; color: string }> = {
   archived:  { bg: 'rgba(199,158,107,0.1)', color: '#C79E6B' },
 }
 
+interface ArticleGroup {
+  groupId: string
+  title: string
+  category: string
+  locales: string[]
+  status: string
+  isScheduled: boolean
+  dateLabel: string | null
+  updatedAt: Date
+}
+
+function groupByArticle(rows: BlogPost[]): ArticleGroup[] {
+  const byGroup = new Map<string, BlogPost[]>()
+  for (const row of rows) {
+    const key = row.translationGroupId ?? row.id
+    byGroup.set(key, [...(byGroup.get(key) ?? []), row])
+  }
+
+  return Array.from(byGroup.entries())
+    .map(([groupId, variants]) => {
+      const primary = variants.find((v) => v.locale === 'en') ?? variants[0]
+      const isScheduled = primary.status === 'published' && !!primary.publishedAt && new Date(primary.publishedAt) > new Date()
+      const dateLabel = primary.publishedAt
+        ? new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(primary.publishedAt))
+        : null
+      return {
+        groupId,
+        title: primary.title,
+        category: primary.category,
+        locales: variants.map((v) => v.locale),
+        status: primary.status,
+        isScheduled,
+        dateLabel,
+        updatedAt: variants.reduce((latest, v) => (v.updatedAt > latest ? v.updatedAt : latest), variants[0].updatedAt),
+      }
+    })
+    .sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime())
+}
+
 export default async function BlogAdminPage() {
   const posts = await db
     .select()
     .from(blogPosts)
     .orderBy(desc(blogPosts.updatedAt))
+
+  const groups = groupByArticle(posts)
 
   return (
     <div>
@@ -25,7 +66,7 @@ export default async function BlogAdminPage() {
             Blog
           </h1>
           <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 12, color: '#6E6A63', margin: 0 }}>
-            {posts.length} post{posts.length !== 1 ? 's' : ''}
+            {groups.length} article{groups.length !== 1 ? 's' : ''} · {posts.length} translation{posts.length !== 1 ? 's' : ''}
           </p>
         </div>
         <Link
@@ -36,7 +77,7 @@ export default async function BlogAdminPage() {
         </Link>
       </div>
 
-      {posts.length === 0 ? (
+      {groups.length === 0 ? (
         <div style={{ background: '#15171C', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 2, padding: '48px 24px', textAlign: 'center' }}>
           <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 22, color: '#E9E3D6', margin: '0 0 8px' }}>
             No posts yet.
@@ -47,40 +88,37 @@ export default async function BlogAdminPage() {
         </div>
       ) : (
         <div style={{ background: '#15171C', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 2, overflow: 'hidden' }}>
-          {posts.map((post, i) => {
-            const isScheduled = post.status === 'published' && !!post.publishedAt && new Date(post.publishedAt) > new Date()
-            const s = STATUS_STYLES[isScheduled ? 'scheduled' : post.status] ?? STATUS_STYLES.draft
-            const dateLabel = post.publishedAt
-              ? new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(post.publishedAt))
-              : null
+          {groups.map((group, i) => {
+            const s = STATUS_STYLES[group.isScheduled ? 'scheduled' : group.status] ?? STATUS_STYLES.draft
             return (
               <div
-                key={post.id}
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 18px', borderBottom: i < posts.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none', gap: 12 }}
+                key={group.groupId}
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 18px', borderBottom: i < groups.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none', gap: 12 }}
               >
                 <div style={{ minWidth: 0, flex: 1 }}>
                   <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 14, color: '#E9E3D6', margin: '0 0 2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    {post.title}
+                    {group.title}
                   </p>
                   <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 12, color: '#6E6A63', margin: 0, display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                    <span>/{post.slug}</span>
-                    <span style={{ textTransform: 'uppercase', fontSize: 9, letterSpacing: '0.1em', color: '#4E4B46' }}>{post.locale}</span>
-                    <span style={{ color: CATEGORY_COLORS[post.category] ?? '#4E4B46', fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                      {CATEGORY_LABELS[post.category] ?? post.category}
+                    <span style={{ textTransform: 'uppercase', fontSize: 9, letterSpacing: '0.1em', color: '#4E4B46' }}>
+                      {group.locales.join(', ')}
                     </span>
-                    {dateLabel && (
+                    <span style={{ color: CATEGORY_COLORS[group.category] ?? '#4E4B46', fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                      {CATEGORY_LABELS[group.category] ?? group.category}
+                    </span>
+                    {group.dateLabel && (
                       <span style={{ fontSize: 11, color: '#5E5A53' }}>
-                        {isScheduled ? 'Scheduled for' : 'Published'} {dateLabel}
+                        {group.isScheduled ? 'Scheduled for' : 'Published'} {group.dateLabel}
                       </span>
                     )}
                   </p>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexShrink: 0 }}>
                   <span style={{ background: s.bg, color: s.color, fontFamily: "'Jost', sans-serif", fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', padding: '3px 8px', borderRadius: 1 }}>
-                    {isScheduled ? 'scheduled' : post.status}
+                    {group.isScheduled ? 'scheduled' : group.status}
                   </span>
                   <Link
-                    href={`/admin/blog/${post.id}`}
+                    href={`/admin/blog/${group.groupId}`}
                     style={{ fontFamily: "'Jost', sans-serif", fontSize: 11, letterSpacing: '0.1em', color: '#C79E6B', textDecoration: 'none' }}
                   >
                     Edit →

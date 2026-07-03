@@ -1,14 +1,44 @@
 import { db } from '@/db'
-import { pages } from '@/db/schema'
+import { pages, type Page } from '@/db/schema'
 import { desc } from 'drizzle-orm'
 import { formatDate } from '@/lib/utils'
 import Link from 'next/link'
+
+interface PageGroup {
+  slug: string
+  title: string
+  locales: string[]
+  anyPublished: boolean
+  updatedAt: Date
+}
+
+function groupBySlug(rows: Page[]): PageGroup[] {
+  const bySlug = new Map<string, Page[]>()
+  for (const row of rows) {
+    bySlug.set(row.slug, [...(bySlug.get(row.slug) ?? []), row])
+  }
+
+  return Array.from(bySlug.entries())
+    .map(([slug, variants]) => {
+      const fallback = variants.find((v) => v.locale === null)
+      return {
+        slug,
+        title: (fallback ?? variants[0]).title,
+        locales: variants.map((v) => v.locale ?? 'ALL'),
+        anyPublished: variants.some((v) => v.published),
+        updatedAt: variants.reduce((latest, v) => (v.updatedAt > latest ? v.updatedAt : latest), variants[0].updatedAt),
+      }
+    })
+    .sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime())
+}
 
 export default async function CmsPage() {
   const allPages = await db
     .select()
     .from(pages)
     .orderBy(desc(pages.updatedAt))
+
+  const groups = groupBySlug(allPages)
 
   return (
     <div>
@@ -27,7 +57,7 @@ export default async function CmsPage() {
             CMS Pages
           </h1>
           <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 12, color: '#6E6A63', margin: 0 }}>
-            {allPages.length} page{allPages.length !== 1 ? 's' : ''}
+            {groups.length} page{groups.length !== 1 ? 's' : ''}
           </p>
         </div>
         <Link
@@ -49,7 +79,7 @@ export default async function CmsPage() {
         </Link>
       </div>
 
-      {allPages.length === 0 ? (
+      {groups.length === 0 ? (
         <div
           style={{
             background: '#15171C',
@@ -75,34 +105,34 @@ export default async function CmsPage() {
             overflow: 'hidden',
           }}
         >
-          {allPages.map((page, i) => (
+          {groups.map((group, i) => (
             <div
-              key={page.id}
+              key={group.slug}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 padding: '14px 18px',
-                borderBottom: i < allPages.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
+                borderBottom: i < groups.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
                 gap: 12,
               }}
             >
               <div>
                 <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 14, color: '#E9E3D6', margin: '0 0 2px' }}>
-                  {page.title}
+                  {group.title}
                 </p>
                 <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 12, color: '#6E6A63', margin: 0 }}>
-                  /{page.slug}
+                  /{group.slug}
                 </p>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexShrink: 0 }}>
                 <span style={{ fontFamily: "'Jost', sans-serif", fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#4E4B46' }}>
-                  {page.locale ?? 'ALL'}
+                  {group.locales.join(', ')}
                 </span>
                 <span
                   style={{
-                    background: page.published ? 'rgba(80,160,80,0.12)' : 'rgba(255,255,255,0.06)',
-                    color: page.published ? '#7FC97F' : '#6E6A63',
+                    background: group.anyPublished ? 'rgba(80,160,80,0.12)' : 'rgba(255,255,255,0.06)',
+                    color: group.anyPublished ? '#7FC97F' : '#6E6A63',
                     fontFamily: "'Jost', sans-serif",
                     fontSize: 9,
                     letterSpacing: '0.16em',
@@ -111,13 +141,13 @@ export default async function CmsPage() {
                     borderRadius: 1,
                   }}
                 >
-                  {page.published ? 'Published' : 'Draft'}
+                  {group.anyPublished ? 'Published' : 'Draft'}
                 </span>
                 <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 11, color: '#4E4B46', margin: 0 }}>
-                  {formatDate(page.updatedAt)}
+                  {formatDate(group.updatedAt)}
                 </p>
                 <Link
-                  href={`/admin/cms/${page.id}`}
+                  href={`/admin/cms/${group.slug}`}
                   style={{
                     fontFamily: "'Jost', sans-serif",
                     fontSize: 11,
