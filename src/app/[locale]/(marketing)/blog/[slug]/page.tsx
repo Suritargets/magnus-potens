@@ -2,13 +2,14 @@ export const dynamic = 'force-dynamic'
 
 import { db } from '@/db'
 import { blogPosts } from '@/db/schema'
-import { eq, and } from 'drizzle-orm'
+import { eq, and, lte } from 'drizzle-orm'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { CATEGORY_LABELS, CATEGORY_COLORS } from '@/lib/blog-categories'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -22,7 +23,11 @@ export default async function BlogPostPage({ params }: Props) {
   const [post] = await db
     .select()
     .from(blogPosts)
-    .where(and(eq(blogPosts.slug, slug), eq(blogPosts.status, 'published')))
+    .where(and(
+      eq(blogPosts.slug, slug),
+      eq(blogPosts.status, 'published'),
+      lte(blogPosts.publishedAt, new Date()),
+    ))
     .limit(1)
 
   if (!post) notFound()
@@ -45,11 +50,23 @@ export default async function BlogPostPage({ params }: Props) {
 
       {/* Article header */}
       <article style={{ maxWidth: 820, margin: '0 auto', padding: '0 32px 96px' }}>
-        {date && (
-          <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 10, letterSpacing: '0.26em', textTransform: 'uppercase', color: '#C79E6B', margin: '0 0 16px' }}>
-            {t('published')} {date}
-          </p>
-        )}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16, flexWrap: 'wrap' }}>
+          <span
+            style={{
+              fontFamily: "'Jost', sans-serif", fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase',
+              color: CATEGORY_COLORS[post.category] ?? '#C79E6B',
+              border: `1px solid ${CATEGORY_COLORS[post.category] ?? '#C79E6B'}`,
+              padding: '3px 9px', borderRadius: 1,
+            }}
+          >
+            {CATEGORY_LABELS[post.category] ?? post.category}
+          </span>
+          {date && (
+            <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 10, letterSpacing: '0.26em', textTransform: 'uppercase', color: '#C79E6B', margin: 0 }}>
+              {t('published')} {date}
+            </p>
+          )}
+        </div>
         <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 400, color: '#E9E3D6', margin: '0 0 24px', lineHeight: 1.1 }}>
           {post.title}
         </h1>

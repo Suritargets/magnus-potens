@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { BlogPost } from '@/db/schema'
+import { CATEGORY_LABELS, CATEGORY_COLORS } from '@/lib/blog-categories'
 
 interface Props {
   post: BlogPost
@@ -39,11 +40,23 @@ export function BlogCard({ post, locale, readMoreLabel = 'Read article', publish
         </Link>
       )}
       <div style={{ padding: '28px 28px 32px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-        {date && (
-          <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#C79E6B', margin: '0 0 12px' }}>
-            {publishedLabel} {date}
-          </p>
-        )}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12, flexWrap: 'wrap' }}>
+          <span
+            style={{
+              fontFamily: "'Jost', sans-serif", fontSize: 8.5, letterSpacing: '0.14em', textTransform: 'uppercase',
+              color: CATEGORY_COLORS[post.category] ?? '#C79E6B',
+              border: `1px solid ${CATEGORY_COLORS[post.category] ?? '#C79E6B'}`,
+              padding: '2px 7px', borderRadius: 1,
+            }}
+          >
+            {CATEGORY_LABELS[post.category] ?? post.category}
+          </span>
+          {date && (
+            <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#C79E6B', margin: 0 }}>
+              {publishedLabel} {date}
+            </p>
+          )}
+        </div>
         <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 22, fontWeight: 400, color: '#E9E3D6', margin: '0 0 12px', lineHeight: 1.25 }}>
           <Link href={href} style={{ color: 'inherit', textDecoration: 'none' }}>
             {post.title}

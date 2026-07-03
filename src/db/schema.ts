@@ -98,6 +98,7 @@ export type NewPage = typeof pages.$inferInsert
 
 // --- BLOG / APPOINTMENT ENUMS ---
 export const postStatusEnum = pgEnum('post_status', ['draft', 'published', 'archived'])
+export const postCategoryEnum = pgEnum('post_category', ['news', 'event', 'use_case'])
 export const appointmentStatusEnum = pgEnum('appointment_status', ['pending', 'confirmed', 'cancelled'])
 
 // --- BLOG POSTS ---
@@ -110,6 +111,7 @@ export const blogPosts = pgTable('blog_posts', {
   content: text('content').notNull(),
   coverImage: text('cover_image'),
   tags: text('tags'),
+  category: postCategoryEnum('category').default('news').notNull(),
   status: postStatusEnum('status').default('draft').notNull(),
   publishedAt: timestamp('published_at'),
   authorId: text('author_id').references(() => users.id),

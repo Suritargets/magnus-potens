@@ -2,7 +2,7 @@ export const dynamic = 'force-dynamic'
 
 import { db } from '@/db'
 import { blogPosts } from '@/db/schema'
-import { eq, and, desc } from 'drizzle-orm'
+import { eq, and, desc, lte } from 'drizzle-orm'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { BlogCard } from '@/components/sections/BlogCard'
 import { Reveal } from '@/components/motion/Reveal'
@@ -17,7 +17,11 @@ export default async function BlogPage() {
     posts = await db
       .select()
       .from(blogPosts)
-      .where(and(eq(blogPosts.status, 'published'), eq(blogPosts.locale, locale)))
+      .where(and(
+        eq(blogPosts.status, 'published'),
+        eq(blogPosts.locale, locale),
+        lte(blogPosts.publishedAt, new Date()),
+      ))
       .orderBy(desc(blogPosts.publishedAt))
   } catch {
     // DB not configured yet — show empty state

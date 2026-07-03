@@ -42,11 +42,20 @@ const selectStyle: React.CSSProperties = {
   cursor: 'pointer',
 }
 
+// datetime-local verwacht 'YYYY-MM-DDTHH:mm' in de lokale tijdzone van de browser
+function toDatetimeLocal(date: Date | string | null | undefined): string {
+  if (!date) return ''
+  const d = new Date(date)
+  const pad = (n: number) => String(n).padStart(2, '0')
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`
+}
+
 export function BlogEditor({ post }: Props) {
   const [state, action, pending] = useActionState(saveBlogPost, initialState)
   const [tab, setTab] = useState<'write' | 'preview'>('write')
   const [content, setContent] = useState(post?.content ?? '')
   const [deleting, setDeleting] = useState(false)
+  const isScheduled = !!post?.publishedAt && new Date(post.publishedAt) > new Date()
 
   async function handleDelete() {
     if (!post?.id) return
@@ -105,8 +114,8 @@ export function BlogEditor({ post }: Props) {
           <input name="title" type="text" required defaultValue={post?.title ?? ''} style={inputStyle} />
         </div>
 
-        {/* Slug + Locale row */}
-        <div style={{ display: 'grid', gap: 16, gridTemplateColumns: '2fr 1fr' }}>
+        {/* Slug + Locale + Category row */}
+        <div style={{ display: 'grid', gap: 16, gridTemplateColumns: '2fr 1fr 1fr' }}>
           <div>
             <label style={labelStyle}>Slug *</label>
             <input name="slug" type="text" required defaultValue={post?.slug ?? ''} style={inputStyle} placeholder="my-article-slug" />
@@ -118,6 +127,14 @@ export function BlogEditor({ post }: Props) {
               <option value="nl">NL — Nederlands</option>
               <option value="es">ES — Español</option>
               <option value="fr">FR — Français</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="category" style={labelStyle}>Category</label>
+            <select id="category" name="category" defaultValue={post?.category ?? 'news'} style={selectStyle}>
+              <option value="news">News</option>
+              <option value="event">Event</option>
+              <option value="use_case">Use Case</option>
             </select>
           </div>
         </div>
@@ -193,6 +210,28 @@ export function BlogEditor({ post }: Props) {
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
               </div>
             </>
+          )}
+        </div>
+
+        {/* Publish date/time — scheduling */}
+        <div>
+          <label htmlFor="publishedAt" style={labelStyle}>
+            Publish date &amp; time{' '}
+            <span style={{ color: '#5E5A53', textTransform: 'none', letterSpacing: 0 }}>
+              (leave empty to use now; set a future date to schedule)
+            </span>
+          </label>
+          <input
+            id="publishedAt"
+            name="publishedAt"
+            type="datetime-local"
+            defaultValue={toDatetimeLocal(post?.publishedAt)}
+            style={{ ...inputStyle, colorScheme: 'dark', maxWidth: 280 }}
+          />
+          {isScheduled && (
+            <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 11, color: '#C79E6B', margin: '6px 0 0' }}>
+              Scheduled — this post will only appear publicly once this date/time has passed.
+            </p>
           )}
         </div>
 

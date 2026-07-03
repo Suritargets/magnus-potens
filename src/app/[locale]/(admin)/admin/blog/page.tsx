@@ -2,9 +2,11 @@ import { db } from '@/db'
 import { blogPosts } from '@/db/schema'
 import { desc } from 'drizzle-orm'
 import Link from 'next/link'
+import { CATEGORY_LABELS, CATEGORY_COLORS } from '@/lib/blog-categories'
 
 const STATUS_STYLES: Record<string, { bg: string; color: string }> = {
   published: { bg: 'rgba(80,160,80,0.12)', color: '#7FC97F' },
+  scheduled: { bg: 'rgba(199,158,107,0.14)', color: '#C79E6B' },
   draft:     { bg: 'rgba(255,255,255,0.06)', color: '#6E6A63' },
   archived:  { bg: 'rgba(199,158,107,0.1)', color: '#C79E6B' },
 }
@@ -46,7 +48,11 @@ export default async function BlogAdminPage() {
       ) : (
         <div style={{ background: '#15171C', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 2, overflow: 'hidden' }}>
           {posts.map((post, i) => {
-            const s = STATUS_STYLES[post.status] ?? STATUS_STYLES.draft
+            const isScheduled = post.status === 'published' && !!post.publishedAt && new Date(post.publishedAt) > new Date()
+            const s = STATUS_STYLES[isScheduled ? 'scheduled' : post.status] ?? STATUS_STYLES.draft
+            const dateLabel = post.publishedAt
+              ? new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(post.publishedAt))
+              : null
             return (
               <div
                 key={post.id}
@@ -56,13 +62,22 @@ export default async function BlogAdminPage() {
                   <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 14, color: '#E9E3D6', margin: '0 0 2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {post.title}
                   </p>
-                  <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 12, color: '#6E6A63', margin: 0 }}>
-                    /{post.slug} <span style={{ marginLeft: 8, textTransform: 'uppercase', fontSize: 9, letterSpacing: '0.1em', color: '#4E4B46' }}>{post.locale}</span>
+                  <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 12, color: '#6E6A63', margin: 0, display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                    <span>/{post.slug}</span>
+                    <span style={{ textTransform: 'uppercase', fontSize: 9, letterSpacing: '0.1em', color: '#4E4B46' }}>{post.locale}</span>
+                    <span style={{ color: CATEGORY_COLORS[post.category] ?? '#4E4B46', fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                      {CATEGORY_LABELS[post.category] ?? post.category}
+                    </span>
+                    {dateLabel && (
+                      <span style={{ fontSize: 11, color: '#5E5A53' }}>
+                        {isScheduled ? 'Scheduled for' : 'Published'} {dateLabel}
+                      </span>
+                    )}
                   </p>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexShrink: 0 }}>
                   <span style={{ background: s.bg, color: s.color, fontFamily: "'Jost', sans-serif", fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', padding: '3px 8px', borderRadius: 1 }}>
-                    {post.status}
+                    {isScheduled ? 'scheduled' : post.status}
                   </span>
                   <Link
                     href={`/admin/blog/${post.id}`}
