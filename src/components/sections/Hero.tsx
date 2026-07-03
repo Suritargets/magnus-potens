@@ -170,18 +170,39 @@ export function Hero() {
               transition={{ duration: 1.4, delay: 0.9, ease: EASE }}
               style={{ position: 'relative' }}
             >
-              <Image
-                src="/images/logo-mark.png"
-                alt="Magnus & Potens monogram"
-                width={340}
-                height={420}
-                priority
+              {/* Pulserende gloed op de contouren van het logo zelf (drop-shadow
+                  volgt de alpha-vorm van de PNG, i.t.t. een box-shadow) */}
+              <motion.div
+                animate={
+                  reduce
+                    ? undefined
+                    : {
+                        filter: [
+                          'drop-shadow(0 0 6px rgba(199,158,107,0.3)) drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
+                          'drop-shadow(0 0 24px rgba(221,187,133,0.7)) drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
+                          'drop-shadow(0 0 6px rgba(199,158,107,0.3)) drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
+                        ],
+                      }
+                }
+                transition={{ duration: 4.5, delay: 2.3, repeat: Infinity, ease: 'easeInOut' }}
                 style={{
-                  height: 'clamp(260px, 46vh, 440px)',
-                  width: 'auto',
-                  filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
+                  filter: reduce
+                    ? 'drop-shadow(0 0 14px rgba(199,158,107,0.45)) drop-shadow(0 30px 60px rgba(0,0,0,0.6))'
+                    : undefined,
                 }}
-              />
+              >
+                <Image
+                  src="/images/logo-mark.png"
+                  alt="Magnus & Potens monogram"
+                  width={340}
+                  height={420}
+                  priority
+                  style={{
+                    height: 'clamp(260px, 46vh, 440px)',
+                    width: 'auto',
+                  }}
+                />
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
