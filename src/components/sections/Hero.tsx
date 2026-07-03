@@ -26,6 +26,16 @@ export function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ backgroundColor: '#0F1014' }}
     >
+      {/* Subtle vertical rule pattern — from the original design reference */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden
+        style={{
+          opacity: 0.06,
+          backgroundImage: 'repeating-linear-gradient(90deg, #C79E6B 0 1px, transparent 1px 120px)',
+        }}
+      />
+
       {/* Background texture / subtle grain overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -214,6 +224,51 @@ export function Hero() {
         style={{ background: 'linear-gradient(to bottom, transparent, #0F1014)' }}
         aria-hidden
       />
+
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute z-10"
+        style={{
+          bottom: 34,
+          left: '50%',
+          translateX: '-50%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 10,
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.6, ease: EASE }}
+      >
+        <span
+          style={{
+            fontFamily: 'var(--font-jost)',
+            fontSize: 10,
+            letterSpacing: '0.3em',
+            color: '#6E6A63',
+            textTransform: 'uppercase',
+          }}
+        >
+          {t('scroll')}
+        </span>
+        <div style={{ position: 'relative', width: 1, height: 42, overflow: 'hidden' }}>
+          <div
+            className="absolute inset-0"
+            aria-hidden
+            style={{ background: 'linear-gradient(#C79E6B, transparent)' }}
+          />
+          {!reduce && (
+            <motion.div
+              className="absolute left-0 w-full"
+              aria-hidden
+              style={{ height: 16, background: 'linear-gradient(#F3D9A8, transparent)' }}
+              animate={{ top: ['-38%', '100%'] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+            />
+          )}
+        </div>
+      </motion.div>
     </section>
   )
 }
