@@ -15,6 +15,7 @@ const pageSchema = z.object({
     .min(1, 'Slug is required')
     .max(100)
     .regex(/^[a-z0-9-]+$/, 'Only lowercase letters, numbers and hyphens'),
+  locale: z.enum(['en', 'nl', 'es', 'fr', 'pt', 'zh']).optional().or(z.literal('')),
   content: z.string().optional(),
   metaTitle: z.string().max(70).optional(),
   metaDescription: z.string().max(160).optional(),
@@ -34,6 +35,7 @@ export async function savePage(
       id: (formData.get('id') as string | undefined) || undefined,
       title: formData.get('title') as string,
       slug: formData.get('slug') as string,
+      locale: (formData.get('locale') as string) || undefined,
       content: formData.get('content') as string,
       metaTitle: formData.get('metaTitle') as string,
       metaDescription: formData.get('metaDescription') as string,
@@ -46,16 +48,19 @@ export async function savePage(
       return { success: false, error: firstError.message }
     }
 
-    const { id, ...data } = parsed.data
+    const { id, locale, ...data } = parsed.data
+    // Lege string ("Alle talen") betekent: geen taal-specifieke variant.
+    const localeValue = locale || null
 
     if (id) {
       await db
         .update(pages)
-        .set({ ...data, updatedAt: new Date() })
+        .set({ ...data, locale: localeValue, updatedAt: new Date() })
         .where(eq(pages.id, id))
     } else {
       await db.insert(pages).values({
         ...data,
+        locale: localeValue,
         createdBy: user.id,
       })
     }

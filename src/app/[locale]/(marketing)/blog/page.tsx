@@ -1,5 +1,6 @@
 export const dynamic = 'force-dynamic'
 
+import type { Metadata } from 'next'
 import { db } from '@/db'
 import { blogPosts } from '@/db/schema'
 import { eq, and, desc, lte } from 'drizzle-orm'
@@ -7,6 +8,16 @@ import { getLocale, getTranslations } from 'next-intl/server'
 import { BlogCard } from '@/components/sections/BlogCard'
 import { Reveal } from '@/components/motion/Reveal'
 import { Stagger, StaggerItem } from '@/components/motion/Stagger'
+import { languageAlternates } from '@/lib/seo'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('blog')
+  return {
+    title: t('headline'),
+    description: t('subtitle'),
+    alternates: { languages: languageAlternates('/blog') },
+  }
+}
 
 export default async function BlogPage() {
   const locale = await getLocale()

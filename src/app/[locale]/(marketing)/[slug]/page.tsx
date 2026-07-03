@@ -2,38 +2,44 @@ export const dynamic = 'force-dynamic'
 
 import { db } from '@/db'
 import { pages } from '@/db/schema'
-import { eq, and } from 'drizzle-orm'
+import { eq, and, or, isNull, asc } from 'drizzle-orm'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { languageAlternates } from '@/lib/seo'
 
 interface Props {
-  params: Promise<{ slug: string }>
+  params: Promise<{ locale: string; slug: string }>
 }
 
-async function getPage(slug: string) {
+// Geeft de vertaling voor `locale` terug als die bestaat, anders de
+// taal-onafhankelijke fallback-rij (locale = NULL). Er kunnen door de unieke
+// (slug, locale)-constraint hoogstens deze twee rijen matchen.
+async function getPage(slug: string, locale: string) {
   const [page] = await db
     .select()
     .from(pages)
-    .where(and(eq(pages.slug, slug), eq(pages.published, true)))
+    .where(and(eq(pages.slug, slug), eq(pages.published, true), or(eq(pages.locale, locale), isNull(pages.locale))))
+    .orderBy(asc(pages.locale))
     .limit(1)
   return page ?? null
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
-  const page = await getPage(slug)
+  const { slug, locale } = await params
+  const page = await getPage(slug, locale)
   if (!page) return {}
   return {
     title: page.metaTitle || page.title,
     description: page.metaDescription || undefined,
+    alternates: { languages: languageAlternates(`/${slug}`) },
   }
 }
 
 export default async function CmsPage({ params }: Props) {
-  const { slug } = await params
-  const page = await getPage(slug)
+  const { slug, locale } = await params
+  const page = await getPage(slug, locale)
   if (!page) notFound()
 
   return (

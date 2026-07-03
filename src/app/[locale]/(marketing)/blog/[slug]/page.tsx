@@ -5,21 +5,20 @@ import { blogPosts } from '@/db/schema'
 import { eq, and, lte } from 'drizzle-orm'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { CATEGORY_LABELS, CATEGORY_COLORS } from '@/lib/blog-categories'
+import { localePath, ogLocale } from '@/lib/seo'
+import type { Locale } from '@/lib/i18n'
 
 interface Props {
   params: Promise<{ slug: string }>
 }
 
-export default async function BlogPostPage({ params }: Props) {
-  const { slug } = await params
-  const locale = await getLocale()
-  const t = await getTranslations('blog')
-
+async function getPost(slug: string) {
   const [post] = await db
     .select()
     .from(blogPosts)
@@ -29,8 +28,49 @@ export default async function BlogPostPage({ params }: Props) {
       lte(blogPosts.publishedAt, new Date()),
     ))
     .limit(1)
+  return post ?? null
+}
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const post = await getPost(slug)
+  if (!post) return {}
+
+  return {
+    title: post.title,
+    description: post.excerpt ?? undefined,
+    openGraph: {
+      type: 'article',
+      locale: ogLocale(post.locale as Locale),
+      title: post.title,
+      description: post.excerpt ?? undefined,
+      url: localePath(post.locale, `/blog/${post.slug}`),
+      publishedTime: post.publishedAt?.toISOString(),
+      images: post.coverImage ? [post.coverImage] : undefined,
+    },
+  }
+}
+
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params
+  const locale = await getLocale()
+  const t = await getTranslations('blog')
+
+  const post = await getPost(slug)
   if (!post) notFound()
+
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt ?? undefined,
+    image: post.coverImage ?? undefined,
+    datePublished: post.publishedAt?.toISOString(),
+    dateModified: post.updatedAt.toISOString(),
+    author: { '@type': 'Organization', name: 'Magnus & Potens' },
+    publisher: { '@type': 'Organization', name: 'Magnus & Potens' },
+    mainEntityOfPage: localePath(post.locale, `/blog/${post.slug}`),
+  }
 
   const date = post.publishedAt
     ? new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(post.publishedAt))
@@ -38,6 +78,12 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <main style={{ background: '#0F1014', minHeight: '100vh', paddingTop: 120 }}>
+      <script
+        type="application/ld+json"
+        // Escape "<" zodat een titel/excerpt met een letterlijke "</script>"
+        // de tag niet kan afsluiten — de payload zelf is JSON, geen HTML.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd).replace(/</g, '\\u003c') }}
+      />
       {/* Back link */}
       <div style={{ maxWidth: 820, margin: '0 auto', padding: '0 32px 40px' }}>
         <Link

@@ -96,6 +96,9 @@ export default async function CmsPage() {
                 </p>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexShrink: 0 }}>
+                <span style={{ fontFamily: "'Jost', sans-serif", fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#4E4B46' }}>
+                  {page.locale ?? 'ALL'}
+                </span>
                 <span
                   style={{
                     background: page.published ? 'rgba(80,160,80,0.12)' : 'rgba(255,255,255,0.06)',

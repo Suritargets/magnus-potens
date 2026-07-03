@@ -5,19 +5,20 @@ import { useTranslations, useLocale } from 'next-intl'
 import { Stagger, StaggerItem } from '@/components/motion/Stagger'
 
 const firmLinks = [
-  { label: 'The Firm', href: '#firm' },
-  { label: 'Practice', href: '#practice' },
-  { label: 'Approach', href: '#approach' },
-]
-
-const legalLinks = [
-  { label: 'Privacy Policy', slug: 'privacy' },
-  { label: 'Terms of Service', slug: 'terms' },
-]
+  { labelKey: 'firm', href: '#firm' },
+  { labelKey: 'practice', href: '#practice' },
+  { labelKey: 'approach', href: '#approach' },
+] as const
 
 export function Footer() {
   const t = useTranslations('footer')
+  const tNav = useTranslations('nav')
   const locale = useLocale()
+
+  const legalLinks = [
+    { label: t('privacy_label'), slug: 'privacy' },
+    { label: t('terms_label'), slug: 'terms' },
+  ]
 
   return (
     <footer
@@ -88,7 +89,7 @@ export function Footer() {
                     onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#C79E6B' }}
                     onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#6E6A63' }}
                   >
-                    {link.label}
+                    {tNav(link.labelKey)}
                   </a>
                 </li>
               ))}

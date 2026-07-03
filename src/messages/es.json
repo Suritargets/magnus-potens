@@ -69,7 +69,9 @@
     "firm_col": "Bufete",
     "reach_col": "Contáctenos",
     "copyright": "© 2026 Magnus & Potens. Todos los derechos reservados.",
-    "motto": "Discreción · Protección · Propósito"
+    "motto": "Discreción · Protección · Propósito",
+    "privacy_label": "Política de Privacidad",
+    "terms_label": "Términos de Servicio"
   },
   "cookies": {
     "message": "Utilizamos únicamente cookies esenciales para mantener este sitio seguro y recordar su preferencia de idioma. No utilizamos cookies de seguimiento ni publicitarias.",

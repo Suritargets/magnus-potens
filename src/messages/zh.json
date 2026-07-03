@@ -69,7 +69,9 @@
     "firm_col": "事务所",
     "reach_col": "联系我们",
     "copyright": "© 2026 Magnus & Potens. 保留所有权利。",
-    "motto": "审慎 · 守护 · 使命"
+    "motto": "审慎 · 守护 · 使命",
+    "privacy_label": "隐私政策",
+    "terms_label": "服务条款"
   },
   "cookies": {
     "message": "我们仅使用必要的 Cookie 以确保本网站的安全并记住您的语言偏好。我们不使用追踪或广告类 Cookie。",

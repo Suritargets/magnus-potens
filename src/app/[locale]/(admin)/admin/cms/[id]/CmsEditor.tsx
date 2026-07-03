@@ -93,16 +93,30 @@ export function CmsEditor({ page }: Props) {
         {/* Title */}
         <Field label="Title *" name="title" defaultValue={page?.title} required inputStyle={inputStyle} labelStyle={labelStyle} />
 
-        {/* Slug */}
-        <Field
-          label="Slug *"
-          name="slug"
-          defaultValue={page?.slug}
-          required
-          hint="e.g. about-us → /about-us"
-          inputStyle={inputStyle}
-          labelStyle={labelStyle}
-        />
+        {/* Slug + Locale row */}
+        <div style={{ display: 'grid', gap: 16, gridTemplateColumns: '2fr 1fr' }}>
+          <Field
+            label="Slug *"
+            name="slug"
+            defaultValue={page?.slug}
+            required
+            hint="e.g. about-us → /about-us"
+            inputStyle={inputStyle}
+            labelStyle={labelStyle}
+          />
+          <div>
+            <label htmlFor="locale" style={labelStyle}>Language</label>
+            <select id="locale" name="locale" defaultValue={page?.locale ?? ''} style={{ ...inputStyle, appearance: 'none' }}>
+              <option value="">All languages (fallback)</option>
+              <option value="en">EN — English</option>
+              <option value="nl">NL — Nederlands</option>
+              <option value="es">ES — Español</option>
+              <option value="fr">FR — Français</option>
+              <option value="pt">PT — Português</option>
+              <option value="zh">ZH — 中文</option>
+            </select>
+          </div>
+        </div>
 
         {/* Content */}
         <div>

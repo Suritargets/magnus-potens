@@ -69,7 +69,9 @@
     "firm_col": "Kantoor",
     "reach_col": "Bereik ons",
     "copyright": "© 2026 Magnus & Potens. Alle rechten voorbehouden.",
-    "motto": "Discretie · Bescherming · Doel"
+    "motto": "Discretie · Bescherming · Doel",
+    "privacy_label": "Privacybeleid",
+    "terms_label": "Servicevoorwaarden"
   },
   "cookies": {
     "message": "Wij gebruiken alleen essentiële cookies om deze site veilig te houden en uw taalvoorkeur te onthouden. Wij gebruiken geen tracking- of advertentiecookies.",

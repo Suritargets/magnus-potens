@@ -1,15 +1,31 @@
 import type { Metadata } from 'next'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { Hero } from '@/components/sections/Hero'
 import { FirmStatement } from '@/components/sections/FirmStatement'
 import { Practice } from '@/components/sections/Practice'
 import { Approach } from '@/components/sections/Approach'
 import { SloganBand } from '@/components/sections/SloganBand'
 import { Contact } from '@/components/sections/Contact'
+import { languageAlternates, ogLocale } from '@/lib/seo'
+import type { Locale } from '@/lib/i18n'
 
-export const metadata: Metadata = {
-  title: 'Home',
-  description:
-    'Magnus & Potens — boutique legal and advisory counsel for those who move with purpose. Your Shield. Our Purpose.',
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = (await getLocale()) as Locale
+  const t = await getTranslations('hero')
+
+  return {
+    title: 'Home',
+    description: t('subtitle'),
+    alternates: { languages: languageAlternates('') },
+    openGraph: {
+      type: 'website',
+      siteName: 'Magnus & Potens',
+      url: process.env.NEXT_PUBLIC_APP_URL ?? 'https://magnus-potens.com',
+      locale: ogLocale(locale),
+      title: `Magnus & Potens — ${t('tagline')}`,
+      description: t('subtitle'),
+    },
+  }
 }
 
 export default function HomePage() {

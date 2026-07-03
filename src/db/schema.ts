@@ -5,6 +5,7 @@ import {
   boolean,
   integer,
   pgEnum,
+  unique,
 } from 'drizzle-orm/pg-core'
 import { relations } from 'drizzle-orm'
 
@@ -76,7 +77,9 @@ export const errorLogs = pgTable('error_logs', {
 // --- CMS PAGES ---
 export const pages = pgTable('pages', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
-  slug: text('slug').unique().notNull(),
+  slug: text('slug').notNull(),
+  // null = geldt voor alle talen (fallback); anders taal-specifieke variant van dezelfde slug.
+  locale: text('locale'),
   title: text('title').notNull(),
   content: text('content'),
   metaTitle: text('meta_title'),
@@ -85,7 +88,9 @@ export const pages = pgTable('pages', {
   createdBy: text('created_by').references(() => users.id),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
-})
+}, (table) => [
+  unique('pages_slug_locale_unique').on(table.slug, table.locale),
+])
 
 // --- TYPES ---
 export type User = typeof users.$inferSelect

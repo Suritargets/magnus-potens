@@ -69,7 +69,9 @@
     "firm_col": "Firm",
     "reach_col": "Reach us",
     "copyright": "© 2026 Magnus & Potens. All rights reserved.",
-    "motto": "Discretion · Protection · Purpose"
+    "motto": "Discretion · Protection · Purpose",
+    "privacy_label": "Privacy Policy",
+    "terms_label": "Terms of Service"
   },
   "cookies": {
     "message": "We use essential cookies to keep this site secure and to remember your language preference. We do not use tracking or advertising cookies.",
