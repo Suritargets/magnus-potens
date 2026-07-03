@@ -1,5 +1,6 @@
 import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
+import { CookieConsent } from '@/components/sections/CookieConsent'
 
 export default function MarketingLayout({
   children,
@@ -11,6 +12,7 @@ export default function MarketingLayout({
       <Header />
       {children}
       <Footer />
+      <CookieConsent />
     </>
   )
 }

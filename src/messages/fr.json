@@ -71,6 +71,11 @@
     "copyright": "© 2026 Magnus & Potens. Tous droits réservés.",
     "motto": "Discrétion · Protection · Mission"
   },
+  "cookies": {
+    "message": "Nous utilisons uniquement des cookies essentiels pour sécuriser ce site et mémoriser votre préférence de langue. Nous n'utilisons pas de cookies de suivi ou publicitaires.",
+    "accept": "Accepter",
+    "learn_more": "Politique de confidentialité"
+  },
   "blog": {
     "label": "Blog",
     "headline": "Perspectives & Analyses",
