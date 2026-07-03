@@ -168,6 +168,7 @@ export default async function AdminDashboard() {
           }}
         >
           <li>→ <Link href="/admin/berichten" style={{ color: '#C79E6B', textDecoration: 'none' }}>Enquiries</Link> — review and respond to contact form submissions</li>
+          <li>→ <Link href="/admin/homepage" style={{ color: '#C79E6B', textDecoration: 'none' }}>Homepage</Link> — edit the public homepage text, per language</li>
           <li>→ <Link href="/admin/blog" style={{ color: '#C79E6B', textDecoration: 'none' }}>Blog</Link> — create and publish insights</li>
           <li>→ <Link href="/admin/afspraken" style={{ color: '#C79E6B', textDecoration: 'none' }}>Afspraken</Link> — review and confirm consultation requests</li>
           <li>→ <Link href="/admin/afspraken/beschikbaarheid" style={{ color: '#C79E6B', textDecoration: 'none' }}>Beschikbaarheid</Link> — configure available days and times</li>

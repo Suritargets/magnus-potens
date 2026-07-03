@@ -159,6 +159,14 @@ export const availabilityOverrides = pgTable('availability_overrides', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 })
 
+// --- HOMEPAGE CONTENT (per taal override op de statische vertalingen) ---
+export const homepageContent = pgTable('homepage_content', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  locale: text('locale').unique().notNull(),
+  content: text('content').notNull(), // JSON: { hero, firm, practice, approach, slogan, contact }
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+})
+
 // --- MEDIA ASSETS ---
 export const mediaAssets = pgTable('media_assets', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
@@ -186,6 +194,8 @@ export type AvailabilityOverride = typeof availabilityOverrides.$inferSelect
 export type NewAvailabilityOverride = typeof availabilityOverrides.$inferInsert
 export type MediaAsset = typeof mediaAssets.$inferSelect
 export type NewMediaAsset = typeof mediaAssets.$inferInsert
+export type HomepageContent = typeof homepageContent.$inferSelect
+export type NewHomepageContent = typeof homepageContent.$inferInsert
 
 // --- RELATIONS (Drizzle Relations v2) ---
 // Enables: db.query.users.findMany({ with: { blogPosts: true } })

@@ -1,7 +1,8 @@
-import { NextIntlClientProvider } from 'next-intl'
+import { NextIntlClientProvider, type AbstractIntlMessages } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { locales, type Locale } from '@/lib/i18n'
+import { getHomepageOverride, mergeHomepageMessages } from '@/lib/homepage-content'
 import { Cormorant_Garamond, Marcellus, Jost } from 'next/font/google'
 import '@/styles/globals.css'
 
@@ -43,7 +44,11 @@ export default async function LocaleLayout({
 
   if (!locale) notFound()
 
-  const messages = await getMessages()
+  const [messages, override] = await Promise.all([
+    getMessages(),
+    getHomepageOverride(locale),
+  ])
+  const mergedMessages = mergeHomepageMessages(messages, override) as AbstractIntlMessages
 
   return (
     <html
@@ -54,7 +59,7 @@ export default async function LocaleLayout({
         className="min-h-screen antialiased"
         style={{ backgroundColor: '#0F1014', color: '#E9E3D6' }}
       >
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={mergedMessages}>
           {children}
         </NextIntlClientProvider>
       </body>
