@@ -15,10 +15,11 @@ export const submissionStatusEnum = pgEnum('submission_status', ['new', 'read', 
 // --- USERS ---
 export const users = pgTable('users', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
-  clerkId: text('clerk_id').notNull().unique(),
+  clerkId: text('clerk_id').notNull().unique(), // gebruikt als login-username
   email: text('email').notNull(),
   name: text('name'),
   role: userRoleEnum('role').default('user').notNull(),
+  passwordHash: text('password_hash'), // bcrypt — null = kan niet inloggen (bv. legacy/service rows)
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 })

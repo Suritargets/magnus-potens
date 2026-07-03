@@ -2,9 +2,6 @@
 
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { db } from '@/db'
-import { users } from '@/db/schema'
-import { eq } from 'drizzle-orm'
 import { verifyCredentials } from '@/lib/admin-credentials'
 import { signSession, SESSION_COOKIE } from '@/lib/session'
 import { loginRateLimit, getClientIp } from '@/lib/rate-limit'
@@ -26,43 +23,16 @@ export async function login(_prev: LoginState, formData: FormData): Promise<Logi
     return { error: 'Please enter your username and password.' }
   }
 
-  const credential = await verifyCredentials(username, password)
-  if (!credential) {
+  const user = await verifyCredentials(username, password)
+  if (!user) {
     return { error: 'Invalid username or password.' }
   }
 
-  // Upsert de admin als DB-gebruiker, zodat authorId/uploadedBy referenties blijven kloppen.
-  const [existing] = await db
-    .select()
-    .from(users)
-    .where(eq(users.clerkId, credential.username))
-    .limit(1)
-
-  let userId: string
-  if (existing) {
-    userId = existing.id
-    await db
-      .update(users)
-      .set({ name: credential.name, role: credential.role, updatedAt: new Date() })
-      .where(eq(users.id, existing.id))
-  } else {
-    const [inserted] = await db
-      .insert(users)
-      .values({
-        clerkId: credential.username,
-        email: `${credential.username}@magnus-potens.local`,
-        name: credential.name,
-        role: credential.role,
-      })
-      .returning()
-    userId = inserted.id
-  }
-
   const token = await signSession({
-    id: userId,
-    username: credential.username,
-    name: credential.name,
-    role: credential.role,
+    id: user.id,
+    username: user.clerkId,
+    name: user.name ?? user.clerkId,
+    role: user.role,
   })
 
   const cookieStore = await cookies()

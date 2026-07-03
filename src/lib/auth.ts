@@ -14,6 +14,7 @@ export const getCurrentUser = cache(async (): Promise<User | null> => {
       email: 'dev@localhost',
       name: 'Dev Preview',
       role: 'admin',
+      passwordHash: null,
       createdAt: new Date(),
       updatedAt: new Date(),
     }
@@ -32,6 +33,7 @@ export const getCurrentUser = cache(async (): Promise<User | null> => {
     email: `${session.username}@magnus-potens.local`,
     name: session.name,
     role: session.role,
+    passwordHash: null,
     createdAt: new Date(0),
     updatedAt: new Date(0),
   }

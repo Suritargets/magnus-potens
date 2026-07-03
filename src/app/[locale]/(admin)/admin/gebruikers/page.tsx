@@ -2,7 +2,8 @@ import { db } from '@/db'
 import { users } from '@/db/schema'
 import { desc } from 'drizzle-orm'
 import { formatDate } from '@/lib/utils'
-import { requireRole } from '@/lib/auth'
+import { requireRole, getCurrentUser } from '@/lib/auth'
+import Link from 'next/link'
 
 const roleStyle: Record<string, { bg: string; color: string }> = {
   super_admin: { bg: 'rgba(180,120,220,0.14)', color: '#C79EDB' },
@@ -12,6 +13,8 @@ const roleStyle: Record<string, { bg: string; color: string }> = {
 
 export default async function GebruikersPage() {
   await requireRole('admin', 'super_admin')
+  const current = await getCurrentUser()
+  const isSuperAdmin = current?.role === 'super_admin'
 
   const allUsers = await db
     .select()
@@ -21,21 +24,42 @@ export default async function GebruikersPage() {
   return (
     <div>
       {/* Header */}
-      <div style={{ marginBottom: 28 }}>
-        <h1
-          style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontSize: 28,
-            fontWeight: 400,
-            color: '#E9E3D6',
-            margin: '0 0 4px',
-          }}
-        >
-          Users
-        </h1>
-        <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 12, color: '#6E6A63', margin: 0 }}>
-          {allUsers.length} registered
-        </p>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 28, gap: 16 }}>
+        <div>
+          <h1
+            style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: 28,
+              fontWeight: 400,
+              color: '#E9E3D6',
+              margin: '0 0 4px',
+            }}
+          >
+            Users
+          </h1>
+          <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 12, color: '#6E6A63', margin: 0 }}>
+            {allUsers.length} registered
+          </p>
+        </div>
+        {isSuperAdmin && (
+          <Link
+            href="/admin/gebruikers/nieuw"
+            style={{
+              fontFamily: "'Jost', sans-serif",
+              fontSize: 11,
+              letterSpacing: '0.16em',
+              textTransform: 'uppercase',
+              color: '#0F1014',
+              background: '#C79E6B',
+              padding: '10px 20px',
+              textDecoration: 'none',
+              borderRadius: 1,
+              whiteSpace: 'nowrap',
+            }}
+          >
+            + New user
+          </Link>
+        )}
       </div>
 
       <div
@@ -49,7 +73,7 @@ export default async function GebruikersPage() {
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-              {['Name', 'Email', 'Role', 'Registered'].map((h) => (
+              {['Name', 'Email', 'Role', 'Registered', ''].map((h) => (
                 <th
                   key={h}
                   style={{
@@ -100,6 +124,16 @@ export default async function GebruikersPage() {
                   </td>
                   <td style={{ fontFamily: "'Jost', sans-serif", fontSize: 12, color: '#6E6A63', padding: '11px 16px' }}>
                     {formatDate(u.createdAt)}
+                  </td>
+                  <td style={{ padding: '11px 16px', textAlign: 'right' }}>
+                    {isSuperAdmin && (
+                      <Link
+                        href={`/admin/gebruikers/${u.id}`}
+                        style={{ fontFamily: "'Jost', sans-serif", fontSize: 11, letterSpacing: '0.1em', color: '#C79E6B', textDecoration: 'none' }}
+                      >
+                        Edit →
+                      </Link>
+                    )}
                   </td>
                 </tr>
               )
