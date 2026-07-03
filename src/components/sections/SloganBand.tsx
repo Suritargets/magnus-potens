@@ -44,7 +44,7 @@ export function SloganBand() {
         {/* Headline with gold gradient */}
         <Reveal delay={0.15} duration={1.1}>
           <h2
-            className="text-[3rem] md:text-[5rem] lg:text-[6.5rem] leading-[1.04] font-normal"
+            className="text-[1.7rem] sm:text-[2.1rem] md:text-[2.6rem] lg:text-[3.3rem] leading-[1.12] font-normal whitespace-normal lg:whitespace-nowrap"
             style={{
               fontFamily: 'var(--font-cormorant)',
               background: 'linear-gradient(135deg, #C79E6B 0%, #DDBB85 40%, #A67C3E 80%, #C79E6B 100%)',
