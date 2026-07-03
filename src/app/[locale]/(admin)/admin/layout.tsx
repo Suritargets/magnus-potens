@@ -7,6 +7,7 @@ import { logout } from '@/actions/auth'
 
 const adminNav = [
   { href: '/admin',                         label: 'Dashboard',      icon: '◈' },
+  { href: '/admin/analytics',               label: 'Analytics',      icon: '◔' },
   { href: '/admin/berichten',               label: 'Enquiries',      icon: '✉' },
   { href: '/admin/homepage',                label: 'Homepage',       icon: '⌂' },
   { href: '/admin/cms',                     label: 'CMS Pages',      icon: '◻' },

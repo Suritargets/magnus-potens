@@ -1,10 +1,12 @@
 import { db } from '@/db'
-import { contactSubmissions, errorLogs, users, blogPosts, appointments } from '@/db/schema'
-import { eq, count, and, gte } from 'drizzle-orm'
+import { contactSubmissions, errorLogs, users, blogPosts, appointments, pageViews } from '@/db/schema'
+import { eq, count, and, gte, sql } from 'drizzle-orm'
 import Link from 'next/link'
 
 export default async function AdminDashboard() {
   const today = new Date().toISOString().slice(0, 10)
+  const since7d = new Date()
+  since7d.setDate(since7d.getDate() - 7)
 
   const [
     [totalUsers],
@@ -12,6 +14,7 @@ export default async function AdminDashboard() {
     [unresolvedErrors],
     [publishedPosts],
     [upcomingAppts],
+    [views7d],
   ] = await Promise.all([
     db.select({ count: count() }).from(users),
     db.select({ count: count() }).from(contactSubmissions).where(eq(contactSubmissions.status, 'new')),
@@ -20,6 +23,7 @@ export default async function AdminDashboard() {
     db.select({ count: count() }).from(appointments).where(
       and(eq(appointments.status, 'pending'), gte(appointments.date, today))
     ),
+    db.select({ count: sql<number>`count(*)::int` }).from(pageViews).where(gte(pageViews.createdAt, since7d)),
   ])
 
   const stats = [
@@ -36,6 +40,13 @@ export default async function AdminDashboard() {
       icon: '◷',
       href: '/admin/afspraken',
       accent: upcomingAppts.count > 0,
+    },
+    {
+      label: 'Page views (7d)',
+      value: views7d.count,
+      icon: '◔',
+      href: '/admin/analytics',
+      accent: false,
     },
     {
       label: 'Published posts',
@@ -89,7 +100,7 @@ export default async function AdminDashboard() {
       </div>
 
       {/* Stats */}
-      <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-6">
         {stats.map((stat) => (
           <Link
             key={stat.label}
@@ -167,6 +178,7 @@ export default async function AdminDashboard() {
             gap: 6,
           }}
         >
+          <li>→ <Link href="/admin/analytics" style={{ color: '#C79E6B', textDecoration: 'none' }}>Analytics</Link> — page views and visitor trends, cookieless</li>
           <li>→ <Link href="/admin/berichten" style={{ color: '#C79E6B', textDecoration: 'none' }}>Enquiries</Link> — review and respond to contact form submissions</li>
           <li>→ <Link href="/admin/homepage" style={{ color: '#C79E6B', textDecoration: 'none' }}>Homepage</Link> — edit the public homepage text, per language</li>
           <li>→ <Link href="/admin/blog" style={{ color: '#C79E6B', textDecoration: 'none' }}>Blog</Link> — create and publish insights</li>

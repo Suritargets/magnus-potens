@@ -167,6 +167,17 @@ export const homepageContent = pgTable('homepage_content', {
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 })
 
+// --- PAGE VIEWS (eigen lichte analytics, geen cookie, geen derde partij) ---
+export const pageViews = pgTable('page_views', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  path: text('path').notNull(),
+  locale: text('locale').notNull(),
+  referrer: text('referrer'),
+  // Eenrichtings-hash van IP + user-agent — nooit het IP zelf opgeslagen.
+  visitorHash: text('visitor_hash').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+})
+
 // --- MEDIA ASSETS ---
 export const mediaAssets = pgTable('media_assets', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
@@ -196,6 +207,8 @@ export type MediaAsset = typeof mediaAssets.$inferSelect
 export type NewMediaAsset = typeof mediaAssets.$inferInsert
 export type HomepageContent = typeof homepageContent.$inferSelect
 export type NewHomepageContent = typeof homepageContent.$inferInsert
+export type PageView = typeof pageViews.$inferSelect
+export type NewPageView = typeof pageViews.$inferInsert
 
 // --- RELATIONS (Drizzle Relations v2) ---
 // Enables: db.query.users.findMany({ with: { blogPosts: true } })
