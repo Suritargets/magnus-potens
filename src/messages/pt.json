@@ -1,0 +1,136 @@
+{
+  "nav": {
+    "firm": "O Escritório",
+    "practice": "Práticas",
+    "approach": "Abordagem",
+    "consultation": "Consulta",
+    "blog": "Perspetivas",
+    "language": "Idioma"
+  },
+  "hero": {
+    "tagline": "Seu Escudo. Nosso Propósito.",
+    "headline": "Aconselhamento jurídico e consultoria estratégica para quem age com propósito.",
+    "subtitle": "A Magnus & Potens protege direitos, orienta decisões e apoia clientes com discrição, força e propósito — além-fronteiras e além do previsível.",
+    "cta_primary": "Solicitar uma consulta",
+    "cta_secondary": "Nossa prática"
+  },
+  "firm": {
+    "label": "O Escritório",
+    "statement": "Um escritório boutique de advocacia e consultoria criado para clientes que exigem clareza em meio à complexidade — aconselhamento de confiança para indivíduos de elevado património, empreendedores, empresas familiares e líderes.",
+    "description": "Não somos um escritório de advocacia tradicional. A Magnus & Potens combina a discrição do aconselhamento privado com a visão da consultoria estratégica — abrindo o caminho certo e protegendo-o."
+  },
+  "practice": {
+    "label": "Prática",
+    "headline": "Aconselhamento nas questões que definem um futuro.",
+    "subtitle": "Seis áreas, um único padrão. Cada mandato é conduzido pessoalmente, com o rigor e a confidencialidade que os nossos clientes esperam.",
+    "areas": [
+      {"num": "01", "title": "Societário & Comercial", "desc": "Estruturação, governança e os acordos que sustentam as empresas."},
+      {"num": "02", "title": "Contencioso", "desc": "Contencioso em direito civil e penal."},
+      {"num": "03", "title": "Consultoria Estratégica", "desc": "Aconselhamento além do jurídico — orientação sobre as decisões que definem o rumo."},
+      {"num": "04", "title": "Transformação Digital", "desc": "Navegar pelos seus quadros de transformação digital com visão e resultados garantidos."},
+      {"num": "05", "title": "Resolução de Litígios", "desc": "Representação ponderada e determinada quando a proteção exige uma posição firme."},
+      {"num": "06", "title": "Regulatório & Compliance", "desc": "Navegar por enquadramentos regulatórios em diferentes jurisdições com visão, sem atrito."}
+    ]
+  },
+  "approach": {
+    "label": "A Abordagem",
+    "headline": "Quatro princípios, extraídos da própria marca.",
+    "pillars": [
+      {"num": "01", "tag": "ACESSO", "title": "A Porta Aberta", "desc": "Uma entrada para a possibilidade. Abrimos o caminho certo através de questões jurídicas e de consultoria complexas — com confiança e cuidado."},
+      {"num": "02", "tag": "DIREÇÃO", "title": "O Caminho a Seguir", "desc": "Movimento com intenção. O nosso papel de consultoria é guiar os clientes rumo a decisões claras e determinadas — nunca apenas reagir a elas."},
+      {"num": "03", "tag": "PROTEÇÃO", "title": "O Escudo", "desc": "Estrutura e segurança. A força do nosso aconselhamento é uma forma de proteção — o alicerce de cada decisão que orientamos."},
+      {"num": "04", "tag": "EXCELÊNCIA", "title": "Força com Elegância", "desc": "Prestígio, discrição e autoridade atemporal — aconselhamento executivo, refinado e inconfundivelmente internacional."}
+    ]
+  },
+  "slogan": {
+    "label": "A promessa em que nos fundamos",
+    "headline": "Discrição. Proteção. Propósito."
+  },
+  "contact": {
+    "label": "Contacto",
+    "headline": "Inicie a conversa.",
+    "description": "Cada mandato começa em confiança. Partilhe o que enfrenta e responderemos pessoalmente — com discrição e sem compromisso.",
+    "enquiries_label": "Contactos",
+    "email": "info@magnus-potens.com",
+    "appointment_label": "Mediante marcação",
+    "website": "magnus-potens.com",
+    "form": {
+      "name": "Nome completo",
+      "email": "E-mail",
+      "message": "Como podemos ajudar",
+      "submit": "Enviar em confidencialidade",
+      "disclaimer": "Protegido pela confidencialidade do cliente. Respondemos pessoalmente a cada pedido.",
+      "success_title": "Obrigado.",
+      "success_message": "A sua mensagem chegou até nós. Um membro do escritório responderá em breve, em confidencialidade."
+    }
+  },
+  "footer": {
+    "tagline": "Seu Escudo. Nosso Propósito.",
+    "firm_col": "Escritório",
+    "reach_col": "Contacte-nos",
+    "copyright": "© 2026 Magnus & Potens. Todos os direitos reservados.",
+    "motto": "Discrição · Proteção · Propósito"
+  },
+  "cookies": {
+    "message": "Utilizamos apenas cookies essenciais para manter este site seguro e para memorizar a sua preferência de idioma. Não utilizamos cookies de rastreamento ou publicidade.",
+    "accept": "Aceitar",
+    "learn_more": "Política de Privacidade"
+  },
+  "blog": {
+    "label": "Blog",
+    "headline": "Perspetivas & Análises",
+    "subtitle": "Liderança de pensamento do escritório — visão jurídica, perspetiva estratégica e orientação para quem lidera.",
+    "read_more": "Ler artigo",
+    "published": "Publicado",
+    "back": "← Voltar às perspetivas",
+    "no_posts": "Ainda não há artigos publicados."
+  },
+  "consultation": {
+    "label": "Consulta",
+    "headline": "Solicitar uma Consulta",
+    "subtitle": "Agende uma consulta inicial confidencial. Escolha uma data e hora que lhe convenha.",
+    "topics": {
+      "label": "Natureza do pedido",
+      "corporate": "Societário & Comercial",
+      "private_wealth": "Património Privado & Empresas Familiares",
+      "strategic": "Consultoria Estratégica",
+      "transactions": "Transações & Fusões e Aquisições",
+      "dispute": "Resolução de Litígios",
+      "regulatory": "Regulatório & Compliance",
+      "other": "Outro"
+    },
+    "form": {
+      "name": "Nome completo",
+      "email": "Endereço de e-mail",
+      "phone": "Número de telefone",
+      "address": "Morada (opcional)",
+      "topic": "Natureza do pedido",
+      "notes": "Mensagem ou observações (opcional)",
+      "submit": "Confirmar consulta",
+      "disclaimer": "Todas as consultas são conduzidas com total discrição. Receberá uma confirmação por e-mail em breve.",
+      "success_title": "Obrigado — o seu pedido foi recebido.",
+      "success_message": "Entraremos em contacto no prazo de 24 horas para confirmar a sua consulta."
+    },
+    "no_slots": "Sem disponibilidade nesta data.",
+    "select_date_first": "Por favor, selecione primeiro uma data.",
+    "calendar": {
+      "step_date": "Selecione uma data",
+      "step_time": "Selecione uma hora",
+      "step_service": "Escolha um serviço",
+      "step_details": "Os seus dados",
+      "free_short": "livre",
+      "booked": "Reservado",
+      "closed": "Encerrado",
+      "today": "Hoje",
+      "back": "Voltar",
+      "continue": "Continuar",
+      "your_selection": "A sua seleção",
+      "service": "Serviço",
+      "date": "Data",
+      "time": "Hora",
+      "message_label": "Mensagem ou observações (opcional)",
+      "message_placeholder": "Descreva brevemente o seu assunto — tratado com total confidencialidade.",
+      "change_date": "Alterar data"
+    }
+  }
+}

@@ -127,6 +127,8 @@ export function BlogEditor({ post }: Props) {
               <option value="nl">NL — Nederlands</option>
               <option value="es">ES — Español</option>
               <option value="fr">FR — Français</option>
+              <option value="pt">PT — Português</option>
+              <option value="zh">ZH — 中文</option>
             </select>
           </div>
           <div>

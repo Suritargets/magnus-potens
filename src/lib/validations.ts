@@ -58,7 +58,7 @@ export const blogPostSchema = z.object({
   content: z.string().min(1, 'Content is required'),
   coverImage: z.string().url('Invalid URL').optional().or(z.literal('')),
   tags: z.string().optional(),
-  locale: z.enum(['en', 'nl', 'es', 'fr']).default('en'),
+  locale: z.enum(['en', 'nl', 'es', 'fr', 'pt', 'zh']).default('en'),
   status: z.enum(['draft', 'published', 'archived']).default('draft'),
   publishedAt: z.string().optional(),
 })

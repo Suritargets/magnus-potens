@@ -6,8 +6,9 @@ import Image from 'next/image'
 import { useTranslations, useLocale } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
+import { locales } from '@/lib/i18n'
 
-const LOCALES = ['en', 'nl', 'es', 'fr'] as const
+const LOCALES = locales
 
 const anchorSections = [
   { hash: 'firm',     labelKey: 'firm' },

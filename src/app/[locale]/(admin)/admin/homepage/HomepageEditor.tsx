@@ -9,6 +9,8 @@ const LOCALES = [
   { code: 'nl', label: 'NL' },
   { code: 'es', label: 'ES' },
   { code: 'fr', label: 'FR' },
+  { code: 'pt', label: 'PT' },
+  { code: 'zh', label: 'ZH' },
 ] as const
 
 interface Props {

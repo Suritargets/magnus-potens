@@ -1,0 +1,136 @@
+{
+  "nav": {
+    "firm": "事务所",
+    "practice": "业务范围",
+    "approach": "服务理念",
+    "consultation": "预约咨询",
+    "blog": "洞见",
+    "language": "语言"
+  },
+  "hero": {
+    "tagline": "您的盾牌，我们的使命。",
+    "headline": "为有志前行者提供法律顾问与战略咨询服务。",
+    "subtitle": "Magnus & Potens 以审慎、坚定与目标感捍卫权益、指引决策、支持客户——跨越国界，超越常规。",
+    "cta_primary": "预约咨询",
+    "cta_secondary": "了解业务范围"
+  },
+  "firm": {
+    "label": "事务所",
+    "statement": "一家精品法律与咨询事务所，专为需要在复杂局面中获得清晰指引的客户而设——为高净值人士、企业家、家族企业及行业领袖提供值得信赖的顾问服务。",
+    "description": "我们并非传统律所。Magnus & Potens 将私人顾问的审慎与战略咨询的远见相结合——开辟正确的道路，并加以守护。"
+  },
+  "practice": {
+    "label": "业务范围",
+    "headline": "为决定未来的事务提供专业顾问。",
+    "subtitle": "六大专业领域，同一标准。每一项委托均由本人亲自主导，恪守客户所期望的严谨与保密。",
+    "areas": [
+      {"num": "01", "title": "公司与商事", "desc": "架构设计、公司治理，以及维系企业运转的各项协议。"},
+      {"num": "02", "title": "诉讼业务", "desc": "民事与刑事诉讼代理。"},
+      {"num": "03", "title": "战略咨询", "desc": "超越法律本身的顾问服务——就决定方向的关键决策提供指引。"},
+      {"num": "04", "title": "数字化转型", "desc": "以远见与可靠成效,引领企业完成数字化转型。"},
+      {"num": "05", "title": "争议解决", "desc": "在需要坚定立场以维护权益之时,提供审慎而坚决的代理。"},
+      {"num": "06", "title": "监管与合规", "desc": "以远见而非阻力,协助企业跨司法管辖区应对监管框架。"}
+    ]
+  },
+  "approach": {
+    "label": "服务理念",
+    "headline": "源自品牌标志本身的四项原则。",
+    "pillars": [
+      {"num": "01", "tag": "开放", "title": "敞开之门", "desc": "通向可能性的入口。我们以自信与细致,为客户在复杂的法律与咨询事务中开辟正确的道路。"},
+      {"num": "02", "tag": "方向", "title": "前行之路", "desc": "有目的的行动。我们的顾问角色在于引导客户做出清晰、坚定的决策——而非被动应对。"},
+      {"num": "03", "tag": "守护", "title": "坚实之盾", "desc": "结构与保障。我们顾问服务的力量本身即是一种守护——是我们所引导的每一项决策的根基。"},
+      {"num": "04", "tag": "卓越", "title": "刚柔并济", "desc": "尊贵、审慎与恒久的权威——专业、精炼,兼具鲜明的国际视野。"}
+    ]
+  },
+  "slogan": {
+    "label": "我们立身的承诺",
+    "headline": "审慎。守护。使命。"
+  },
+  "contact": {
+    "label": "联系方式",
+    "headline": "开启对话。",
+    "description": "每一次委托都始于信任。请告知我们您所面临的问题,我们将以审慎、无任何义务的方式亲自回复。",
+    "enquiries_label": "咨询",
+    "email": "info@magnus-potens.com",
+    "appointment_label": "预约制",
+    "website": "magnus-potens.com",
+    "form": {
+      "name": "姓名",
+      "email": "电子邮箱",
+      "message": "我们能为您提供哪些帮助",
+      "submit": "保密发送",
+      "disclaimer": "受客户保密原则保护。我们将亲自回复每一项咨询。",
+      "success_title": "感谢您的来信。",
+      "success_message": "我们已收到您的信息,事务所成员将尽快以保密方式与您联系。"
+    }
+  },
+  "footer": {
+    "tagline": "您的盾牌,我们的使命。",
+    "firm_col": "事务所",
+    "reach_col": "联系我们",
+    "copyright": "© 2026 Magnus & Potens. 保留所有权利。",
+    "motto": "审慎 · 守护 · 使命"
+  },
+  "cookies": {
+    "message": "我们仅使用必要的 Cookie 以确保本网站的安全并记住您的语言偏好。我们不使用追踪或广告类 Cookie。",
+    "accept": "接受",
+    "learn_more": "隐私政策"
+  },
+  "blog": {
+    "label": "博客",
+    "headline": "洞见与观点",
+    "subtitle": "来自事务所的深度思考——法律洞见、战略视角,以及为行业领袖提供的指引。",
+    "read_more": "阅读全文",
+    "published": "发布于",
+    "back": "← 返回洞见列表",
+    "no_posts": "暂无已发布的文章。"
+  },
+  "consultation": {
+    "label": "预约咨询",
+    "headline": "预约咨询",
+    "subtitle": "安排一次保密的初步咨询。请选择适合您的日期与时间。",
+    "topics": {
+      "label": "咨询事项类型",
+      "corporate": "公司与商事",
+      "private_wealth": "私人财富与家族企业",
+      "strategic": "战略咨询",
+      "transactions": "交易与并购",
+      "dispute": "争议解决",
+      "regulatory": "监管与合规",
+      "other": "其他"
+    },
+    "form": {
+      "name": "姓名",
+      "email": "电子邮箱地址",
+      "phone": "电话号码",
+      "address": "地址(选填)",
+      "topic": "咨询事项类型",
+      "notes": "留言或备注(选填)",
+      "submit": "确认预约",
+      "disclaimer": "所有咨询均以完全保密的方式进行。您将很快收到电子邮件确认。",
+      "success_title": "感谢您——我们已收到您的预约请求。",
+      "success_message": "我们将在 24 小时内与您联系以确认预约。"
+    },
+    "no_slots": "该日期暂无可预约时段。",
+    "select_date_first": "请先选择日期。",
+    "calendar": {
+      "step_date": "选择日期",
+      "step_time": "选择时间",
+      "step_service": "选择服务项目",
+      "step_details": "填写您的信息",
+      "free_short": "可预约",
+      "booked": "已预约",
+      "closed": "休息",
+      "today": "今天",
+      "back": "返回",
+      "continue": "继续",
+      "your_selection": "您的选择",
+      "service": "服务项目",
+      "date": "日期",
+      "time": "时间",
+      "message_label": "留言或备注(选填)",
+      "message_placeholder": "请简要描述您的事项——我们将完全保密处理。",
+      "change_date": "更改日期"
+    }
+  }
+}

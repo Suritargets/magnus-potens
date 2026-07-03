@@ -4,16 +4,20 @@ import enDefaults from '@/messages/en.json'
 import nlDefaults from '@/messages/nl.json'
 import esDefaults from '@/messages/es.json'
 import frDefaults from '@/messages/fr.json'
+import ptDefaults from '@/messages/pt.json'
+import zhDefaults from '@/messages/zh.json'
+import { locales } from '@/lib/i18n'
 
 const DEFAULTS: Record<string, Record<string, unknown>> = {
   en: enDefaults,
   nl: nlDefaults,
   es: esDefaults,
   fr: frDefaults,
+  pt: ptDefaults,
+  zh: zhDefaults,
 }
 
 export default async function HomepageContentPage() {
-  const locales = ['en', 'nl', 'es', 'fr']
 
   const overrides = await Promise.all(locales.map((l) => getHomepageOverride(l)))
 
