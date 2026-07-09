@@ -178,8 +178,47 @@ export function Hero() {
               initial={{ opacity: 0, scale: reduce ? 1 : 0.96, y: reduce ? 0 : 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 1.4, delay: 0.9, ease: EASE }}
-              style={{ position: 'relative' }}
+              style={{
+                position: 'relative',
+                // Vaste, expliciete box (i.p.v. size-from-content) zodat de
+                // absoluut gepositioneerde spark-laag hieronder een
+                // eenduidig referentiekader heeft — anders resolvet de
+                // browser inset:0 onvoorspelbaar op een auto-sized ouder.
+                height: 'clamp(260px, 46vh, 440px)',
+                aspectRatio: '352 / 544',
+              }}
             >
+              {/* Rondcirkelend lichtpuntje — blijft buiten de contouren van
+                  het logo (cirkelstraal als percentage schaalt automatisch
+                  mee met de responsive hoogte hierboven). */}
+              {!reduce && (
+                <div className="hero-spark-layer absolute inset-0 pointer-events-none" aria-hidden>
+                  {[
+                    { delay: -0.5, opacity: 0.14, size: 3 },
+                    { delay: -0.34, opacity: 0.3, size: 4 },
+                    { delay: -0.18, opacity: 0.55, size: 5 },
+                    { delay: 0, opacity: 1, size: 7 },
+                  ].map((spark, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        position: 'absolute',
+                        width: spark.size,
+                        height: spark.size,
+                        borderRadius: '50%',
+                        background: '#F3D9A8',
+                        opacity: spark.opacity,
+                        boxShadow:
+                          '0 0 6px 2px rgba(243,217,168,0.9), 0 0 16px 6px rgba(199,158,107,0.6), 0 0 28px 10px rgba(199,158,107,0.25)',
+                        offsetPath: 'circle(76% at 50% 50%)',
+                        animation: 'mpOrbit 8.5s cubic-bezier(0.45, 0, 0.2, 1) infinite',
+                        animationDelay: `${spark.delay}s`,
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
+
               {/* Pulserende gloed op de contouren van het logo zelf (drop-shadow
                   volgt de alpha-vorm van de PNG, i.t.t. een box-shadow) */}
               <motion.div

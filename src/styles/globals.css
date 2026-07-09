@@ -92,6 +92,26 @@
   50%       { opacity: 0.85; }
 }
 
+/* ─── Hero logo: orbiting spark keyframe ────────────────────────────
+   Werkt samen met offset-path (circle) op de spark-elementen in Hero.tsx. */
+@keyframes mpOrbit {
+  0%   { offset-distance: 0%; }
+  100% { offset-distance: 100%; }
+}
+
+/* offset-path/offset-distance werkt niet op iOS Safari <16 — zonder deze
+   feature query zou de spark stilstaand op een verkeerde plek blijven
+   hangen i.p.v. te bewegen. Dan liever de laag helemaal verbergen: de
+   ademende contourgloed op het logo zelf blijft sowieso overal werken. */
+.hero-spark-layer {
+  display: none;
+}
+@supports (offset-path: circle(50% at 50% 50%)) {
+  .hero-spark-layer {
+    display: block;
+  }
+}
+
 /* ─── Utility: section separator chip ───────────────────────────── */
 .mp-chip {
   display: inline-flex;
