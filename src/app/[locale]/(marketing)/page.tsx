@@ -24,6 +24,17 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: ogLocale(locale),
       title: `Magnus & Potens — ${t('tagline')}`,
       description: t('subtitle'),
+      // De homepage overschrijft openGraph volledig (geen deep-merge met de
+      // root layout), dus de opengraph-image.png file-convention moet hier
+      // expliciet herhaald worden — anders heeft alleen de homepage geen
+      // og:image terwijl elke andere pagina 'm wel automatisch krijgt.
+      images: [
+        {
+          url: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://magnus-potens.com'}/opengraph-image.png`,
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
   }
 }
