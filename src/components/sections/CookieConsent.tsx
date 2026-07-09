@@ -15,7 +15,15 @@ export function CookieConsent() {
   }, [])
 
   function accept() {
-    localStorage.setItem(STORAGE_KEY, '1')
+    localStorage.setItem(STORAGE_KEY, 'accepted')
+    setVisible(false)
+  }
+
+  function reject() {
+    // Er is niets te blokkeren (alleen strikt noodzakelijke cookies, geen
+    // tracking) — "weigeren" betekent hier alleen: banner sluiten en de
+    // keuze onthouden, zodat niet bij elk bezoek opnieuw gevraagd wordt.
+    localStorage.setItem(STORAGE_KEY, 'rejected')
     setVisible(false)
   }
 
@@ -53,26 +61,45 @@ export function CookieConsent() {
           {t('learn_more')}
         </a>
       </p>
-      <button
-        type="button"
-        onClick={accept}
-        className="mp-shimmer"
-        style={{
-          fontFamily: "'Jost', sans-serif",
-          fontSize: 11,
-          letterSpacing: '0.16em',
-          textTransform: 'uppercase',
-          color: '#0F1014',
-          background: '#C79E6B',
-          border: 'none',
-          padding: '11px 24px',
-          cursor: 'pointer',
-          borderRadius: 1,
-          flexShrink: 0,
-        }}
-      >
-        {t('accept')}
-      </button>
+      <div style={{ display: 'flex', gap: 10, flexShrink: 0 }}>
+        <button
+          type="button"
+          onClick={reject}
+          style={{
+            fontFamily: "'Jost', sans-serif",
+            fontSize: 11,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            color: '#8C877F',
+            background: 'transparent',
+            border: '1px solid rgba(255,255,255,0.12)',
+            padding: '11px 22px',
+            cursor: 'pointer',
+            borderRadius: 1,
+          }}
+        >
+          {t('reject')}
+        </button>
+        <button
+          type="button"
+          onClick={accept}
+          className="mp-shimmer"
+          style={{
+            fontFamily: "'Jost', sans-serif",
+            fontSize: 11,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            color: '#0F1014',
+            background: '#C79E6B',
+            border: 'none',
+            padding: '11px 24px',
+            cursor: 'pointer',
+            borderRadius: 1,
+          }}
+        >
+          {t('accept')}
+        </button>
+      </div>
     </div>
   )
 }

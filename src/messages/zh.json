@@ -79,6 +79,7 @@
   "cookies": {
     "message": "我们仅使用必要的 Cookie 以确保本网站的安全并记住您的语言偏好。我们不使用追踪或广告类 Cookie。",
     "accept": "接受",
+    "reject": "拒绝",
     "learn_more": "隐私政策"
   },
   "blog": {

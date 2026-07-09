@@ -79,6 +79,7 @@
   "cookies": {
     "message": "Wij gebruiken alleen essentiële cookies om deze site veilig te houden en uw taalvoorkeur te onthouden. Wij gebruiken geen tracking- of advertentiecookies.",
     "accept": "Accepteren",
+    "reject": "Weigeren",
     "learn_more": "Privacybeleid"
   },
   "blog": {

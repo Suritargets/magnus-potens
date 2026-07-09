@@ -79,6 +79,7 @@
   "cookies": {
     "message": "Utilizamos apenas cookies essenciais para manter este site seguro e para memorizar a sua preferência de idioma. Não utilizamos cookies de rastreamento ou publicidade.",
     "accept": "Aceitar",
+    "reject": "Recusar",
     "learn_more": "Política de Privacidade"
   },
   "blog": {
