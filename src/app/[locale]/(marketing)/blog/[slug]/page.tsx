@@ -39,14 +39,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.excerpt ?? undefined,
+    alternates: { canonical: localePath(post.locale, `/blog/${post.slug}`) },
     openGraph: {
       type: 'article',
+      siteName: 'Magnus & Potens',
       locale: ogLocale(post.locale as Locale),
       title: post.title,
       description: post.excerpt ?? undefined,
       url: localePath(post.locale, `/blog/${post.slug}`),
       publishedTime: post.publishedAt?.toISOString(),
-      images: post.coverImage ? [post.coverImage] : undefined,
+      // Zelfde val als de homepage: deze openGraph-override vervangt het
+      // geheel (geen deep-merge), dus zonder expliciete fallback verliest
+      // een post zonder eigen cover-afbeelding zijn og:image helemaal.
+      images: post.coverImage
+        ? [post.coverImage]
+        : [`${process.env.NEXT_PUBLIC_APP_URL ?? 'https://magnus-potens.com'}/opengraph-image.png`],
     },
   }
 }

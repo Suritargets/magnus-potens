@@ -1,8 +1,20 @@
 export const dynamic = 'force-dynamic'
 
-import { getTranslations } from 'next-intl/server'
+import type { Metadata } from 'next'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { BookingCalendar } from '@/components/sections/BookingCalendar'
 import { Reveal } from '@/components/motion/Reveal'
+import { languageAlternates, localePath } from '@/lib/seo'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale()
+  const t = await getTranslations('consultation')
+  return {
+    title: t('headline'),
+    description: t('subtitle'),
+    alternates: { canonical: localePath(locale, '/consultation'), languages: languageAlternates('/consultation') },
+  }
+}
 
 export default async function ConsultationPage() {
   const t = await getTranslations('consultation')

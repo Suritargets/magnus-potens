@@ -8,14 +8,15 @@ import { getLocale, getTranslations } from 'next-intl/server'
 import { BlogCard } from '@/components/sections/BlogCard'
 import { Reveal } from '@/components/motion/Reveal'
 import { Stagger, StaggerItem } from '@/components/motion/Stagger'
-import { languageAlternates } from '@/lib/seo'
+import { languageAlternates, localePath } from '@/lib/seo'
 
 export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale()
   const t = await getTranslations('blog')
   return {
     title: t('headline'),
     description: t('subtitle'),
-    alternates: { languages: languageAlternates('/blog') },
+    alternates: { canonical: localePath(locale, '/blog'), languages: languageAlternates('/blog') },
   }
 }
 

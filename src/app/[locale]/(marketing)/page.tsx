@@ -6,7 +6,7 @@ import { Practice } from '@/components/sections/Practice'
 import { Approach } from '@/components/sections/Approach'
 import { SloganBand } from '@/components/sections/SloganBand'
 import { Contact } from '@/components/sections/Contact'
-import { languageAlternates, ogLocale } from '@/lib/seo'
+import { languageAlternates, localePath, ogLocale } from '@/lib/seo'
 import type { Locale } from '@/lib/i18n'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Home',
     description: t('subtitle'),
-    alternates: { languages: languageAlternates('') },
+    alternates: { canonical: localePath(locale, ''), languages: languageAlternates('') },
     openGraph: {
       type: 'website',
       siteName: 'Magnus & Potens',

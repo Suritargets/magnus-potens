@@ -7,6 +7,27 @@ const withBundleAnalyzer = createBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
 
+// Statisch (geen nonce) — een nonce-gebaseerde CSP vereist dat de middleware
+// de x-nonce header doorgeeft aan de next-intl-middlewarechain, wat op een
+// hydration-mismatch (kapotte pagina) kan uitlopen als dat niet exact goed
+// gaat. 'unsafe-inline' voor style-src is noodzakelijk: deze codebase
+// gebruikt overal inline style={{...}}-attributen, geen losse stylesheets.
+const csp = [
+  "default-src 'self'",
+  // va.vercel-scripts.com: het @vercel/speed-insights script — laadt van en
+  // rapporteert naar dat domein, niet same-origin geproxied zoals verwacht.
+  "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' blob: data: https://*.public.blob.vercel-storage.com",
+  "font-src 'self'",
+  "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+  'upgrade-insecure-requests',
+].join('; ')
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
@@ -35,6 +56,13 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  async redirects() {
+    return [
+      // RFC 9116: clients mogen ook het legacy pad proberen.
+      { source: '/security.txt', destination: '/.well-known/security.txt', permanent: true },
+    ]
+  },
+
   async headers() {
     return [
       {
@@ -53,6 +81,7 @@ const nextConfig: NextConfig = {
           { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+          { key: 'Content-Security-Policy', value: csp },
         ],
       },
     ]

@@ -7,7 +7,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { languageAlternates } from '@/lib/seo'
+import { languageAlternates, localePath } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: page.metaTitle || page.title,
     description: page.metaDescription || undefined,
-    alternates: { languages: languageAlternates(`/${slug}`) },
+    alternates: { canonical: localePath(locale, `/${slug}`), languages: languageAlternates(`/${slug}`) },
   }
 }
 
