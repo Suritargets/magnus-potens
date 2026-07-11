@@ -1,7 +1,8 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { motion, useReducedMotion } from 'motion/react'
+import Link from 'next/link'
 import { Reveal } from '@/components/motion/Reveal'
 
 const EASE = [0.22, 1, 0.36, 1] as const
@@ -12,8 +13,16 @@ interface PracticeArea {
   desc: string
 }
 
+// Only areas with a published detail page get a slug — others render as static cards.
+// English titles only: the detail page itself isn't translated yet, so other locales
+// keep showing a plain (non-linked) card until that content is translated on request.
+const DETAIL_SLUGS: Record<string, string> = {
+  'Digital Transformation': '/practice/digital-transformation',
+}
+
 export function Practice() {
   const t = useTranslations('practice')
+  const locale = useLocale()
   const areas = t.raw('areas') as PracticeArea[]
   const reduce = useReducedMotion()
 
@@ -72,26 +81,9 @@ export function Practice() {
           {areas.map((area, index) => {
             const isLastRow = index >= 3
             const isLastInRow = (index + 1) % 3 === 0
-            return (
-              <motion.div
-                key={area.num}
-                className="p-8 md:p-10 group"
-                variants={{
-                  hidden: { opacity: 0, y: reduce ? 0 : 24 },
-                  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } },
-                }}
-                style={{
-                  borderRight: !isLastInRow ? '1px solid rgba(26, 24, 20, 0.14)' : 'none',
-                  borderBottom: !isLastRow ? '1px solid rgba(26, 24, 20, 0.14)' : 'none',
-                  transition: 'background 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.backgroundColor = 'rgba(199,158,107,0.06)'
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.backgroundColor = 'transparent'
-                }}
-              >
+            const href = locale === 'en' ? DETAIL_SLUGS[area.title] : undefined
+            const cardContent = (
+              <>
                 <p
                   className="text-[11px] mb-5 tracking-[0.1em]"
                   style={{
@@ -121,6 +113,35 @@ export function Practice() {
                 >
                   {area.desc}
                 </p>
+              </>
+            )
+            return (
+              <motion.div
+                key={area.num}
+                className="group"
+                variants={{
+                  hidden: { opacity: 0, y: reduce ? 0 : 24 },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } },
+                }}
+                style={{
+                  borderRight: !isLastInRow ? '1px solid rgba(26, 24, 20, 0.14)' : 'none',
+                  borderBottom: !isLastRow ? '1px solid rgba(26, 24, 20, 0.14)' : 'none',
+                  transition: 'background 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.backgroundColor = 'rgba(199,158,107,0.06)'
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.backgroundColor = 'transparent'
+                }}
+              >
+                {href ? (
+                  <Link href={href} className="block p-8 md:p-10" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    {cardContent}
+                  </Link>
+                ) : (
+                  <div className="p-8 md:p-10">{cardContent}</div>
+                )}
               </motion.div>
             )
           })}
