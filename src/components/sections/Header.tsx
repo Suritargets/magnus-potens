@@ -114,16 +114,14 @@ export function Header() {
             {t('blog')}
           </Link>
 
-          {/* Digital Transformation — English only until this page is translated */}
-          {locale === 'en' && (
-            <Link
-              href="/practice/digital-transformation"
-              className="mp-underline text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
-              style={navLinkStyle}
-            >
-              Digital Transformation
-            </Link>
-          )}
+          {/* Digital Transformation */}
+          <Link
+            href={`/${locale}/practice/digital-transformation`}
+            className="mp-underline text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
+            style={navLinkStyle}
+          >
+            {t('digitalTransformation')}
+          </Link>
 
           {/* Consultation CTA */}
           <Link
@@ -240,16 +238,14 @@ export function Header() {
             >
               {t('blog')}
             </Link>
-            {locale === 'en' && (
-              <Link
-                href="/practice/digital-transformation"
-                onClick={() => setOpen(false)}
-                className="px-3 py-3 text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors"
-                style={navLinkStyle}
-              >
-                Digital Transformation
-              </Link>
-            )}
+            <Link
+              href={`/${locale}/practice/digital-transformation`}
+              onClick={() => setOpen(false)}
+              className="px-3 py-3 text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors"
+              style={navLinkStyle}
+            >
+              {t('digitalTransformation')}
+            </Link>
             <Link
               href={`/${locale}/consultation`}
               onClick={() => setOpen(false)}

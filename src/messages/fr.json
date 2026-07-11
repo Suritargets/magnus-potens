@@ -5,6 +5,7 @@
     "approach": "Approche",
     "consultation": "Consultation",
     "blog": "Perspectives",
+    "digitalTransformation": "Transformation Digitale",
     "language": "Langue"
   },
   "hero": {
@@ -25,12 +26,12 @@
     "headline": "Conseil sur les affaires qui définissent un avenir.",
     "subtitle": "Six disciplines, une norme. Chaque mission est dirigée personnellement, avec la rigueur et la confidentialité que nos clients attendent.",
     "areas": [
-      {"num": "01", "title": "Droit des affaires et Commercial", "desc": "Structuration, gouvernance et les accords qui maintiennent les entreprises ensemble."},
-      {"num": "02", "title": "Contentieux", "desc": "Contentieux en droit civil et pénal."},
-      {"num": "03", "title": "Conseil Stratégique", "desc": "Conseil au-delà du juridique — guidance sur les décisions qui façonnent la direction."},
-      {"num": "04", "title": "Transformation Digitale", "desc": "Accompagnement de votre transformation digitale avec prévoyance et des résultats garantis."},
-      {"num": "05", "title": "Résolution des Litiges", "desc": "Représentation mesurée et résolue lorsque la protection exige une position ferme."},
-      {"num": "06", "title": "Réglementation et Conformité", "desc": "Navigation dans les cadres réglementaires de différentes juridictions avec prévoyance, sans friction."}
+      {"id": "corporate-commercial", "num": "01", "title": "Droit des affaires et Commercial", "desc": "Structuration, gouvernance et les accords qui maintiennent les entreprises ensemble."},
+      {"id": "litigation", "num": "02", "title": "Contentieux", "desc": "Contentieux en droit civil et pénal."},
+      {"id": "strategic-advisory", "num": "03", "title": "Conseil Stratégique", "desc": "Conseil au-delà du juridique — guidance sur les décisions qui façonnent la direction."},
+      {"id": "digital-transformation", "num": "04", "title": "Transformation Digitale", "desc": "Accompagnement de votre transformation digitale avec prévoyance et des résultats garantis."},
+      {"id": "dispute-resolution", "num": "05", "title": "Résolution des Litiges", "desc": "Représentation mesurée et résolue lorsque la protection exige une position ferme."},
+      {"id": "regulatory-compliance", "num": "06", "title": "Réglementation et Conformité", "desc": "Navigation dans les cadres réglementaires de différentes juridictions avec prévoyance, sans friction."}
     ]
   },
   "approach": {
@@ -138,5 +139,33 @@
       "message_placeholder": "Décrivez brièvement votre affaire — traitée en toute confidentialité.",
       "change_date": "Changer la date"
     }
+  },
+  "digitalTransformation": {
+    "label": "Transformation Digitale",
+    "metaTitle": "Transformation Digitale",
+    "metaDescription": "Le changement n'est plus une option. Nous évaluons votre maturité numérique, définissons les priorités essentielles et construisons une feuille de route de transformation cohérente — un conseil indépendant, de la stratégie à l'exécution.",
+    "headline1": "Le changement n'est plus une option",
+    "headlineEm": "—il est essentiel.",
+    "intro": "Les avancées en IA, en analytique, dans le cloud et les technologies connectées redéfinissent la manière dont les organisations sont en concurrence, opèrent et créent de la valeur — et les modèles économiques traditionnels qui réussissaient autrefois ne suffisent tout simplement plus.",
+    "p1": "La transformation digitale ne consiste pas à acheter la dernière technologie ; c'est un changement à l'échelle de toute l'entreprise, dans les mentalités, les compétences et le leadership, qui transforme la disruption en avantage.",
+    "p2": "Les organisations qui prospèrent — les véritables Digital Masters — sont celles qui allient un investissement technologique audacieux à une vision stratégique claire et un leadership digital fort.",
+    "subheading": "C'est précisément là que nous intervenons.",
+    "p3": "Nous évaluons votre maturité digitale actuelle, définissons les priorités stratégiques essentielles et construisons une feuille de route de transformation cohérente.",
+    "boxIntroBefore": "Comme nous ne développons pas les applications nous-mêmes, nous fournissons un ",
+    "boxIntroHighlight": "conseil indépendant et rigoureux",
+    "boxIntroAfter": " pour, au choix :",
+    "option1": "vous mettre en relation avec le bon partenaire d'exécution pour votre vision, ou",
+    "option2": "superviser la livraison avec un partenaire en qui vous avez déjà confiance,",
+    "boxClosing": "afin que chaque recommandation ne serve que vos intérêts.",
+    "p4": "Nous adoptons également une approche holistique de la dimension humaine du changement — en dotant vos dirigeants, managers et collaborateurs des compétences digitales, de l'état d'esprit et des capacités de leadership qu'exige la transformation. Car la technologie ne porte ses fruits que lorsque les personnes qui la portent sont prêtes à la diriger.",
+    "p5": "Nous supervisons ensuite la livraison à chaque étape, en gardant la technologie, la stratégie et la culture alignées, afin que la vision reste sur la bonne voie et devienne un avantage concurrentiel durable.",
+    "howWeWork": "Notre Méthode",
+    "steps": [
+      { "num": "I", "title": "Stratégie", "desc": "Évaluation de maturité & feuille de route" },
+      { "num": "II", "title": "Sélection du partenaire", "desc": "Mise en relation avec un nouveau partenaire, ou supervision d'un partenaire de confiance" },
+      { "num": "III", "title": "Personnes & compétences", "desc": "Compétences, capacité et formation au leadership" },
+      { "num": "IV", "title": "Supervision continue", "desc": "Suivi de la livraison, maintien du cap stratégique" }
+    ],
+    "backLink": "Tous les domaines de pratique"
   }
 }

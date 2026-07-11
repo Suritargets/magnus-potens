@@ -5,6 +5,7 @@
     "approach": "Aanpak",
     "consultation": "Consultatie",
     "blog": "Inzichten",
+    "digitalTransformation": "Digitale Transformatie",
     "language": "Taal"
   },
   "hero": {
@@ -25,12 +26,12 @@
     "headline": "Advies over de zaken die een toekomst bepalen.",
     "subtitle": "Zes disciplines, één norm. Elke opdracht wordt persoonlijk geleid, met de nauwkeurigheid en vertrouwelijkheid die onze cliënten verwachten.",
     "areas": [
-      {"num": "01", "title": "Corporate & Commercieel", "desc": "Structurering, governance en de overeenkomsten die ondernemingen bij elkaar houden."},
-      {"num": "02", "title": "Procesrecht", "desc": "Procesvoering in het civiel en strafrecht."},
-      {"num": "03", "title": "Strategisch Advies", "desc": "Advies voorbij het juridische — begeleiding bij beslissingen die richting bepalen."},
-      {"num": "04", "title": "Digitale Transformatie", "desc": "Begeleiding bij uw digitale transformatie met vooruitziendheid en gegarandeerde resultaten."},
-      {"num": "05", "title": "Geschillenbeslechting", "desc": "Gemeten, vastberaden vertegenwoordiging wanneer bescherming een standpunt vereist."},
-      {"num": "06", "title": "Regelgeving & Compliance", "desc": "Navigeren door kaders over jurisdicties heen met vooruitziendheid, niet met wrijving."}
+      {"id": "corporate-commercial", "num": "01", "title": "Corporate & Commercieel", "desc": "Structurering, governance en de overeenkomsten die ondernemingen bij elkaar houden."},
+      {"id": "litigation", "num": "02", "title": "Procesrecht", "desc": "Procesvoering in het civiel en strafrecht."},
+      {"id": "strategic-advisory", "num": "03", "title": "Strategisch Advies", "desc": "Advies voorbij het juridische — begeleiding bij beslissingen die richting bepalen."},
+      {"id": "digital-transformation", "num": "04", "title": "Digitale Transformatie", "desc": "Begeleiding bij uw digitale transformatie met vooruitziendheid en gegarandeerde resultaten."},
+      {"id": "dispute-resolution", "num": "05", "title": "Geschillenbeslechting", "desc": "Gemeten, vastberaden vertegenwoordiging wanneer bescherming een standpunt vereist."},
+      {"id": "regulatory-compliance", "num": "06", "title": "Regelgeving & Compliance", "desc": "Navigeren door kaders over jurisdicties heen met vooruitziendheid, niet met wrijving."}
     ]
   },
   "approach": {
@@ -138,5 +139,33 @@
       "message_placeholder": "Omschrijf kort uw kwestie — volledig vertrouwelijk behandeld.",
       "change_date": "Wijzig datum"
     }
+  },
+  "digitalTransformation": {
+    "label": "Digitale Transformatie",
+    "metaTitle": "Digitale Transformatie",
+    "metaDescription": "Verandering is niet langer optioneel. Wij brengen uw digitale volwassenheid in kaart, bepalen wat het meest telt, en bouwen een samenhangende transformatie-roadmap — onafhankelijk advies, van strategie tot uitvoering.",
+    "headline1": "Verandering is niet langer optioneel",
+    "headlineEm": "—het is essentieel.",
+    "intro": "Ontwikkelingen in AI, analytics, cloud en verbonden technologieën herschrijven hoe organisaties concurreren, opereren en waarde creëren — en traditionele bedrijfsmodellen die ooit succesvol waren, volstaan simpelweg niet meer.",
+    "p1": "Digitale transformatie gaat niet over het kopen van de nieuwste technologie; het is een organisatiebrede verschuiving in mindset, capaciteiten en leiderschap die verstoring omzet in voordeel.",
+    "p2": "De organisaties die floreren — de echte Digital Masters — zijn degenen die gedurfde technologische investeringen combineren met een heldere strategische visie en sterk digitaal leiderschap.",
+    "subheading": "Dat is precies waar wij in beeld komen.",
+    "p3": "Wij brengen uw huidige digitale volwassenheid in kaart, bepalen de strategische prioriteiten die het meest tellen, en bouwen een samenhangende transformatie-roadmap.",
+    "boxIntroBefore": "Omdat wij de applicaties niet zelf bouwen, geven wij ",
+    "boxIntroHighlight": "onafhankelijk, gedegen advies",
+    "boxIntroAfter": " — om ofwel:",
+    "option1": "u te koppelen aan de juiste uitvoeringspartner voor uw visie, of",
+    "option2": "toezicht te houden op de uitvoering door een partner die u al vertrouwt,",
+    "boxClosing": "zodat elke aanbeveling uitsluitend uw belang dient.",
+    "p4": "Wij hanteren ook een holistische benadering van de menselijke kant van verandering — door uw bestuurders, managers en medewerkers uit te rusten met de digitale vaardigheden, mindset en leiderschapscapaciteiten die transformatie vereist. Want technologie levert alleen resultaat wanneer de mensen erachter er klaar voor zijn om het te leiden.",
+    "p5": "Vanaf dat moment bewaken wij de uitvoering bij elke stap, zodat technologie, strategie en cultuur op elkaar afgestemd blijven — waardoor de visie op koers blijft en uitgroeit tot een blijvend concurrentievoordeel.",
+    "howWeWork": "Hoe Wij Werken",
+    "steps": [
+      { "num": "I", "title": "Strategie", "desc": "Volwassenheidsanalyse & roadmap" },
+      { "num": "II", "title": "Partnerselectie", "desc": "Een nieuwe partner koppelen, of toezicht houden op een bestaande" },
+      { "num": "III", "title": "Mensen & capaciteit", "desc": "Vaardigheden, capaciteit en leiderschapstraining" },
+      { "num": "IV", "title": "Doorlopend toezicht", "desc": "Uitvoering monitoren, visie op koers houden" }
+    ],
+    "backLink": "Alle praktijkgebieden"
   }
 }

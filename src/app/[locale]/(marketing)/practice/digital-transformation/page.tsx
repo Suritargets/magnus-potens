@@ -1,32 +1,28 @@
 import type { Metadata } from 'next'
 import type { CSSProperties } from 'react'
-import { getLocale } from 'next-intl/server'
+import { getLocale, getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { Reveal } from '@/components/motion/Reveal'
 import { languageAlternates, localePath } from '@/lib/seo'
 
-const TITLE = 'Digital Transformation'
-const DESCRIPTION =
-  "Change is no longer optional. We assess your digital maturity, define what matters most, and build a coherent transformation roadmap — independent advice, from strategy through delivery."
+interface Step {
+  num: string
+  title: string
+  desc: string
+}
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()
+  const t = await getTranslations('digitalTransformation')
   return {
-    title: TITLE,
-    description: DESCRIPTION,
+    title: t('metaTitle'),
+    description: t('metaDescription'),
     alternates: {
       canonical: localePath(locale, '/practice/digital-transformation'),
       languages: languageAlternates('/practice/digital-transformation'),
     },
   }
 }
-
-const STEPS = [
-  { num: 'I', title: 'Strategy', desc: 'Maturity assessment & roadmap' },
-  { num: 'II', title: 'Partner selection', desc: 'Match a new partner, or oversee one you trust' },
-  { num: 'III', title: 'People & capability', desc: 'Skills, capacity, and leadership training' },
-  { num: 'IV', title: 'Ongoing oversight', desc: 'Monitoring delivery, keeping the vision on track' },
-]
 
 const bodyText: CSSProperties = {
   fontFamily: "'Jost', sans-serif",
@@ -37,6 +33,10 @@ const bodyText: CSSProperties = {
 }
 
 export default async function DigitalTransformationPage() {
+  const locale = await getLocale()
+  const t = await getTranslations('digitalTransformation')
+  const steps = t.raw('steps') as Step[]
+
   return (
     <main style={{ background: '#0F1014', minHeight: '100vh', paddingTop: 120 }}>
       <article style={{ maxWidth: 700, margin: '0 auto', padding: '0 32px 120px' }}>
@@ -55,7 +55,7 @@ export default async function DigitalTransformationPage() {
                 margin: 0,
               }}
             >
-              {TITLE}
+              {t('label')}
             </p>
           </div>
         </Reveal>
@@ -73,9 +73,9 @@ export default async function DigitalTransformationPage() {
               maxWidth: 560,
             }}
           >
-            Change is no longer optional
+            {t('headline1')}
             <br />
-            <em style={{ fontStyle: 'italic', color: '#C79E6B' }}>—it is essential.</em>
+            <em style={{ fontStyle: 'italic', color: '#C79E6B' }}>{t('headlineEm')}</em>
           </h1>
         </Reveal>
 
@@ -91,25 +91,16 @@ export default async function DigitalTransformationPage() {
               margin: '0 0 28px',
             }}
           >
-            Advances in AI, analytics, cloud, and connected technologies are rewriting how
-            organizations compete, operate, and create value — and traditional business models
-            that once succeeded are simply no longer enough.
+            {t('intro')}
           </p>
         </Reveal>
 
         <Reveal delay={0.2}>
-          <p style={bodyText}>
-            Digital transformation is not about buying the latest technology; it is a
-            company-wide shift in mindset, capabilities, and leadership that turns disruption
-            into advantage.
-          </p>
+          <p style={bodyText}>{t('p1')}</p>
         </Reveal>
 
         <Reveal delay={0.24}>
-          <p style={bodyText}>
-            The organizations that thrive — the true Digital Masters — are those that pair bold
-            technological investment with clear strategic vision and strong digital leadership.
-          </p>
+          <p style={bodyText}>{t('p2')}</p>
         </Reveal>
 
         <Reveal delay={0.28}>
@@ -122,15 +113,12 @@ export default async function DigitalTransformationPage() {
               margin: '40px 0 28px',
             }}
           >
-            That is exactly where we come in.
+            {t('subheading')}
           </p>
         </Reveal>
 
         <Reveal delay={0.3}>
-          <p style={bodyText}>
-            We assess your current digital maturity, define the strategic priorities that matter
-            most, and build a coherent transformation roadmap.
-          </p>
+          <p style={bodyText}>{t('p3')}</p>
         </Reveal>
 
         {/* Highlight box */}
@@ -152,14 +140,12 @@ export default async function DigitalTransformationPage() {
                 margin: '0 0 20px',
               }}
             >
-              Because we don&apos;t build the applications ourselves, we provide{' '}
-              <span style={{ color: '#C79E6B' }}>independent, sound advice</span> — to either:
+              {t('boxIntroBefore')}
+              <span style={{ color: '#C79E6B' }}>{t('boxIntroHighlight')}</span>
+              {t('boxIntroAfter')}
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 20 }}>
-              {[
-                'match you with the right execution partner for your vision, or',
-                'oversee delivery with a partner you already trust,',
-              ].map((option) => (
+              {[t('option1'), t('option2')].map((option) => (
                 <div key={option} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                   <span
                     style={{
@@ -194,26 +180,17 @@ export default async function DigitalTransformationPage() {
                 margin: 0,
               }}
             >
-              so every recommendation serves you, and you alone.
+              {t('boxClosing')}
             </p>
           </div>
         </Reveal>
 
         <Reveal delay={0.38}>
-          <p style={bodyText}>
-            We also take a holistic approach to the human side of change — equipping your
-            executives, managers, and staff with the digital skills, mindset, and leadership
-            capabilities transformation demands. Because technology only delivers when the
-            people behind it are ready to lead it.
-          </p>
+          <p style={bodyText}>{t('p4')}</p>
         </Reveal>
 
         <Reveal delay={0.42}>
-          <p style={{ ...bodyText, margin: 0 }}>
-            From there, we monitor delivery every step of the way, keeping technology, strategy,
-            and culture aligned so the vision stays on track and becomes lasting competitive
-            advantage.
-          </p>
+          <p style={{ ...bodyText, margin: 0 }}>{t('p5')}</p>
         </Reveal>
 
         {/* Divider */}
@@ -232,12 +209,12 @@ export default async function DigitalTransformationPage() {
               margin: '0 0 8px',
             }}
           >
-            How We Work
+            {t('howWeWork')}
           </p>
         </Reveal>
 
         <div>
-          {STEPS.map((step, i) => (
+          {steps.map((step, i) => (
             <Reveal key={step.num} delay={0.06 * i}>
               <div
                 style={{
@@ -245,7 +222,7 @@ export default async function DigitalTransformationPage() {
                   alignItems: 'baseline',
                   gap: 24,
                   padding: '20px 0',
-                  borderBottom: i < STEPS.length - 1 ? '1px solid rgba(199,158,107,0.15)' : 'none',
+                  borderBottom: i < steps.length - 1 ? '1px solid rgba(199,158,107,0.15)' : 'none',
                 }}
               >
                 <span
@@ -292,7 +269,7 @@ export default async function DigitalTransformationPage() {
         <Reveal delay={0.1}>
           <div style={{ marginTop: 56 }}>
             <Link
-              href="/#practice"
+              href={`/${locale}#practice`}
               style={{
                 fontFamily: "'Jost', sans-serif",
                 fontSize: 11,
@@ -302,7 +279,7 @@ export default async function DigitalTransformationPage() {
                 textDecoration: 'none',
               }}
             >
-              ← All practice areas
+              ← {t('backLink')}
             </Link>
           </div>
         </Reveal>

@@ -8,16 +8,16 @@ import { Reveal } from '@/components/motion/Reveal'
 const EASE = [0.22, 1, 0.36, 1] as const
 
 interface PracticeArea {
+  id: string
   num: string
   title: string
   desc: string
 }
 
-// Only areas with a published detail page get a slug — others render as static cards.
-// English titles only: the detail page itself isn't translated yet, so other locales
-// keep showing a plain (non-linked) card until that content is translated on request.
+// Only areas with a published detail page get a slug — matched by locale-independent
+// id, not the translated title — others render as static (non-linked) cards.
 const DETAIL_SLUGS: Record<string, string> = {
-  'Digital Transformation': '/practice/digital-transformation',
+  'digital-transformation': '/practice/digital-transformation',
 }
 
 export function Practice() {
@@ -81,7 +81,7 @@ export function Practice() {
           {areas.map((area, index) => {
             const isLastRow = index >= 3
             const isLastInRow = (index + 1) % 3 === 0
-            const href = locale === 'en' ? DETAIL_SLUGS[area.title] : undefined
+            const href = DETAIL_SLUGS[area.id] ? `/${locale}${DETAIL_SLUGS[area.id]}` : undefined
             const cardContent = (
               <>
                 <p

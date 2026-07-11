@@ -5,6 +5,7 @@
     "approach": "Enfoque",
     "consultation": "Consulta",
     "blog": "Perspectivas",
+    "digitalTransformation": "Transformación Digital",
     "language": "Idioma"
   },
   "hero": {
@@ -25,12 +26,12 @@
     "headline": "Asesoramiento en los asuntos que definen un futuro.",
     "subtitle": "Seis disciplinas, un estándar. Cada compromiso es liderado personalmente, con el rigor y la confidencialidad que nuestros clientes esperan.",
     "areas": [
-      {"num": "01", "title": "Corporativo y Comercial", "desc": "Estructuración, gobernanza y los acuerdos que mantienen unidas las empresas."},
-      {"num": "02", "title": "Litigios", "desc": "Litigios en derecho civil y penal."},
-      {"num": "03", "title": "Asesoramiento Estratégico", "desc": "Consejo más allá de lo jurídico — orientación en las decisiones que dan dirección."},
-      {"num": "04", "title": "Transformación Digital", "desc": "Orientación en sus marcos de transformación digital con previsión y resultados garantizados."},
-      {"num": "05", "title": "Resolución de Disputas", "desc": "Representación mesurada y firme cuando la protección exige una posición sólida."},
-      {"num": "06", "title": "Regulación y Cumplimiento", "desc": "Navegando marcos en distintas jurisdicciones con previsión, no con fricción."}
+      {"id": "corporate-commercial", "num": "01", "title": "Corporativo y Comercial", "desc": "Estructuración, gobernanza y los acuerdos que mantienen unidas las empresas."},
+      {"id": "litigation", "num": "02", "title": "Litigios", "desc": "Litigios en derecho civil y penal."},
+      {"id": "strategic-advisory", "num": "03", "title": "Asesoramiento Estratégico", "desc": "Consejo más allá de lo jurídico — orientación en las decisiones que dan dirección."},
+      {"id": "digital-transformation", "num": "04", "title": "Transformación Digital", "desc": "Orientación en sus marcos de transformación digital con previsión y resultados garantizados."},
+      {"id": "dispute-resolution", "num": "05", "title": "Resolución de Disputas", "desc": "Representación mesurada y firme cuando la protección exige una posición sólida."},
+      {"id": "regulatory-compliance", "num": "06", "title": "Regulación y Cumplimiento", "desc": "Navegando marcos en distintas jurisdicciones con previsión, no con fricción."}
     ]
   },
   "approach": {
@@ -138,5 +139,33 @@
       "message_placeholder": "Describa brevemente su asunto — tratado con plena confidencialidad.",
       "change_date": "Cambiar fecha"
     }
+  },
+  "digitalTransformation": {
+    "label": "Transformación Digital",
+    "metaTitle": "Transformación Digital",
+    "metaDescription": "El cambio ya no es opcional. Evaluamos su madurez digital, definimos lo que más importa y construimos una hoja de ruta de transformación coherente — asesoramiento independiente, desde la estrategia hasta la ejecución.",
+    "headline1": "El cambio ya no es opcional",
+    "headlineEm": "—es esencial.",
+    "intro": "Los avances en IA, analítica, la nube y las tecnologías conectadas están redefiniendo cómo compiten, operan y generan valor las organizaciones — y los modelos de negocio tradicionales que antes tenían éxito ya no son suficientes.",
+    "p1": "La transformación digital no consiste en comprar la última tecnología; es un cambio a nivel de toda la empresa en mentalidad, capacidades y liderazgo que convierte la disrupción en ventaja.",
+    "p2": "Las organizaciones que prosperan — los verdaderos Digital Masters — son aquellas que combinan una inversión tecnológica audaz con una visión estratégica clara y un liderazgo digital sólido.",
+    "subheading": "Ahí es exactamente donde entramos nosotros.",
+    "p3": "Evaluamos su madurez digital actual, definimos las prioridades estratégicas que más importan, y construimos una hoja de ruta de transformación coherente.",
+    "boxIntroBefore": "Como nosotros no desarrollamos las aplicaciones, ofrecemos ",
+    "boxIntroHighlight": "asesoramiento independiente y sólido",
+    "boxIntroAfter": " para, o bien:",
+    "option1": "conectarle con el socio de ejecución adecuado para su visión, o",
+    "option2": "supervisar la entrega junto a un socio en el que ya confía,",
+    "boxClosing": "de modo que cada recomendación le sirva únicamente a usted.",
+    "p4": "También adoptamos un enfoque integral del lado humano del cambio — dotando a sus directivos, gerentes y equipos de las habilidades digitales, la mentalidad y las capacidades de liderazgo que exige la transformación. Porque la tecnología solo da resultados cuando las personas detrás de ella están preparadas para liderarla.",
+    "p5": "A partir de ahí, supervisamos la ejecución en cada etapa, manteniendo alineados la tecnología, la estrategia y la cultura, para que la visión se mantenga en curso y se convierta en una ventaja competitiva duradera.",
+    "howWeWork": "Cómo Trabajamos",
+    "steps": [
+      { "num": "I", "title": "Estrategia", "desc": "Evaluación de madurez y hoja de ruta" },
+      { "num": "II", "title": "Selección de socio", "desc": "Conectar con un nuevo socio, o supervisar uno de confianza" },
+      { "num": "III", "title": "Personas y capacidad", "desc": "Habilidades, capacidad y formación en liderazgo" },
+      { "num": "IV", "title": "Supervisión continua", "desc": "Monitoreo de la entrega, manteniendo la visión en curso" }
+    ],
+    "backLink": "Todas las áreas de práctica"
   }
 }

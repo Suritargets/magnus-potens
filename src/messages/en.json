@@ -5,6 +5,7 @@
     "approach": "Approach",
     "consultation": "Consultation",
     "blog": "Insights",
+    "digitalTransformation": "Digital Transformation",
     "language": "Language"
   },
   "hero": {
@@ -25,12 +26,12 @@
     "headline": "Counsel across the matters that define a future.",
     "subtitle": "Six disciplines, one standard. Every engagement is led personally, with the rigour and confidentiality our clients expect.",
     "areas": [
-      {"num": "01", "title": "Dispute Resolution", "desc": "Measured, resolute representation when protection demands a firm stand."},
-      {"num": "02", "title": "Litigation", "desc": "Litigation in civil and criminal law."},
-      {"num": "03", "title": "Corporate & Commercial", "desc": "Structuring, governance, and the agreements that hold enterprises together."},
-      {"num": "04", "title": "Strategic Advisory", "desc": "Counsel beyond the legal — guidance on the decisions that shape direction."},
-      {"num": "05", "title": "Regulatory & Compliance", "desc": "Navigating frameworks across jurisdictions with foresight, not friction."},
-      {"num": "06", "title": "Digital Transformation", "desc": "Navigating your digital transformation frameworks with foresight and guaranteed results."}
+      {"id": "dispute-resolution", "num": "01", "title": "Dispute Resolution", "desc": "Measured, resolute representation when protection demands a firm stand."},
+      {"id": "litigation", "num": "02", "title": "Litigation", "desc": "Litigation in civil and criminal law."},
+      {"id": "corporate-commercial", "num": "03", "title": "Corporate & Commercial", "desc": "Structuring, governance, and the agreements that hold enterprises together."},
+      {"id": "strategic-advisory", "num": "04", "title": "Strategic Advisory", "desc": "Counsel beyond the legal — guidance on the decisions that shape direction."},
+      {"id": "regulatory-compliance", "num": "05", "title": "Regulatory & Compliance", "desc": "Navigating frameworks across jurisdictions with foresight, not friction."},
+      {"id": "digital-transformation", "num": "06", "title": "Digital Transformation", "desc": "Navigating your digital transformation frameworks with foresight and guaranteed results."}
     ]
   },
   "approach": {
@@ -138,5 +139,33 @@
       "message_placeholder": "Briefly describe your matter — treated in full confidence.",
       "change_date": "Change date"
     }
+  },
+  "digitalTransformation": {
+    "label": "Digital Transformation",
+    "metaTitle": "Digital Transformation",
+    "metaDescription": "Change is no longer optional. We assess your digital maturity, define what matters most, and build a coherent transformation roadmap — independent advice, from strategy through delivery.",
+    "headline1": "Change is no longer optional",
+    "headlineEm": "—it is essential.",
+    "intro": "Advances in AI, analytics, cloud, and connected technologies are rewriting how organizations compete, operate, and create value — and traditional business models that once succeeded are simply no longer enough.",
+    "p1": "Digital transformation is not about buying the latest technology; it is a company-wide shift in mindset, capabilities, and leadership that turns disruption into advantage.",
+    "p2": "The organizations that thrive — the true Digital Masters — are those that pair bold technological investment with clear strategic vision and strong digital leadership.",
+    "subheading": "That is exactly where we come in.",
+    "p3": "We assess your current digital maturity, define the strategic priorities that matter most, and build a coherent transformation roadmap.",
+    "boxIntroBefore": "Because we don't build the applications ourselves, we provide ",
+    "boxIntroHighlight": "independent, sound advice",
+    "boxIntroAfter": " — to either:",
+    "option1": "match you with the right execution partner for your vision, or",
+    "option2": "oversee delivery with a partner you already trust,",
+    "boxClosing": "so every recommendation serves you, and you alone.",
+    "p4": "We also take a holistic approach to the human side of change — equipping your executives, managers, and staff with the digital skills, mindset, and leadership capabilities transformation demands. Because technology only delivers when the people behind it are ready to lead it.",
+    "p5": "From there, we monitor delivery every step of the way, keeping technology, strategy, and culture aligned so the vision stays on track and becomes lasting competitive advantage.",
+    "howWeWork": "How We Work",
+    "steps": [
+      { "num": "I", "title": "Strategy", "desc": "Maturity assessment & roadmap" },
+      { "num": "II", "title": "Partner selection", "desc": "Match a new partner, or oversee one you trust" },
+      { "num": "III", "title": "People & capability", "desc": "Skills, capacity, and leadership training" },
+      { "num": "IV", "title": "Ongoing oversight", "desc": "Monitoring delivery, keeping the vision on track" }
+    ],
+    "backLink": "All practice areas"
   }
 }
