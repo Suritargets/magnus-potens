@@ -3,7 +3,8 @@ import { getLocale, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Reveal } from '@/components/motion/Reveal'
-import { languageAlternates, localePath } from '@/lib/seo'
+import { languageAlternates, localePath, ogLocale } from '@/lib/seo'
+import type { Locale } from '@/lib/i18n'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -53,12 +54,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const tdAll = await getTranslations('practiceDetail')
   const detail = tdAll.raw(slug) as PracticeDetail
+  const url = localePath(locale, `/practice/${slug}`)
   return {
     title: area.title,
     description: detail.tagline,
     alternates: {
-      canonical: localePath(locale, `/practice/${slug}`),
+      canonical: url,
       languages: languageAlternates(`/practice/${slug}`),
+    },
+    openGraph: {
+      type: 'website',
+      siteName: 'Magnus & Potens',
+      locale: ogLocale(locale as Locale),
+      title: area.title,
+      description: detail.tagline,
+      url,
+      images: [`${process.env.NEXT_PUBLIC_APP_URL ?? 'https://magnus-potens.com'}/opengraph-image.png`],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: area.title,
+      description: detail.tagline,
     },
   }
 }
@@ -82,8 +98,25 @@ export default async function PracticeAreaPage({ params }: Props) {
   const detail = tdAll.raw(slug) as PracticeDetail
   const { tagline, bullets, intro, p1, p2, howWeWork, steps } = detail
 
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: area.title,
+    name: area.title,
+    description: tagline,
+    provider: { '@type': 'LegalService', name: 'Magnus & Potens' },
+    areaServed: 'SR',
+    url: localePath(locale, `/practice/${slug}`),
+  }
+
   return (
     <main style={{ background: '#0F1014', minHeight: '100vh', paddingTop: 120 }}>
+      <script
+        type="application/ld+json"
+        // Zelfde escaping als de blogpost-pagina: content is JSON, geen HTML,
+        // maar een letterlijke "</script>" in vertaalde tekst mag de tag niet sluiten.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd).replace(/</g, '\\u003c') }}
+      />
       <article style={{ maxWidth: 700, margin: '0 auto', padding: '0 32px 120px' }}>
         {/* Eyebrow */}
         <Reveal>

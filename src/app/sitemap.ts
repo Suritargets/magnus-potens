@@ -23,6 +23,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
+  // Practice-area detail pages (Dispute Resolution, Litigation, Corporate &
+  // Commercial, Regulatory & Compliance, Strategic Advisory, Digital
+  // Transformation) — same slugs across all 6 locales.
+  const practiceSlugs = [
+    'dispute-resolution',
+    'litigation',
+    'corporate-commercial',
+    'regulatory-compliance',
+    'strategic-advisory',
+    'digital-transformation',
+  ]
+  for (const slug of practiceSlugs) {
+    const path = `/practice/${slug}`
+    for (const locale of locales) {
+      entries.push({
+        url: localePath(locale, path),
+        lastModified: now,
+        changeFrequency: 'monthly',
+        priority: 0.6,
+        alternates: { languages: languageAlternates(path) },
+      })
+    }
+  }
+
   // Gepubliceerde blogposts (elke post bestaat maar in één taal).
   const posts = await db
     .select({ slug: blogPosts.slug, locale: blogPosts.locale, updatedAt: blogPosts.updatedAt })

@@ -3,7 +3,8 @@ import type { CSSProperties } from 'react'
 import { getLocale, getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { Reveal } from '@/components/motion/Reveal'
-import { languageAlternates, localePath } from '@/lib/seo'
+import { languageAlternates, localePath, ogLocale } from '@/lib/seo'
+import type { Locale } from '@/lib/i18n'
 
 interface Step {
   num: string
@@ -14,12 +15,29 @@ interface Step {
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()
   const t = await getTranslations('digitalTransformation')
+  const url = localePath(locale, '/practice/digital-transformation')
+  const title = t('metaTitle')
+  const description = t('metaDescription')
   return {
-    title: t('metaTitle'),
-    description: t('metaDescription'),
+    title,
+    description,
     alternates: {
-      canonical: localePath(locale, '/practice/digital-transformation'),
+      canonical: url,
       languages: languageAlternates('/practice/digital-transformation'),
+    },
+    openGraph: {
+      type: 'website',
+      siteName: 'Magnus & Potens',
+      locale: ogLocale(locale as Locale),
+      title,
+      description,
+      url,
+      images: [`${process.env.NEXT_PUBLIC_APP_URL ?? 'https://magnus-potens.com'}/opengraph-image.png`],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
     },
   }
 }
@@ -37,8 +55,23 @@ export default async function DigitalTransformationPage() {
   const t = await getTranslations('digitalTransformation')
   const steps = t.raw('steps') as Step[]
 
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: t('label'),
+    name: t('label'),
+    description: t('metaDescription'),
+    provider: { '@type': 'LegalService', name: 'Magnus & Potens' },
+    areaServed: 'SR',
+    url: localePath(locale, '/practice/digital-transformation'),
+  }
+
   return (
     <main style={{ background: '#0F1014', minHeight: '100vh', paddingTop: 120 }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd).replace(/</g, '\\u003c') }}
+      />
       <article style={{ maxWidth: 700, margin: '0 auto', padding: '0 32px 120px' }}>
         {/* Eyebrow */}
         <Reveal>

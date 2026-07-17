@@ -23,6 +23,15 @@ The site is available in English, Dutch, Spanish, French, Portuguese, and Simpli
 - [Privacy Policy](${BASE_URL}/privacy)
 - [Terms of Service](${BASE_URL}/terms)
 
+## Practice areas
+
+- [Dispute Resolution](${BASE_URL}/practice/dispute-resolution)
+- [Litigation](${BASE_URL}/practice/litigation)
+- [Corporate & Commercial](${BASE_URL}/practice/corporate-commercial)
+- [Strategic Advisory](${BASE_URL}/practice/strategic-advisory)
+- [Regulatory & Compliance](${BASE_URL}/practice/regulatory-compliance)
+- [Digital Transformation](${BASE_URL}/practice/digital-transformation)
+
 ## Contact
 
 - Email: info@magnus-potens.com
