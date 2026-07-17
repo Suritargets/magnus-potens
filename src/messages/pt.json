@@ -26,12 +26,12 @@
     "headline": "Aconselhamento nas questões que definem um futuro.",
     "subtitle": "Seis áreas, um único padrão. Cada mandato é conduzido pessoalmente, com o rigor e a confidencialidade que os nossos clientes esperam.",
     "areas": [
-      {"id": "corporate-commercial", "num": "01", "title": "Societário & Comercial", "desc": "Estruturação, governança e os acordos que sustentam as empresas."},
+      {"id": "dispute-resolution", "num": "01", "title": "Resolução de Litígios", "desc": "Representação ponderada e determinada quando a proteção exige uma posição firme."},
       {"id": "litigation", "num": "02", "title": "Contencioso", "desc": "Contencioso em direito civil e penal."},
-      {"id": "strategic-advisory", "num": "03", "title": "Consultoria Estratégica", "desc": "Aconselhamento além do jurídico — orientação sobre as decisões que definem o rumo."},
-      {"id": "digital-transformation", "num": "04", "title": "Transformação Digital", "desc": "Navegar pelos seus quadros de transformação digital com visão e resultados garantidos."},
-      {"id": "dispute-resolution", "num": "05", "title": "Resolução de Litígios", "desc": "Representação ponderada e determinada quando a proteção exige uma posição firme."},
-      {"id": "regulatory-compliance", "num": "06", "title": "Regulatório & Compliance", "desc": "Navegar por enquadramentos regulatórios em diferentes jurisdições com visão, sem atrito."}
+      {"id": "corporate-commercial", "num": "03", "title": "Societário & Comercial", "desc": "Estruturação, governança e os acordos que sustentam as empresas."},
+      {"id": "strategic-advisory", "num": "04", "title": "Consultoria Estratégica", "desc": "Aconselhamento além do jurídico — orientação sobre as decisões que definem o rumo."},
+      {"id": "regulatory-compliance", "num": "05", "title": "Regulatório & Compliance", "desc": "Navegar por enquadramentos regulatórios em diferentes jurisdições com visão, sem atrito."},
+      {"id": "digital-transformation", "num": "06", "title": "Transformação Digital", "desc": "Navegar pelos seus quadros de transformação digital com visão e resultados garantidos."}
     ]
   },
   "approach": {

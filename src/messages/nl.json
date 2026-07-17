@@ -26,12 +26,12 @@
     "headline": "Advies over de zaken die een toekomst bepalen.",
     "subtitle": "Zes disciplines, één norm. Elke opdracht wordt persoonlijk geleid, met de nauwkeurigheid en vertrouwelijkheid die onze cliënten verwachten.",
     "areas": [
-      {"id": "corporate-commercial", "num": "01", "title": "Corporate & Commercieel", "desc": "Structurering, governance en de overeenkomsten die ondernemingen bij elkaar houden."},
+      {"id": "dispute-resolution", "num": "01", "title": "Geschillenbeslechting", "desc": "Gemeten, vastberaden vertegenwoordiging wanneer bescherming een standpunt vereist."},
       {"id": "litigation", "num": "02", "title": "Procesrecht", "desc": "Procesvoering in het civiel en strafrecht."},
-      {"id": "strategic-advisory", "num": "03", "title": "Strategisch Advies", "desc": "Advies voorbij het juridische — begeleiding bij beslissingen die richting bepalen."},
-      {"id": "digital-transformation", "num": "04", "title": "Digitale Transformatie", "desc": "Begeleiding bij uw digitale transformatie met vooruitziendheid en gegarandeerde resultaten."},
-      {"id": "dispute-resolution", "num": "05", "title": "Geschillenbeslechting", "desc": "Gemeten, vastberaden vertegenwoordiging wanneer bescherming een standpunt vereist."},
-      {"id": "regulatory-compliance", "num": "06", "title": "Regelgeving & Compliance", "desc": "Navigeren door kaders over jurisdicties heen met vooruitziendheid, niet met wrijving."}
+      {"id": "corporate-commercial", "num": "03", "title": "Corporate & Commercieel", "desc": "Structurering, governance en de overeenkomsten die ondernemingen bij elkaar houden."},
+      {"id": "strategic-advisory", "num": "04", "title": "Strategisch Advies", "desc": "Advies voorbij het juridische — begeleiding bij beslissingen die richting bepalen."},
+      {"id": "regulatory-compliance", "num": "05", "title": "Regelgeving & Compliance", "desc": "Navigeren door kaders over jurisdicties heen met vooruitziendheid, niet met wrijving."},
+      {"id": "digital-transformation", "num": "06", "title": "Digitale Transformatie", "desc": "Begeleiding bij uw digitale transformatie met vooruitziendheid en gegarandeerde resultaten."}
     ]
   },
   "approach": {

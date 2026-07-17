@@ -26,12 +26,12 @@
     "headline": "为决定未来的事务提供专业顾问。",
     "subtitle": "六大专业领域，同一标准。每一项委托均由本人亲自主导，恪守客户所期望的严谨与保密。",
     "areas": [
-      {"id": "corporate-commercial", "num": "01", "title": "公司与商事", "desc": "架构设计、公司治理，以及维系企业运转的各项协议。"},
+      {"id": "dispute-resolution", "num": "01", "title": "争议解决", "desc": "在需要坚定立场以维护权益之时,提供审慎而坚决的代理。"},
       {"id": "litigation", "num": "02", "title": "诉讼业务", "desc": "民事与刑事诉讼代理。"},
-      {"id": "strategic-advisory", "num": "03", "title": "战略咨询", "desc": "超越法律本身的顾问服务——就决定方向的关键决策提供指引。"},
-      {"id": "digital-transformation", "num": "04", "title": "数字化转型", "desc": "以远见与可靠成效,引领企业完成数字化转型。"},
-      {"id": "dispute-resolution", "num": "05", "title": "争议解决", "desc": "在需要坚定立场以维护权益之时,提供审慎而坚决的代理。"},
-      {"id": "regulatory-compliance", "num": "06", "title": "监管与合规", "desc": "以远见而非阻力,协助企业跨司法管辖区应对监管框架。"}
+      {"id": "corporate-commercial", "num": "03", "title": "公司与商事", "desc": "架构设计、公司治理，以及维系企业运转的各项协议。"},
+      {"id": "strategic-advisory", "num": "04", "title": "战略咨询", "desc": "超越法律本身的顾问服务——就决定方向的关键决策提供指引。"},
+      {"id": "regulatory-compliance", "num": "05", "title": "监管与合规", "desc": "以远见而非阻力,协助企业跨司法管辖区应对监管框架。"},
+      {"id": "digital-transformation", "num": "06", "title": "数字化转型", "desc": "以远见与可靠成效,引领企业完成数字化转型。"}
     ]
   },
   "approach": {

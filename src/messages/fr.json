@@ -26,12 +26,12 @@
     "headline": "Conseil sur les affaires qui définissent un avenir.",
     "subtitle": "Six disciplines, une norme. Chaque mission est dirigée personnellement, avec la rigueur et la confidentialité que nos clients attendent.",
     "areas": [
-      {"id": "corporate-commercial", "num": "01", "title": "Droit des affaires et Commercial", "desc": "Structuration, gouvernance et les accords qui maintiennent les entreprises ensemble."},
+      {"id": "dispute-resolution", "num": "01", "title": "Résolution des Litiges", "desc": "Représentation mesurée et résolue lorsque la protection exige une position ferme."},
       {"id": "litigation", "num": "02", "title": "Contentieux", "desc": "Contentieux en droit civil et pénal."},
-      {"id": "strategic-advisory", "num": "03", "title": "Conseil Stratégique", "desc": "Conseil au-delà du juridique — guidance sur les décisions qui façonnent la direction."},
-      {"id": "digital-transformation", "num": "04", "title": "Transformation Digitale", "desc": "Accompagnement de votre transformation digitale avec prévoyance et des résultats garantis."},
-      {"id": "dispute-resolution", "num": "05", "title": "Résolution des Litiges", "desc": "Représentation mesurée et résolue lorsque la protection exige une position ferme."},
-      {"id": "regulatory-compliance", "num": "06", "title": "Réglementation et Conformité", "desc": "Navigation dans les cadres réglementaires de différentes juridictions avec prévoyance, sans friction."}
+      {"id": "corporate-commercial", "num": "03", "title": "Droit des affaires et Commercial", "desc": "Structuration, gouvernance et les accords qui maintiennent les entreprises ensemble."},
+      {"id": "strategic-advisory", "num": "04", "title": "Conseil Stratégique", "desc": "Conseil au-delà du juridique — guidance sur les décisions qui façonnent la direction."},
+      {"id": "regulatory-compliance", "num": "05", "title": "Réglementation et Conformité", "desc": "Navigation dans les cadres réglementaires de différentes juridictions avec prévoyance, sans friction."},
+      {"id": "digital-transformation", "num": "06", "title": "Transformation Digitale", "desc": "Accompagnement de votre transformation digitale avec prévoyance et des résultats garantis."}
     ]
   },
   "approach": {

@@ -26,12 +26,12 @@
     "headline": "Asesoramiento en los asuntos que definen un futuro.",
     "subtitle": "Seis disciplinas, un estándar. Cada compromiso es liderado personalmente, con el rigor y la confidencialidad que nuestros clientes esperan.",
     "areas": [
-      {"id": "corporate-commercial", "num": "01", "title": "Corporativo y Comercial", "desc": "Estructuración, gobernanza y los acuerdos que mantienen unidas las empresas."},
+      {"id": "dispute-resolution", "num": "01", "title": "Resolución de Disputas", "desc": "Representación mesurada y firme cuando la protección exige una posición sólida."},
       {"id": "litigation", "num": "02", "title": "Litigios", "desc": "Litigios en derecho civil y penal."},
-      {"id": "strategic-advisory", "num": "03", "title": "Asesoramiento Estratégico", "desc": "Consejo más allá de lo jurídico — orientación en las decisiones que dan dirección."},
-      {"id": "digital-transformation", "num": "04", "title": "Transformación Digital", "desc": "Orientación en sus marcos de transformación digital con previsión y resultados garantizados."},
-      {"id": "dispute-resolution", "num": "05", "title": "Resolución de Disputas", "desc": "Representación mesurada y firme cuando la protección exige una posición sólida."},
-      {"id": "regulatory-compliance", "num": "06", "title": "Regulación y Cumplimiento", "desc": "Navegando marcos en distintas jurisdicciones con previsión, no con fricción."}
+      {"id": "corporate-commercial", "num": "03", "title": "Corporativo y Comercial", "desc": "Estructuración, gobernanza y los acuerdos que mantienen unidas las empresas."},
+      {"id": "strategic-advisory", "num": "04", "title": "Asesoramiento Estratégico", "desc": "Consejo más allá de lo jurídico — orientación en las decisiones que dan dirección."},
+      {"id": "regulatory-compliance", "num": "05", "title": "Regulación y Cumplimiento", "desc": "Navegando marcos en distintas jurisdicciones con previsión, no con fricción."},
+      {"id": "digital-transformation", "num": "06", "title": "Transformación Digital", "desc": "Orientación en sus marcos de transformación digital con previsión y resultados garantizados."}
     ]
   },
   "approach": {
