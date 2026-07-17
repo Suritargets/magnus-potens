@@ -95,6 +95,27 @@ export default async function DigitalTransformationPage() {
           </p>
         </Reveal>
 
+        {/* Video */}
+        <Reveal delay={0.18}>
+          <div
+            style={{
+              position: 'relative',
+              aspectRatio: '16 / 9',
+              margin: '0 0 40px',
+              border: '1px solid rgba(199,158,107,0.2)',
+              overflow: 'hidden',
+            }}
+          >
+            <video
+              src="/digital-transformation.mp4"
+              controls
+              preload="metadata"
+              playsInline
+              style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover' }}
+            />
+          </div>
+        </Reveal>
+
         <Reveal delay={0.2}>
           <p style={bodyText}>{t('p1')}</p>
         </Reveal>
