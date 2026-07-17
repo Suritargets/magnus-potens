@@ -4,6 +4,10 @@ import { homepageContent } from '@/db/schema'
 import { eq } from 'drizzle-orm'
 
 export interface PracticeArea {
+  // Locale-independent identifier (see practice.areas[].id in the message files) —
+  // used to link each area to its /practice/[slug] detail page. Optional here only
+  // because older DB override rows predate this field.
+  id?: string
   num: string
   title: string
   desc: string

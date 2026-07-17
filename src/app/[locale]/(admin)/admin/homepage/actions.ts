@@ -40,6 +40,7 @@ export async function saveHomepageContent(
         headline: get('practice_headline'),
         subtitle: get('practice_subtitle'),
         areas: Array.from({ length: 6 }, (_, i) => ({
+          id: get(`practice_area_${i}_id`),
           num: NUM(i),
           title: get(`practice_area_${i}_title`),
           desc: get(`practice_area_${i}_desc`),

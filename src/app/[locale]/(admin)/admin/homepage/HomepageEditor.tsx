@@ -106,6 +106,7 @@ function LocaleForm({ locale, data }: { locale: string; data: Required<HomepageO
         <Field label="Subtitle" name="practice_subtitle" defaultValue={data.practice.subtitle ?? ''} textarea rows={2} />
         {(data.practice.areas ?? []).map((area, i) => (
           <div key={i} style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 14, display: 'grid', gap: 10, gridTemplateColumns: '1fr 2fr' }}>
+            <input type="hidden" name={`practice_area_${i}_id`} value={area.id ?? ''} />
             <Field label={`Area ${i + 1} — Title`} name={`practice_area_${i}_title`} defaultValue={area.title ?? ''} />
             <Field label={`Area ${i + 1} — Description`} name={`practice_area_${i}_desc`} defaultValue={area.desc ?? ''} textarea rows={2} />
           </div>
