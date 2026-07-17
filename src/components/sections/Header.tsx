@@ -112,6 +112,14 @@ export function Header() {
             {t('firm')}
           </a>
 
+          <a
+            href={`/${locale}#approach`}
+            className="mp-underline text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
+            style={navLinkStyle}
+          >
+            {t('approach')}
+          </a>
+
           {/* Practice dropdown */}
           <div ref={practiceRef} style={{ position: 'relative' }}>
             <button
@@ -159,14 +167,6 @@ export function Header() {
               </div>
             )}
           </div>
-
-          <a
-            href={`/${locale}#approach`}
-            className="mp-underline text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
-            style={navLinkStyle}
-          >
-            {t('approach')}
-          </a>
 
           {/* Blog link */}
           <Link
@@ -291,6 +291,15 @@ export function Header() {
               {t('firm')}
             </a>
 
+            <a
+              href={`/${locale}#approach`}
+              onClick={() => setOpen(false)}
+              className="px-3 py-3 text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors"
+              style={navLinkStyle}
+            >
+              {t('approach')}
+            </a>
+
             {/* Practice — expandable */}
             <div>
               <button
@@ -322,14 +331,6 @@ export function Header() {
               )}
             </div>
 
-            <a
-              href={`/${locale}#approach`}
-              onClick={() => setOpen(false)}
-              className="px-3 py-3 text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors"
-              style={navLinkStyle}
-            >
-              {t('approach')}
-            </a>
             <Link
               href={`/${locale}/blog`}
               onClick={() => setOpen(false)}
