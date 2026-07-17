@@ -172,52 +172,102 @@
   "practiceDetail": {
     "dispute-resolution": {
       "tagline": "Mesurer avant de frapper — puis ne pas hésiter.",
+      "intro": "Chaque litige comporte un risque — pour le capital, pour la réputation, et pour des relations construites au fil des années. La manière dont une affaire est traitée dès le premier jour détermine l'issue autant que le fond du dossier lui-même.",
+      "p1": "Nous abordons les conflits avec précision, non avec émotion. Chaque affaire est évaluée selon ses véritables mérites et les voies réalistes vers une résolution, et non selon qui parle le plus fort.",
+      "p2": "Le contentieux est un outil, pas une évidence. Nous poursuivons la voie qui protège le mieux la position de notre client — une position de négociation ferme, un règlement structuré, un arbitrage contraignant ou, lorsque c'est vraiment la seule voie, la salle d'audience.",
       "bullets": [
         "Représentation dans les litiges commerciaux, les conflits contractuels et les désaccords entre actionnaires",
         "Négociation et règlement amiable en première ligne — le contentieux lorsque c'est la seule voie",
         "Arbitrage et avis contraignants, y compris dans les affaires transfrontalières",
         "Protection de la réputation et des intérêts tout au long du processus",
         "Accompagnement personnel"
+      ],
+      "howWeWork": "Notre Méthode",
+      "steps": [
+        { "num": "I", "title": "Évaluation", "desc": "Comprendre le litige, les enjeux et les résultats réalistes" },
+        { "num": "II", "title": "Stratégie", "desc": "Choisir la bonne voie : négocier, arbitrer ou plaider" },
+        { "num": "III", "title": "Représentation", "desc": "Rechercher la résolution avec précision et discrétion" },
+        { "num": "IV", "title": "Résolution", "desc": "Sécuriser le résultat, et protéger ce qui suit" }
       ]
     },
     "litigation": {
       "tagline": "Contentieux en droit civil et pénal, mené avec précision.",
+      "intro": "Le contentieux expose les décisions à l'examen — en salle de conseil, devant un juge, ou dans l'opinion publique. Un manque de préparation est rarement pardonné.",
+      "p1": "Nous construisons chaque dossier comme s'il devait être testé au procès, même lorsque la plupart des affaires se résolvent bien avant ce stade. Cette discipline est ce qui donne à nos clients un levier à la table des négociations.",
+      "p2": "Les procédures civiles et pénales exigent chacune une posture différente — l'une protège les actifs et les accords, l'autre protège la liberté et la réputation. Nous apportons la même rigueur aux deux.",
       "bullets": [
         "Procédures civiles : litiges contractuels, responsabilité, droit patrimonial et plus",
         "Défense pénale pour les particuliers et les dirigeants",
         "Préparation et représentation en appel",
         "Conseil stratégique en contentieux : évaluation des risques avant la salle d'audience",
         "Une approche discrète dans les affaires sensibles en matière de vie privée ou de publicité"
+      ],
+      "howWeWork": "Notre Méthode",
+      "steps": [
+        { "num": "I", "title": "Évaluation du dossier", "desc": "Évaluer les faits, l'exposition et les résultats réalistes" },
+        { "num": "II", "title": "Préparation", "desc": "Construire le socle probatoire et juridique avant qu'il ne soit nécessaire" },
+        { "num": "III", "title": "Plaidoirie", "desc": "Représenter la position de notre client à chaque étape de la procédure" },
+        { "num": "IV", "title": "Suites", "desc": "Gérer les appels, l'exécution et ce qui suit le jugement" }
       ]
     },
     "corporate-commercial": {
       "tagline": "Les structures qui portent une entreprise.",
+      "intro": "Les accords qu'une entreprise signe, et la manière dont elle est gouvernée, déterminent ce qu'elle peut surmonter — et ce qu'elle peut devenir. La structure n'est pas de la paperasse ; c'est une protection.",
+      "p1": "Nous travaillons aux côtés des fondateurs, des conseils d'administration et des équipes dirigeantes pour bâtir des entreprises qui tiennent sous la pression — d'un premier contrat commercial à une acquisition transfrontalière.",
+      "p2": "Chaque mission commence par la même question : que doit protéger cette structure, et contre quoi ? La réponse façonne tout, de la plus petite clause au modèle de gouvernance dans son ensemble.",
       "bullets": [
         "Constitution, restructuration et gouvernance des sociétés",
         "Rédaction et révision de contrats commerciaux et d'accords de partenariat",
         "Pactes d'actionnaires et questions de gouvernance d'entreprise",
         "Fusions, acquisitions et accompagnement en due diligence",
         "Conseil juridique continu aux conseils d'administration et de surveillance"
+      ],
+      "howWeWork": "Notre Méthode",
+      "steps": [
+        { "num": "I", "title": "Structuration", "desc": "Concevoir l'entité, la gouvernance et les accords dont l'entreprise a besoin" },
+        { "num": "II", "title": "Rédaction", "desc": "Négocier et documenter des termes qui tiennent sous la pression" },
+        { "num": "III", "title": "Gouvernance", "desc": "Accompagner les conseils et actionnaires dans leurs décisions courantes" },
+        { "num": "IV", "title": "Transactions", "desc": "Guider fusions, acquisitions et due diligence jusqu'à la clôture" }
       ]
     },
     "regulatory-compliance": {
       "tagline": "Naviguer dans la réglementation, avec anticipation — sans friction.",
+      "intro": "La réglementation évolue plus vite que la plupart des organisations ne peuvent le suivre, sur plus de juridictions que la plupart des équipes ne peuvent surveiller seules. Prendre du retard est rarement un échec isolé — c'est l'accumulation de petites failles.",
+      "p1": "Nous aidons nos clients à intégrer la conformité dans leur façon d'opérer, non comme une fonction distincte ajoutée après coup, mais comme faisant partie de la manière dont les décisions sont prises.",
+      "p2": "Lorsque les règles changent, ou lorsqu'un régulateur pose une question, les organisations qui répondent avec assurance sont celles qui étaient déjà préparées. C'est la position vers laquelle nous travaillons.",
       "bullets": [
         "Évaluations de conformité dans des cadres locaux et internationaux",
         "Accompagnement en matière de licences, de supervision et de procédures réglementaires",
         "Mise en place de structures et politiques de conformité internes",
         "Conseil face à l'évolution des lois et réglementations, par secteur",
         "Prévenir les risques plutôt que réagir aux incidents"
+      ],
+      "howWeWork": "Notre Méthode",
+      "steps": [
+        { "num": "I", "title": "Revue", "desc": "Évaluer l'exposition actuelle au regard des cadres pertinents" },
+        { "num": "II", "title": "Conception", "desc": "Construire les politiques et structures qu'exige la conformité" },
+        { "num": "III", "title": "Intégration", "desc": "Ancrer la conformité dans les opérations quotidiennes, pas seulement dans la documentation" },
+        { "num": "IV", "title": "Veille", "desc": "Suivre l'évolution réglementaire et ajuster avant que cela ne devienne un problème" }
       ]
     },
     "strategic-advisory": {
       "tagline": "Un conseil qui va au-delà du cadre juridique.",
+      "intro": "Certaines décisions ne sont pas vraiment des questions juridiques — ce sont des questions de jugement, de timing et de conséquence. Les dirigeants ont besoin d'un conseil capable de voir au-delà de l'enjeu immédiat, vers ce qu'il représente pour l'organisation.",
+      "p1": "Nous conseillons au niveau où se croisent le risque juridique, commercial et réputationnel — souvent avant même qu'une affaire ne devienne une véritable question juridique.",
+      "p2": "Il s'agit d'un conseil fondé sur la confiance et la discrétion : un second avis sur lequel la direction peut s'appuyer lorsque l'enjeu dépasse ce qu'un seul département peut évaluer seul.",
       "bullets": [
         "Accompagnement stratégique de la direction dans les décisions à fort enjeu",
         "Conseil au niveau du conseil d'administration sur la gouvernance, la succession et l'orientation à long terme",
         "Évaluation des risques et planification de scénarios avant tout engagement",
         "Conseil confidentiel sur des questions sensibles ou à fort enjeu réputationnel",
         "Un second avis de confiance, au-delà du strictement juridique"
+      ],
+      "howWeWork": "Notre Méthode",
+      "steps": [
+        { "num": "I", "title": "Écoute", "desc": "Comprendre la décision, son contexte et ce qui est véritablement en jeu" },
+        { "num": "II", "title": "Analyse", "desc": "Peser ensemble les dimensions juridique, commerciale et réputationnelle" },
+        { "num": "III", "title": "Orientation", "desc": "Fournir une recommandation claire et réfléchie" },
+        { "num": "IV", "title": "Suivi", "desc": "Rester impliqué tandis que la décision se déploie" }
       ]
     }
   }

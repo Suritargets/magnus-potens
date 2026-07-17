@@ -172,52 +172,102 @@
   "practiceDetail": {
     "dispute-resolution": {
       "tagline": "Measure before you strike — then don't hesitate.",
+      "intro": "Every dispute carries risk — to capital, to reputation, and to relationships built over years. How a matter is handled from the very first day shapes the outcome as much as the merits of the case itself.",
+      "p1": "We approach conflict with precision, not emotion. Every matter is assessed on its true merits and the realistic paths to resolution, not on who can argue the loudest.",
+      "p2": "Litigation is a tool, not a default. We pursue whichever course best protects our client's position — a firm negotiating stance, a structured settlement, binding arbitration, or, when it is truly the only path, the courtroom.",
       "bullets": [
         "Representation in commercial disputes, contract conflicts, and shareholder disagreements",
         "Negotiation and settlement as the first line — litigation when it is the only path",
         "Arbitration and binding advice, including in cross-border matters",
         "Protecting reputation and interests throughout the process",
         "Personal guidance"
+      ],
+      "howWeWork": "How We Work",
+      "steps": [
+        { "num": "I", "title": "Assessment", "desc": "Understand the dispute, the stakes, and the realistic outcomes" },
+        { "num": "II", "title": "Strategy", "desc": "Choose the right path: negotiate, arbitrate, or litigate" },
+        { "num": "III", "title": "Representation", "desc": "Pursue resolution with precision and discretion" },
+        { "num": "IV", "title": "Resolution", "desc": "Secure the outcome, and protect what comes after" }
       ]
     },
     "litigation": {
       "tagline": "Litigation in civil and criminal law, conducted with precision.",
+      "intro": "Litigation exposes decisions to scrutiny — in the boardroom, before a judge, or in the court of public opinion. Being outmatched in preparation is rarely forgiven.",
+      "p1": "We build every case as though it will be tested at trial, even when most matters resolve well before that point. That discipline is what gives our clients leverage at the negotiating table.",
+      "p2": "Civil and criminal proceedings each demand a different posture — one protects assets and agreements, the other protects liberty and reputation. We bring the same rigor to both.",
       "bullets": [
         "Civil proceedings: contract disputes, liability, property law, and more",
         "Criminal defense for individuals and executives",
         "Preparation and representation in appeal proceedings",
         "Strategic litigation advice: risk assessment before the courtroom",
         "A discreet approach in matters sensitive to privacy or publicity"
+      ],
+      "howWeWork": "How We Work",
+      "steps": [
+        { "num": "I", "title": "Case Assessment", "desc": "Evaluate the facts, exposure, and realistic outcomes" },
+        { "num": "II", "title": "Preparation", "desc": "Build the evidentiary and legal foundation before it is needed" },
+        { "num": "III", "title": "Advocacy", "desc": "Represent our client's position at every stage of proceedings" },
+        { "num": "IV", "title": "Aftermath", "desc": "Manage appeals, enforcement, and what follows judgment" }
       ]
     },
     "corporate-commercial": {
       "tagline": "The structures that carry an enterprise.",
+      "intro": "The agreements a company signs, and the way it is governed, determine what it can survive — and what it can become. Structure is not paperwork; it is protection.",
+      "p1": "We work alongside founders, boards, and management teams to build companies that hold up under pressure — from a first commercial contract to a cross-border acquisition.",
+      "p2": "Every engagement starts with the same question: what does this structure need to protect, and against what? The answer shapes everything from the smallest clause to the overall governance model.",
       "bullets": [
         "Incorporation, restructuring, and governance of companies",
         "Drafting and reviewing commercial contracts and partnership agreements",
         "Shareholder agreements and corporate governance matters",
         "Mergers, acquisitions, and due diligence guidance",
         "Ongoing legal counsel to boards of directors and supervisory boards"
+      ],
+      "howWeWork": "How We Work",
+      "steps": [
+        { "num": "I", "title": "Structuring", "desc": "Design the entity, governance, and agreements the business needs" },
+        { "num": "II", "title": "Drafting", "desc": "Negotiate and document terms that hold up under pressure" },
+        { "num": "III", "title": "Governance", "desc": "Support boards and shareholders through ongoing decisions" },
+        { "num": "IV", "title": "Transactions", "desc": "Guide mergers, acquisitions, and due diligence to close" }
       ]
     },
     "regulatory-compliance": {
       "tagline": "Navigating regulation, with foresight — not friction.",
+      "intro": "Regulation moves faster than most organizations can track, across more jurisdictions than most teams can monitor alone. Falling behind is rarely a single failure — it is the accumulation of small gaps.",
+      "p1": "We help clients build compliance into how they operate, not as a separate function bolted on afterward, but as part of how decisions get made.",
+      "p2": "When rules change, or when a regulator asks a question, the organizations that respond with confidence are the ones that were already prepared. That is the position we build toward.",
       "bullets": [
         "Compliance assessments within local and international frameworks",
         "Guidance on licensing, supervision, and regulatory procedures",
         "Establishing internal compliance structures and policies",
         "Advice on evolving laws and regulations, sector-specific",
         "Preventing risk rather than reacting to incidents"
+      ],
+      "howWeWork": "How We Work",
+      "steps": [
+        { "num": "I", "title": "Review", "desc": "Assess current exposure across relevant frameworks" },
+        { "num": "II", "title": "Design", "desc": "Build the policies and structures compliance requires" },
+        { "num": "III", "title": "Embed", "desc": "Integrate compliance into everyday operations, not just documentation" },
+        { "num": "IV", "title": "Monitor", "desc": "Track regulatory change and adjust before it becomes a problem" }
       ]
     },
     "strategic-advisory": {
       "tagline": "Counsel that goes beyond the legal brief.",
+      "intro": "Some decisions are not really legal questions — they are questions of judgment, timing, and consequence. Leaders need a counsel who can see past the immediate issue to what it means for the organization.",
+      "p1": "We advise at the level where legal, commercial, and reputational risk intersect — often before a matter becomes a formal legal question at all.",
+      "p2": "This is counsel built on trust and discretion: a second opinion leadership can rely on when the stakes go beyond what any single department can assess alone.",
       "bullets": [
         "Strategic guidance for leadership on high-stakes decisions",
         "Board-level advisory on governance, succession, and long-term direction",
         "Risk assessment and scenario planning before commitments are made",
         "Confidential counsel on sensitive or reputationally significant matters",
         "A trusted second opinion, beyond the purely legal"
+      ],
+      "howWeWork": "How We Work",
+      "steps": [
+        { "num": "I", "title": "Listening", "desc": "Understand the decision, its context, and what is truly at stake" },
+        { "num": "II", "title": "Analysis", "desc": "Weigh the legal, commercial, and reputational dimensions together" },
+        { "num": "III", "title": "Guidance", "desc": "Provide a clear, considered recommendation" },
+        { "num": "IV", "title": "Follow-through", "desc": "Stay engaged as the decision plays out" }
       ]
     }
   }

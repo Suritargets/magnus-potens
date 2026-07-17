@@ -172,52 +172,102 @@
   "practiceDetail": {
     "dispute-resolution": {
       "tagline": "Meten voordat je slaat, en dan niet aarzelen.",
+      "intro": "Elk geschil brengt risico met zich mee — voor kapitaal, voor reputatie, en voor relaties die jarenlang zijn opgebouwd. Hoe een zaak vanaf de eerste dag wordt aangepakt, bepaalt de uitkomst net zo goed als de inhoudelijke merites van de zaak.",
+      "p1": "Wij benaderen conflicten met precisie, niet met emotie. Elke zaak wordt beoordeeld op haar werkelijke merites en de realistische wegen naar een oplossing — niet op wie het hardst roept.",
+      "p2": "Procederen is een middel, geen standaard. Wij kiezen de weg die de positie van onze cliënt het beste beschermt — een vastberaden onderhandelingspositie, een gestructureerde schikking, bindende arbitrage, of, wanneer dat werkelijk de enige weg is, de rechtszaal.",
       "bullets": [
         "Vertegenwoordiging bij handelsgeschillen, contractdisputen en aandeelhoudersconflicten",
         "Onderhandeling en schikking als eerste lijn — procederen wanneer dat de enige weg is",
         "Arbitrage en bindend advies, ook in grensoverschrijdende zaken",
         "Bescherming van reputatie en belangen tijdens het hele traject",
         "Persoonlijke begeleiding"
+      ],
+      "howWeWork": "Hoe Wij Werken",
+      "steps": [
+        { "num": "I", "title": "Analyse", "desc": "Inzicht in het geschil, de belangen en de realistische uitkomsten" },
+        { "num": "II", "title": "Strategie", "desc": "De juiste weg kiezen: onderhandelen, arbitreren of procederen" },
+        { "num": "III", "title": "Vertegenwoordiging", "desc": "Streven naar een oplossing met precisie en discretie" },
+        { "num": "IV", "title": "Afwikkeling", "desc": "De uitkomst zeker stellen, en beschermen wat daarna komt" }
       ]
     },
     "litigation": {
       "tagline": "Procesvoering in civiel en strafrecht, gevoerd met precisie.",
+      "intro": "Procesvoering stelt beslissingen bloot aan toetsing — in de bestuurskamer, voor een rechter, of in de publieke opinie. Onvoldoende voorbereid zijn wordt zelden vergeven.",
+      "p1": "Wij bouwen elke zaak op alsof deze op zitting getoetst zal worden, ook wanneer de meeste zaken ruim daarvoor tot een oplossing komen. Die discipline geeft onze cliënten een sterkere positie aan de onderhandelingstafel.",
+      "p2": "Civiele en strafrechtelijke procedures vragen elk om een andere houding — de een beschermt vermogen en overeenkomsten, de ander beschermt vrijheid en reputatie. Wij brengen in beide dezelfde nauwkeurigheid.",
       "bullets": [
         "Civiele procedures: contractgeschillen, aansprakelijkheid, vermogensrecht, etc.",
         "Strafrechtelijke verdediging voor particulieren en bestuurders",
         "Voorbereiding en procesvoering bij hoger beroep",
         "Strategisch procesadvies: risico-inschatting vóór de rechtszaal",
         "Discrete aanpak in zaken met gevoeligheid voor privacy of publiciteit"
+      ],
+      "howWeWork": "Hoe Wij Werken",
+      "steps": [
+        { "num": "I", "title": "Beoordeling", "desc": "De feiten, risico's en realistische uitkomsten inschatten" },
+        { "num": "II", "title": "Voorbereiding", "desc": "Het bewijs en de juridische onderbouwing opbouwen vóórdat het nodig is" },
+        { "num": "III", "title": "Belangenbehartiging", "desc": "Onze cliënt vertegenwoordigen in elke fase van de procedure" },
+        { "num": "IV", "title": "Nasleep", "desc": "Hoger beroep, tenuitvoerlegging en de gevolgen na de uitspraak beheren" }
       ]
     },
     "corporate-commercial": {
       "tagline": "De structuren die een onderneming dragen.",
+      "intro": "De overeenkomsten die een onderneming sluit, en de manier waarop zij bestuurd wordt, bepalen wat zij kan doorstaan — en wat zij kan worden. Structuur is geen papierwerk; het is bescherming.",
+      "p1": "Wij werken samen met oprichters, bestuurders en directieteams om ondernemingen op te bouwen die stand houden onder druk — van een eerste commercieel contract tot een grensoverschrijdende overname.",
+      "p2": "Elke opdracht begint met dezelfde vraag: wat moet deze structuur beschermen, en tegen wat? Het antwoord bepaalt alles, van de kleinste clausule tot het volledige governance-model.",
       "bullets": [
         "Oprichting, herstructurering en governance van vennootschappen",
         "Opstellen en beoordelen van commerciële contracten en samenwerkingsovereenkomsten",
         "Aandeelhoudersovereenkomsten en corporate governance-vraagstukken",
         "Fusies, overnames en due diligence-begeleiding",
         "Doorlopend juridisch advies aan directies en raden van commissarissen"
+      ],
+      "howWeWork": "Hoe Wij Werken",
+      "steps": [
+        { "num": "I", "title": "Structurering", "desc": "De entiteit, governance en overeenkomsten ontwerpen die de onderneming nodig heeft" },
+        { "num": "II", "title": "Opstellen", "desc": "Voorwaarden onderhandelen en vastleggen die onder druk stand houden" },
+        { "num": "III", "title": "Governance", "desc": "Besturen en aandeelhouders ondersteunen bij doorlopende beslissingen" },
+        { "num": "IV", "title": "Transacties", "desc": "Fusies, overnames en due diligence begeleiden tot afronding" }
       ]
     },
     "regulatory-compliance": {
       "tagline": "Navigeren door regelgeving, met vooruitzicht — niet met wrijving.",
+      "intro": "Regelgeving verandert sneller dan de meeste organisaties kunnen bijhouden, over meer jurisdicties dan de meeste teams alleen kunnen monitoren. Achterop raken is zelden één enkele misser — het is de optelsom van kleine hiaten.",
+      "p1": "Wij helpen cliënten compliance te verankeren in de manier waarop zij opereren, niet als een aparte functie die achteraf wordt toegevoegd, maar als onderdeel van hoe beslissingen tot stand komen.",
+      "p2": "Wanneer regels veranderen, of wanneer een toezichthouder een vraag stelt, zijn het de organisaties die al voorbereid waren die met vertrouwen kunnen reageren. Dat is de positie waar wij naartoe werken.",
       "bullets": [
         "Compliance-beoordelingen binnen lokale en internationale kaders",
         "Begeleiding bij vergunningen, toezicht en regelgevende procedures",
         "Opzetten van interne compliance-structuren en -beleid",
         "Advies bij wijzigende wet- en regelgeving, sectorspecifiek",
         "Voorkomen van risico's in plaats van reageren op incidenten"
+      ],
+      "howWeWork": "Hoe Wij Werken",
+      "steps": [
+        { "num": "I", "title": "Beoordeling", "desc": "De huidige blootstelling binnen relevante kaders inschatten" },
+        { "num": "II", "title": "Ontwerp", "desc": "Het beleid en de structuren opbouwen die compliance vereist" },
+        { "num": "III", "title": "Verankering", "desc": "Compliance integreren in de dagelijkse praktijk, niet alleen in documentatie" },
+        { "num": "IV", "title": "Monitoring", "desc": "Regelgeving volgen en bijsturen vóórdat het een probleem wordt" }
       ]
     },
     "strategic-advisory": {
       "tagline": "Advies dat verder gaat dan het juridische kader.",
+      "intro": "Sommige beslissingen zijn niet echt juridische vraagstukken — het zijn kwesties van inzicht, timing en gevolg. Leidinggevenden hebben een adviseur nodig die verder kijkt dan het directe vraagstuk, naar wat het voor de organisatie betekent.",
+      "p1": "Wij adviseren op het niveau waar juridisch, commercieel en reputatierisico samenkomen — vaak nog vóórdat een kwestie uitgroeit tot een formeel juridisch vraagstuk.",
+      "p2": "Dit is advies gebouwd op vertrouwen en discretie: een tweede mening waarop leidinggevenden kunnen bouwen wanneer de belangen groter zijn dan één enkele afdeling alleen kan overzien.",
       "bullets": [
         "Strategische begeleiding voor de directie bij beslissingen met grote impact",
         "Advies op bestuursniveau over governance, opvolging en langetermijnrichting",
         "Risico-inschatting en scenarioplanning vóórdat verplichtingen worden aangegaan",
         "Vertrouwelijk advies bij gevoelige of reputatiegevoelige kwesties",
         "Een vertrouwd tweede advies, voorbij het puur juridische"
+      ],
+      "howWeWork": "Hoe Wij Werken",
+      "steps": [
+        { "num": "I", "title": "Luisteren", "desc": "De beslissing, de context en wat werkelijk op het spel staat begrijpen" },
+        { "num": "II", "title": "Analyse", "desc": "De juridische, commerciële en reputatiedimensies gezamenlijk afwegen" },
+        { "num": "III", "title": "Advies", "desc": "Een heldere, doordachte aanbeveling geven" },
+        { "num": "IV", "title": "Opvolging", "desc": "Betrokken blijven terwijl de beslissing zich voltrekt" }
       ]
     }
   }

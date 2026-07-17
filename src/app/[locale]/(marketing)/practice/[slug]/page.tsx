@@ -16,6 +16,22 @@ interface PracticeArea {
   desc: string
 }
 
+interface Step {
+  num: string
+  title: string
+  desc: string
+}
+
+interface PracticeDetail {
+  tagline: string
+  bullets: string[]
+  intro?: string
+  p1?: string
+  p2?: string
+  howWeWork?: string
+  steps?: Step[]
+}
+
 const KNOWN_SLUGS = ['dispute-resolution', 'litigation', 'corporate-commercial', 'regulatory-compliance', 'strategic-advisory']
 
 export function generateStaticParams() {
@@ -35,15 +51,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const area = await getArea(slug)
   if (!area) return {}
 
-  const td = await getTranslations(`practiceDetail.${slug}`)
+  const tdAll = await getTranslations('practiceDetail')
+  const detail = tdAll.raw(slug) as PracticeDetail
   return {
     title: area.title,
-    description: td('tagline'),
+    description: detail.tagline,
     alternates: {
       canonical: localePath(locale, `/practice/${slug}`),
       languages: languageAlternates(`/practice/${slug}`),
     },
   }
+}
+
+const bodyText = {
+  fontFamily: "'Jost', sans-serif",
+  fontSize: 15,
+  lineHeight: 1.9,
+  color: '#8C877F',
+  margin: '0 0 24px',
 }
 
 export default async function PracticeAreaPage({ params }: Props) {
@@ -53,8 +78,9 @@ export default async function PracticeAreaPage({ params }: Props) {
   if (!area) notFound()
 
   const t = await getTranslations('practice')
-  const td = await getTranslations(`practiceDetail.${slug}`)
-  const bullets = td.raw('bullets') as string[]
+  const tdAll = await getTranslations('practiceDetail')
+  const detail = tdAll.raw(slug) as PracticeDetail
+  const { tagline, bullets, intro, p1, p2, howWeWork, steps } = detail
 
   return (
     <main style={{ background: '#0F1014', minHeight: '100vh', paddingTop: 120 }}>
@@ -104,13 +130,43 @@ export default async function PracticeAreaPage({ params }: Props) {
               fontStyle: 'italic',
               fontSize: 22,
               color: '#C79E6B',
-              margin: '0 0 40px',
+              margin: intro ? '0 0 28px' : '0 0 40px',
               maxWidth: 560,
             }}
           >
-            {td('tagline')}
+            {tagline}
           </p>
         </Reveal>
+
+        {/* Intro (emphasized) */}
+        {intro && (
+          <Reveal delay={0.2}>
+            <p
+              style={{
+                fontFamily: "'Jost', sans-serif",
+                fontSize: 16,
+                fontWeight: 500,
+                lineHeight: 1.85,
+                color: '#E9E3D6',
+                margin: '0 0 28px',
+              }}
+            >
+              {intro}
+            </p>
+          </Reveal>
+        )}
+
+        {p1 && (
+          <Reveal delay={0.24}>
+            <p style={bodyText}>{p1}</p>
+          </Reveal>
+        )}
+
+        {p2 && (
+          <Reveal delay={0.28}>
+            <p style={{ ...bodyText, margin: '0 0 40px' }}>{p2}</p>
+          </Reveal>
+        )}
 
         {/* Bullets */}
         <div>
@@ -152,6 +208,81 @@ export default async function PracticeAreaPage({ params }: Props) {
             </Reveal>
           ))}
         </div>
+
+        {/* How we work */}
+        {steps && steps.length > 0 && (
+          <>
+            <div style={{ borderTop: '1px solid rgba(199,158,107,0.15)', margin: '64px 0 48px' }} />
+
+            <Reveal>
+              <p
+                style={{
+                  fontFamily: "'Jost', sans-serif",
+                  fontSize: 11,
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#C79E6B',
+                  margin: '0 0 8px',
+                }}
+              >
+                {howWeWork}
+              </p>
+            </Reveal>
+
+            <div>
+              {steps.map((step, i) => (
+                <Reveal key={step.num} delay={0.06 * i}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'baseline',
+                      gap: 24,
+                      padding: '20px 0',
+                      borderBottom: i < steps.length - 1 ? '1px solid rgba(199,158,107,0.15)' : 'none',
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "'Cormorant Garamond', Georgia, serif",
+                        fontStyle: 'italic',
+                        fontSize: 15,
+                        color: '#C79E6B',
+                        width: 24,
+                        flexShrink: 0,
+                      }}
+                    >
+                      {step.num}
+                    </span>
+                    <div>
+                      <h3
+                        style={{
+                          fontFamily: "'Cormorant Garamond', Georgia, serif",
+                          fontWeight: 400,
+                          fontSize: 19,
+                          color: '#E9E3D6',
+                          margin: '0 0 4px',
+                        }}
+                      >
+                        {step.title}
+                      </h3>
+                      <p
+                        style={{
+                          fontFamily: "'Jost', sans-serif",
+                          fontSize: 13,
+                          color: '#8C877F',
+                          margin: 0,
+                        }}
+                      >
+                        {step.desc}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </>
+        )}
 
         {/* Back to practice */}
         <Reveal delay={0.1}>

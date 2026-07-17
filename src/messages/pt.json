@@ -172,52 +172,102 @@
   "practiceDetail": {
     "dispute-resolution": {
       "tagline": "Medir antes de agir — e depois não hesitar.",
+      "intro": "Todo litígio comporta risco — para o capital, para a reputação e para relações construídas ao longo de anos. A forma como um processo é conduzido desde o primeiro dia determina o resultado tanto quanto o mérito da própria causa.",
+      "p1": "Abordamos os conflitos com precisão, não com emoção. Cada assunto é avaliado pelo seu verdadeiro mérito e pelas vias realistas para uma solução, não por quem fala mais alto.",
+      "p2": "O contencioso é uma ferramenta, não uma opção padrão. Seguimos o caminho que melhor protege a posição do nosso cliente — uma postura firme na negociação, um acordo estruturado, arbitragem vinculativa ou, quando é verdadeiramente o único caminho, a sala de audiências.",
       "bullets": [
         "Representação em litígios comerciais, conflitos contratuais e desacordos entre acionistas",
         "Negociação e acordo como primeira linha — contencioso quando é o único caminho",
         "Arbitragem e pareceres vinculativos, inclusive em processos transfronteiriços",
         "Proteção da reputação e dos interesses ao longo de todo o processo",
         "Acompanhamento pessoal"
+      ],
+      "howWeWork": "Como Trabalhamos",
+      "steps": [
+        { "num": "I", "title": "Avaliação", "desc": "Compreender o litígio, o que está em jogo e os resultados realistas" },
+        { "num": "II", "title": "Estratégia", "desc": "Escolher o caminho certo: negociar, arbitrar ou litigar" },
+        { "num": "III", "title": "Representação", "desc": "Procurar a resolução com precisão e discrição" },
+        { "num": "IV", "title": "Resolução", "desc": "Assegurar o resultado, e proteger o que vem a seguir" }
       ]
     },
     "litigation": {
       "tagline": "Contencioso em direito civil e penal, conduzido com precisão.",
+      "intro": "O contencioso expõe as decisões ao escrutínio — na sala de reuniões, perante um juiz, ou na opinião pública. Estar mal preparado raramente é perdoado.",
+      "p1": "Construímos cada processo como se fosse ser testado em julgamento, mesmo quando a maioria dos assuntos se resolve bem antes disso. Essa disciplina é o que dá aos nossos clientes vantagem na mesa de negociação.",
+      "p2": "Os processos cíveis e criminais exigem posturas diferentes — um protege o património e os acordos, o outro protege a liberdade e a reputação. Aplicamos o mesmo rigor a ambos.",
       "bullets": [
         "Processos cíveis: litígios contratuais, responsabilidade civil, direito patrimonial e mais",
         "Defesa criminal para particulares e administradores",
         "Preparação e representação em processos de recurso",
         "Aconselhamento estratégico em contencioso: avaliação de risco antes da sala de audiências",
         "Uma abordagem discreta em assuntos sensíveis à privacidade ou à publicidade"
+      ],
+      "howWeWork": "Como Trabalhamos",
+      "steps": [
+        { "num": "I", "title": "Avaliação do processo", "desc": "Avaliar os factos, a exposição e os resultados realistas" },
+        { "num": "II", "title": "Preparação", "desc": "Construir a base probatória e jurídica antes de ser necessária" },
+        { "num": "III", "title": "Defesa", "desc": "Representar a posição do nosso cliente em cada fase do processo" },
+        { "num": "IV", "title": "Consequências", "desc": "Gerir recursos, execução e o que se segue à decisão" }
       ]
     },
     "corporate-commercial": {
       "tagline": "As estruturas que sustentam uma empresa.",
+      "intro": "Os acordos que uma empresa assina, e a forma como é governada, determinam o que consegue suportar — e no que se pode tornar. Estrutura não é papelada; é proteção.",
+      "p1": "Trabalhamos ao lado de fundadores, conselhos e equipas de gestão para construir empresas que resistem à pressão — de um primeiro contrato comercial a uma aquisição transfronteiriça.",
+      "p2": "Cada mandato começa com a mesma pergunta: o que precisa esta estrutura de proteger, e contra quê? A resposta molda tudo, desde a mais pequena cláusula até ao modelo de governança global.",
       "bullets": [
         "Constituição, reestruturação e governança de sociedades",
         "Elaboração e revisão de contratos comerciais e acordos de parceria",
         "Acordos de acionistas e questões de governança corporativa",
         "Fusões, aquisições e apoio em due diligence",
         "Aconselhamento jurídico contínuo a conselhos de administração e fiscais"
+      ],
+      "howWeWork": "Como Trabalhamos",
+      "steps": [
+        { "num": "I", "title": "Estruturação", "desc": "Conceber a entidade, a governança e os acordos de que a empresa precisa" },
+        { "num": "II", "title": "Elaboração", "desc": "Negociar e documentar termos que resistam à pressão" },
+        { "num": "III", "title": "Governança", "desc": "Apoiar conselhos e acionistas em decisões contínuas" },
+        { "num": "IV", "title": "Transações", "desc": "Orientar fusões, aquisições e due diligence até ao fecho" }
       ]
     },
     "regulatory-compliance": {
       "tagline": "Navegar pela regulação, com visão — sem atrito.",
+      "intro": "A regulação avança mais depressa do que a maioria das organizações consegue acompanhar, em mais jurisdições do que a maioria das equipas consegue monitorizar sozinhas. Ficar para trás raramente é uma única falha — é a acumulação de pequenas lacunas.",
+      "p1": "Ajudamos os clientes a integrar o compliance na forma como operam, não como uma função separada acrescentada depois, mas como parte da forma como as decisões são tomadas.",
+      "p2": "Quando as regras mudam, ou quando um regulador coloca uma questão, as organizações que respondem com confiança são as que já estavam preparadas. É essa a posição para a qual trabalhamos.",
       "bullets": [
         "Avaliações de compliance em quadros locais e internacionais",
         "Aconselhamento sobre licenciamento, supervisão e procedimentos regulatórios",
         "Implementação de estruturas e políticas internas de compliance",
         "Aconselhamento sobre legislação e regulamentação em evolução, por setor",
         "Prevenir riscos em vez de reagir a incidentes"
+      ],
+      "howWeWork": "Como Trabalhamos",
+      "steps": [
+        { "num": "I", "title": "Revisão", "desc": "Avaliar a exposição atual nos quadros relevantes" },
+        { "num": "II", "title": "Desenho", "desc": "Construir as políticas e estruturas que o compliance exige" },
+        { "num": "III", "title": "Integração", "desc": "Incorporar o compliance nas operações diárias, não apenas na documentação" },
+        { "num": "IV", "title": "Monitorização", "desc": "Acompanhar a evolução regulatória e ajustar antes que se torne um problema" }
       ]
     },
     "strategic-advisory": {
       "tagline": "Aconselhamento que vai além do enquadramento jurídico.",
+      "intro": "Algumas decisões não são realmente questões jurídicas — são questões de discernimento, timing e consequência. Os líderes precisam de um consultor capaz de ver para além da questão imediata, para o que ela significa para a organização.",
+      "p1": "Aconselhamos ao nível onde se cruzam o risco jurídico, comercial e reputacional — muitas vezes antes de um assunto se tornar sequer uma questão jurídica formal.",
+      "p2": "Este é um aconselhamento construído sobre confiança e discrição: uma segunda opinião em que a liderança pode confiar quando o que está em causa ultrapassa o que um único departamento consegue avaliar sozinho.",
       "bullets": [
         "Orientação estratégica à direção em decisões de elevado impacto",
         "Aconselhamento ao nível do conselho sobre governança, sucessão e direção a longo prazo",
         "Avaliação de risco e planeamento de cenários antes de assumir compromissos",
         "Aconselhamento confidencial em assuntos sensíveis ou com impacto reputacional",
         "Uma segunda opinião de confiança, além do puramente jurídico"
+      ],
+      "howWeWork": "Como Trabalhamos",
+      "steps": [
+        { "num": "I", "title": "Escuta", "desc": "Compreender a decisão, o seu contexto e o que verdadeiramente está em jogo" },
+        { "num": "II", "title": "Análise", "desc": "Ponderar em conjunto as dimensões jurídica, comercial e reputacional" },
+        { "num": "III", "title": "Orientação", "desc": "Fornecer uma recomendação clara e ponderada" },
+        { "num": "IV", "title": "Acompanhamento", "desc": "Manter-nos envolvidos à medida que a decisão se desenrola" }
       ]
     }
   }
