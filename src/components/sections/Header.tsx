@@ -143,9 +143,7 @@ export function Header() {
                       href={slug ? `/${locale}${slug}` : `/${locale}#practice`}
                       onClick={() => setPracticeOpen(false)}
                       style={{
-                        display: 'flex',
-                        alignItems: 'baseline',
-                        gap: 10,
+                        display: 'block',
                         padding: '10px 16px',
                         fontFamily: 'var(--font-jost)',
                         fontSize: 12,
@@ -154,9 +152,6 @@ export function Header() {
                       }}
                       className="hover:text-mp-gold transition-colors"
                     >
-                      <span style={{ fontFamily: 'var(--font-cormorant)', fontStyle: 'italic', color: '#C79E6B', fontSize: 11, flexShrink: 0 }}>
-                        {area.num}
-                      </span>
                       {area.title}
                     </Link>
                   )
@@ -180,6 +175,15 @@ export function Header() {
             style={navLinkStyle}
           >
             {t('blog')}
+          </Link>
+
+          {/* Digital Transformation */}
+          <Link
+            href={`/${locale}/practice/digital-transformation`}
+            className="mp-underline text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
+            style={navLinkStyle}
+          >
+            {t('digitalTransformation')}
           </Link>
 
           {/* Consultation CTA */}
@@ -307,12 +311,9 @@ export function Header() {
                         key={area.id}
                         href={slug ? `/${locale}${slug}` : `/${locale}#practice`}
                         onClick={() => { setOpen(false); setMobilePracticeOpen(false) }}
-                        className="flex items-baseline gap-3 px-3 py-2.5 text-[12px] text-mp-muted hover:text-mp-gold transition-colors"
+                        className="block px-3 py-2.5 text-[12px] text-mp-muted hover:text-mp-gold transition-colors"
                         style={{ fontFamily: 'var(--font-jost)' }}
                       >
-                        <span style={{ fontFamily: 'var(--font-cormorant)', fontStyle: 'italic', color: '#C79E6B', fontSize: 11, flexShrink: 0 }}>
-                          {area.num}
-                        </span>
                         {area.title}
                       </Link>
                     )
@@ -336,6 +337,14 @@ export function Header() {
               style={navLinkStyle}
             >
               {t('blog')}
+            </Link>
+            <Link
+              href={`/${locale}/practice/digital-transformation`}
+              onClick={() => setOpen(false)}
+              className="px-3 py-3 text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors"
+              style={navLinkStyle}
+            >
+              {t('digitalTransformation')}
             </Link>
             <Link
               href={`/${locale}/consultation`}
