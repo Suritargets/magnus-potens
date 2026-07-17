@@ -16,7 +16,7 @@ interface PracticeArea {
   desc: string
 }
 
-const KNOWN_SLUGS = ['dispute-resolution', 'litigation', 'corporate-commercial', 'regulatory-compliance']
+const KNOWN_SLUGS = ['dispute-resolution', 'litigation', 'corporate-commercial', 'regulatory-compliance', 'strategic-advisory']
 
 export function generateStaticParams() {
   return KNOWN_SLUGS.map((slug) => ({ slug }))

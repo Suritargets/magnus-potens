@@ -209,6 +209,16 @@
         "Conseil face à l'évolution des lois et réglementations, par secteur",
         "Prévenir les risques plutôt que réagir aux incidents"
       ]
+    },
+    "strategic-advisory": {
+      "tagline": "Un conseil qui va au-delà du cadre juridique.",
+      "bullets": [
+        "Accompagnement stratégique de la direction dans les décisions à fort enjeu",
+        "Conseil au niveau du conseil d'administration sur la gouvernance, la succession et l'orientation à long terme",
+        "Évaluation des risques et planification de scénarios avant tout engagement",
+        "Conseil confidentiel sur des questions sensibles ou à fort enjeu réputationnel",
+        "Un second avis de confiance, au-delà du strictement juridique"
+      ]
     }
   }
 }

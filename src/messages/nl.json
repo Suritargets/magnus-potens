@@ -209,6 +209,16 @@
         "Advies bij wijzigende wet- en regelgeving, sectorspecifiek",
         "Voorkomen van risico's in plaats van reageren op incidenten"
       ]
+    },
+    "strategic-advisory": {
+      "tagline": "Advies dat verder gaat dan het juridische kader.",
+      "bullets": [
+        "Strategische begeleiding voor de directie bij beslissingen met grote impact",
+        "Advies op bestuursniveau over governance, opvolging en langetermijnrichting",
+        "Risico-inschatting en scenarioplanning vóórdat verplichtingen worden aangegaan",
+        "Vertrouwelijk advies bij gevoelige of reputatiegevoelige kwesties",
+        "Een vertrouwd tweede advies, voorbij het puur juridische"
+      ]
     }
   }
 }

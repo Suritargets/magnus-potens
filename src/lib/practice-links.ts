@@ -6,5 +6,6 @@ export const PRACTICE_DETAIL_SLUGS: Record<string, string> = {
   'litigation': '/practice/litigation',
   'corporate-commercial': '/practice/corporate-commercial',
   'regulatory-compliance': '/practice/regulatory-compliance',
+  'strategic-advisory': '/practice/strategic-advisory',
   'digital-transformation': '/practice/digital-transformation',
 }

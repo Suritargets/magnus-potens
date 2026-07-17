@@ -209,6 +209,16 @@
         "Asesoramiento ante la evolución normativa, específico por sector",
         "Prevenir riesgos en lugar de reaccionar ante incidentes"
       ]
+    },
+    "strategic-advisory": {
+      "tagline": "Asesoramiento que va más allá del marco legal.",
+      "bullets": [
+        "Orientación estratégica a la dirección en decisiones de alto impacto",
+        "Asesoramiento a nivel de consejo sobre gobierno corporativo, sucesión y dirección a largo plazo",
+        "Evaluación de riesgos y planificación de escenarios antes de asumir compromisos",
+        "Asesoramiento confidencial en asuntos sensibles o con impacto reputacional",
+        "Una segunda opinión de confianza, más allá de lo puramente legal"
+      ]
     }
   }
 }

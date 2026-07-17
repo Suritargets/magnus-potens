@@ -209,6 +209,16 @@
         "Advice on evolving laws and regulations, sector-specific",
         "Preventing risk rather than reacting to incidents"
       ]
+    },
+    "strategic-advisory": {
+      "tagline": "Counsel that goes beyond the legal brief.",
+      "bullets": [
+        "Strategic guidance for leadership on high-stakes decisions",
+        "Board-level advisory on governance, succession, and long-term direction",
+        "Risk assessment and scenario planning before commitments are made",
+        "Confidential counsel on sensitive or reputationally significant matters",
+        "A trusted second opinion, beyond the purely legal"
+      ]
     }
   }
 }

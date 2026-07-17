@@ -209,6 +209,16 @@
         "Aconselhamento sobre legislação e regulamentação em evolução, por setor",
         "Prevenir riscos em vez de reagir a incidentes"
       ]
+    },
+    "strategic-advisory": {
+      "tagline": "Aconselhamento que vai além do enquadramento jurídico.",
+      "bullets": [
+        "Orientação estratégica à direção em decisões de elevado impacto",
+        "Aconselhamento ao nível do conselho sobre governança, sucessão e direção a longo prazo",
+        "Avaliação de risco e planeamento de cenários antes de assumir compromissos",
+        "Aconselhamento confidencial em assuntos sensíveis ou com impacto reputacional",
+        "Uma segunda opinião de confiança, além do puramente jurídico"
+      ]
     }
   }
 }
