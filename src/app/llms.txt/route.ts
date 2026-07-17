@@ -11,7 +11,7 @@ export async function GET() {
 
 > ${enMessages.firm.statement}
 
-Magnus & Potens is a boutique legal and advisory firm. Practice areas: Corporate & Commercial, Litigation, Strategic Advisory, Digital Transformation, Dispute Resolution, Regulatory & Compliance.
+Magnus & Potens is a legal and advisory firm. Practice areas: Corporate & Commercial, Litigation, Strategic Advisory, Digital Transformation, Dispute Resolution, Regulatory & Compliance.
 
 The site is available in English, Dutch, Spanish, French, Portuguese, and Simplified Chinese (locale prefixes /nl, /es, /fr, /pt, /zh; English has no prefix).
 
