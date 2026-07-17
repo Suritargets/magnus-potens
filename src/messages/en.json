@@ -25,6 +25,7 @@
     "label": "Practice",
     "headline": "Counsel across the matters that define a future.",
     "subtitle": "Six disciplines, one standard. Every engagement is led personally, with the rigour and confidentiality our clients expect.",
+    "allAreas": "All practice areas",
     "areas": [
       {"id": "dispute-resolution", "num": "01", "title": "Dispute Resolution", "desc": "Measured, resolute representation when protection demands a firm stand."},
       {"id": "litigation", "num": "02", "title": "Litigation", "desc": "Litigation in civil and criminal law."},
@@ -167,5 +168,47 @@
       { "num": "IV", "title": "Ongoing oversight", "desc": "Monitoring delivery, keeping the vision on track" }
     ],
     "backLink": "All practice areas"
+  },
+  "practiceDetail": {
+    "dispute-resolution": {
+      "tagline": "Measure before you strike — then don't hesitate.",
+      "bullets": [
+        "Representation in commercial disputes, contract conflicts, and shareholder disagreements",
+        "Negotiation and settlement as the first line — litigation when it is the only path",
+        "Arbitration and binding advice, including in cross-border matters",
+        "Protecting reputation and interests throughout the process",
+        "Personal guidance"
+      ]
+    },
+    "litigation": {
+      "tagline": "Litigation in civil and criminal law, conducted with precision.",
+      "bullets": [
+        "Civil proceedings: contract disputes, liability, property law, and more",
+        "Criminal defense for individuals and executives",
+        "Preparation and representation in appeal proceedings",
+        "Strategic litigation advice: risk assessment before the courtroom",
+        "A discreet approach in matters sensitive to privacy or publicity"
+      ]
+    },
+    "corporate-commercial": {
+      "tagline": "The structures that carry an enterprise.",
+      "bullets": [
+        "Incorporation, restructuring, and governance of companies",
+        "Drafting and reviewing commercial contracts and partnership agreements",
+        "Shareholder agreements and corporate governance matters",
+        "Mergers, acquisitions, and due diligence guidance",
+        "Ongoing legal counsel to boards of directors and supervisory boards"
+      ]
+    },
+    "regulatory-compliance": {
+      "tagline": "Navigating regulation, with foresight — not friction.",
+      "bullets": [
+        "Compliance assessments within local and international frameworks",
+        "Guidance on licensing, supervision, and regulatory procedures",
+        "Establishing internal compliance structures and policies",
+        "Advice on evolving laws and regulations, sector-specific",
+        "Preventing risk rather than reacting to incidents"
+      ]
+    }
   }
 }

@@ -25,6 +25,7 @@
     "label": "Pratique",
     "headline": "Conseil sur les affaires qui définissent un avenir.",
     "subtitle": "Six disciplines, une norme. Chaque mission est dirigée personnellement, avec la rigueur et la confidentialité que nos clients attendent.",
+    "allAreas": "Tous les domaines de pratique",
     "areas": [
       {"id": "dispute-resolution", "num": "01", "title": "Résolution des Litiges", "desc": "Représentation mesurée et résolue lorsque la protection exige une position ferme."},
       {"id": "litigation", "num": "02", "title": "Contentieux", "desc": "Contentieux en droit civil et pénal."},
@@ -167,5 +168,47 @@
       { "num": "IV", "title": "Supervision continue", "desc": "Suivi de la livraison, maintien du cap stratégique" }
     ],
     "backLink": "Tous les domaines de pratique"
+  },
+  "practiceDetail": {
+    "dispute-resolution": {
+      "tagline": "Mesurer avant de frapper — puis ne pas hésiter.",
+      "bullets": [
+        "Représentation dans les litiges commerciaux, les conflits contractuels et les désaccords entre actionnaires",
+        "Négociation et règlement amiable en première ligne — le contentieux lorsque c'est la seule voie",
+        "Arbitrage et avis contraignants, y compris dans les affaires transfrontalières",
+        "Protection de la réputation et des intérêts tout au long du processus",
+        "Accompagnement personnel"
+      ]
+    },
+    "litigation": {
+      "tagline": "Contentieux en droit civil et pénal, mené avec précision.",
+      "bullets": [
+        "Procédures civiles : litiges contractuels, responsabilité, droit patrimonial et plus",
+        "Défense pénale pour les particuliers et les dirigeants",
+        "Préparation et représentation en appel",
+        "Conseil stratégique en contentieux : évaluation des risques avant la salle d'audience",
+        "Une approche discrète dans les affaires sensibles en matière de vie privée ou de publicité"
+      ]
+    },
+    "corporate-commercial": {
+      "tagline": "Les structures qui portent une entreprise.",
+      "bullets": [
+        "Constitution, restructuration et gouvernance des sociétés",
+        "Rédaction et révision de contrats commerciaux et d'accords de partenariat",
+        "Pactes d'actionnaires et questions de gouvernance d'entreprise",
+        "Fusions, acquisitions et accompagnement en due diligence",
+        "Conseil juridique continu aux conseils d'administration et de surveillance"
+      ]
+    },
+    "regulatory-compliance": {
+      "tagline": "Naviguer dans la réglementation, avec anticipation — sans friction.",
+      "bullets": [
+        "Évaluations de conformité dans des cadres locaux et internationaux",
+        "Accompagnement en matière de licences, de supervision et de procédures réglementaires",
+        "Mise en place de structures et politiques de conformité internes",
+        "Conseil face à l'évolution des lois et réglementations, par secteur",
+        "Prévenir les risques plutôt que réagir aux incidents"
+      ]
+    }
   }
 }

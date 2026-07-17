@@ -7,21 +7,28 @@ import { useTranslations, useLocale } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { locales } from '@/lib/i18n'
+import { PRACTICE_DETAIL_SLUGS } from '@/lib/practice-links'
 
 const LOCALES = locales
 
-const anchorSections = [
-  { hash: 'firm',     labelKey: 'firm' },
-  { hash: 'practice', labelKey: 'practice' },
-  { hash: 'approach', labelKey: 'approach' },
-] as const
+interface PracticeArea {
+  id: string
+  num: string
+  title: string
+  desc: string
+}
 
 export function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
+  const [practiceOpen, setPracticeOpen] = useState(false)
+  const [mobilePracticeOpen, setMobilePracticeOpen] = useState(false)
   const langRef = useRef<HTMLDivElement>(null)
+  const practiceRef = useRef<HTMLDivElement>(null)
   const t = useTranslations('nav')
+  const tPractice = useTranslations('practice')
+  const areas = tPractice.raw('areas') as PracticeArea[]
   const locale = useLocale()
   const pathname = usePathname()
   const router = useRouter()
@@ -36,6 +43,9 @@ export function Header() {
     function handleClickOutside(e: MouseEvent) {
       if (langRef.current && !langRef.current.contains(e.target as Node)) {
         setLangOpen(false)
+      }
+      if (practiceRef.current && !practiceRef.current.contains(e.target as Node)) {
+        setPracticeOpen(false)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -94,16 +104,74 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-7">
-          {anchorSections.map((link) => (
-            <a
-              key={link.hash}
-              href={`/${locale}#${link.hash}`}
+          <a
+            href={`/${locale}#firm`}
+            className="mp-underline text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
+            style={navLinkStyle}
+          >
+            {t('firm')}
+          </a>
+
+          {/* Practice dropdown */}
+          <div ref={practiceRef} style={{ position: 'relative' }}>
+            <button
+              type="button"
+              onClick={() => setPracticeOpen((v) => !v)}
               className="mp-underline text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
-              style={navLinkStyle}
+              style={{ ...navLinkStyle, background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5 }}
             >
-              {t(link.labelKey)}
-            </a>
-          ))}
+              {t('practice')}
+              <span style={{ fontSize: 8 }}>&#9662;</span>
+            </button>
+            {practiceOpen && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 8px)',
+                  left: 0,
+                  background: '#15171C',
+                  border: '1px solid rgba(199,158,107,0.15)',
+                  minWidth: 260,
+                  zIndex: 100,
+                }}
+              >
+                {areas.map((area) => {
+                  const slug = PRACTICE_DETAIL_SLUGS[area.id]
+                  return (
+                    <Link
+                      key={area.id}
+                      href={slug ? `/${locale}${slug}` : `/${locale}#practice`}
+                      onClick={() => setPracticeOpen(false)}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'baseline',
+                        gap: 10,
+                        padding: '10px 16px',
+                        fontFamily: 'var(--font-jost)',
+                        fontSize: 12,
+                        color: '#B7B2A8',
+                        textDecoration: 'none',
+                      }}
+                      className="hover:text-mp-gold transition-colors"
+                    >
+                      <span style={{ fontFamily: 'var(--font-cormorant)', fontStyle: 'italic', color: '#C79E6B', fontSize: 11, flexShrink: 0 }}>
+                        {area.num}
+                      </span>
+                      {area.title}
+                    </Link>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+
+          <a
+            href={`/${locale}#approach`}
+            className="mp-underline text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
+            style={navLinkStyle}
+          >
+            {t('approach')}
+          </a>
 
           {/* Blog link */}
           <Link
@@ -112,15 +180,6 @@ export function Header() {
             style={navLinkStyle}
           >
             {t('blog')}
-          </Link>
-
-          {/* Digital Transformation */}
-          <Link
-            href={`/${locale}/practice/digital-transformation`}
-            className="mp-underline text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors duration-300"
-            style={navLinkStyle}
-          >
-            {t('digitalTransformation')}
           </Link>
 
           {/* Consultation CTA */}
@@ -219,17 +278,57 @@ export function Header() {
           }}
         >
           <nav className="max-w-[1280px] mx-auto px-8 flex flex-col gap-1 py-6">
-            {anchorSections.map((link) => (
-              <a
-                key={link.hash}
-                href={`/${locale}#${link.hash}`}
-                onClick={() => setOpen(false)}
-                className="px-3 py-3 text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors"
-                style={navLinkStyle}
+            <a
+              href={`/${locale}#firm`}
+              onClick={() => setOpen(false)}
+              className="px-3 py-3 text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors"
+              style={navLinkStyle}
+            >
+              {t('firm')}
+            </a>
+
+            {/* Practice — expandable */}
+            <div>
+              <button
+                type="button"
+                onClick={() => setMobilePracticeOpen((v) => !v)}
+                className="w-full flex items-center justify-between px-3 py-3 text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors"
+                style={{ ...navLinkStyle, background: 'none', border: 'none', cursor: 'pointer' }}
               >
-                {t(link.labelKey)}
-              </a>
-            ))}
+                {t('practice')}
+                <span style={{ fontSize: 8, transform: mobilePracticeOpen ? 'rotate(180deg)' : 'none' }}>&#9662;</span>
+              </button>
+              {mobilePracticeOpen && (
+                <div style={{ paddingLeft: 12 }}>
+                  {areas.map((area) => {
+                    const slug = PRACTICE_DETAIL_SLUGS[area.id]
+                    return (
+                      <Link
+                        key={area.id}
+                        href={slug ? `/${locale}${slug}` : `/${locale}#practice`}
+                        onClick={() => { setOpen(false); setMobilePracticeOpen(false) }}
+                        className="flex items-baseline gap-3 px-3 py-2.5 text-[12px] text-mp-muted hover:text-mp-gold transition-colors"
+                        style={{ fontFamily: 'var(--font-jost)' }}
+                      >
+                        <span style={{ fontFamily: 'var(--font-cormorant)', fontStyle: 'italic', color: '#C79E6B', fontSize: 11, flexShrink: 0 }}>
+                          {area.num}
+                        </span>
+                        {area.title}
+                      </Link>
+                    )
+                  })}
+                </div>
+              )}
+            </div>
+
+            <a
+              href={`/${locale}#approach`}
+              onClick={() => setOpen(false)}
+              className="px-3 py-3 text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors"
+              style={navLinkStyle}
+            >
+              {t('approach')}
+            </a>
             <Link
               href={`/${locale}/blog`}
               onClick={() => setOpen(false)}
@@ -237,14 +336,6 @@ export function Header() {
               style={navLinkStyle}
             >
               {t('blog')}
-            </Link>
-            <Link
-              href={`/${locale}/practice/digital-transformation`}
-              onClick={() => setOpen(false)}
-              className="px-3 py-3 text-[11px] tracking-[0.18em] uppercase text-mp-muted hover:text-mp-gold transition-colors"
-              style={navLinkStyle}
-            >
-              {t('digitalTransformation')}
             </Link>
             <Link
               href={`/${locale}/consultation`}

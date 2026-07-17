@@ -25,6 +25,7 @@
     "label": "Práctica",
     "headline": "Asesoramiento en los asuntos que definen un futuro.",
     "subtitle": "Seis disciplinas, un estándar. Cada compromiso es liderado personalmente, con el rigor y la confidencialidad que nuestros clientes esperan.",
+    "allAreas": "Todas las áreas de práctica",
     "areas": [
       {"id": "dispute-resolution", "num": "01", "title": "Resolución de Disputas", "desc": "Representación mesurada y firme cuando la protección exige una posición sólida."},
       {"id": "litigation", "num": "02", "title": "Litigios", "desc": "Litigios en derecho civil y penal."},
@@ -167,5 +168,47 @@
       { "num": "IV", "title": "Supervisión continua", "desc": "Monitoreo de la entrega, manteniendo la visión en curso" }
     ],
     "backLink": "Todas las áreas de práctica"
+  },
+  "practiceDetail": {
+    "dispute-resolution": {
+      "tagline": "Medir antes de golpear — y después no dudar.",
+      "bullets": [
+        "Representación en disputas comerciales, conflictos contractuales y desacuerdos entre accionistas",
+        "Negociación y acuerdo como primera vía — litigio cuando es el único camino",
+        "Arbitraje y dictámenes vinculantes, también en asuntos transfronterizos",
+        "Protección de la reputación y los intereses durante todo el proceso",
+        "Acompañamiento personal"
+      ]
+    },
+    "litigation": {
+      "tagline": "Litigios en derecho civil y penal, llevados con precisión.",
+      "bullets": [
+        "Procedimientos civiles: disputas contractuales, responsabilidad civil, derecho patrimonial y más",
+        "Defensa penal para particulares y directivos",
+        "Preparación y representación en procedimientos de apelación",
+        "Asesoramiento estratégico en litigios: evaluación de riesgos antes de la sala",
+        "Un enfoque discreto en asuntos sensibles a la privacidad o la publicidad"
+      ]
+    },
+    "corporate-commercial": {
+      "tagline": "Las estructuras que sostienen una empresa.",
+      "bullets": [
+        "Constitución, reestructuración y gobierno corporativo de sociedades",
+        "Redacción y revisión de contratos comerciales y acuerdos de colaboración",
+        "Pactos de accionistas y cuestiones de gobierno corporativo",
+        "Fusiones, adquisiciones y asesoramiento en due diligence",
+        "Asesoramiento jurídico continuo a consejos de administración y de vigilancia"
+      ]
+    },
+    "regulatory-compliance": {
+      "tagline": "Navegar por la regulación, con visión — no con fricción.",
+      "bullets": [
+        "Evaluaciones de cumplimiento dentro de marcos locales e internacionales",
+        "Asesoramiento en licencias, supervisión y procedimientos regulatorios",
+        "Implementación de estructuras y políticas internas de cumplimiento",
+        "Asesoramiento ante la evolución normativa, específico por sector",
+        "Prevenir riesgos en lugar de reaccionar ante incidentes"
+      ]
+    }
   }
 }

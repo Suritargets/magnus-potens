@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import { motion, useReducedMotion } from 'motion/react'
 import Link from 'next/link'
 import { Reveal } from '@/components/motion/Reveal'
+import { PRACTICE_DETAIL_SLUGS } from '@/lib/practice-links'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -12,12 +13,6 @@ interface PracticeArea {
   num: string
   title: string
   desc: string
-}
-
-// Only areas with a published detail page get a slug — matched by locale-independent
-// id, not the translated title — others render as static (non-linked) cards.
-const DETAIL_SLUGS: Record<string, string> = {
-  'digital-transformation': '/practice/digital-transformation',
 }
 
 export function Practice() {
@@ -81,7 +76,7 @@ export function Practice() {
           {areas.map((area, index) => {
             const isLastRow = index >= 3
             const isLastInRow = (index + 1) % 3 === 0
-            const href = DETAIL_SLUGS[area.id] ? `/${locale}${DETAIL_SLUGS[area.id]}` : undefined
+            const href = PRACTICE_DETAIL_SLUGS[area.id] ? `/${locale}${PRACTICE_DETAIL_SLUGS[area.id]}` : undefined
             const cardContent = (
               <>
                 <p

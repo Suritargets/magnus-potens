@@ -25,6 +25,7 @@
     "label": "Praktijk",
     "headline": "Advies over de zaken die een toekomst bepalen.",
     "subtitle": "Zes disciplines, één norm. Elke opdracht wordt persoonlijk geleid, met de nauwkeurigheid en vertrouwelijkheid die onze cliënten verwachten.",
+    "allAreas": "Alle praktijkgebieden",
     "areas": [
       {"id": "dispute-resolution", "num": "01", "title": "Geschillenbeslechting", "desc": "Gemeten, vastberaden vertegenwoordiging wanneer bescherming een standpunt vereist."},
       {"id": "litigation", "num": "02", "title": "Procesrecht", "desc": "Procesvoering in het civiel en strafrecht."},
@@ -167,5 +168,47 @@
       { "num": "IV", "title": "Doorlopend toezicht", "desc": "Uitvoering monitoren, visie op koers houden" }
     ],
     "backLink": "Alle praktijkgebieden"
+  },
+  "practiceDetail": {
+    "dispute-resolution": {
+      "tagline": "Meten voordat je slaat, en dan niet aarzelen.",
+      "bullets": [
+        "Vertegenwoordiging bij handelsgeschillen, contractdisputen en aandeelhoudersconflicten",
+        "Onderhandeling en schikking als eerste lijn — procederen wanneer dat de enige weg is",
+        "Arbitrage en bindend advies, ook in grensoverschrijdende zaken",
+        "Bescherming van reputatie en belangen tijdens het hele traject",
+        "Persoonlijke begeleiding"
+      ]
+    },
+    "litigation": {
+      "tagline": "Procesvoering in civiel en strafrecht, gevoerd met precisie.",
+      "bullets": [
+        "Civiele procedures: contractgeschillen, aansprakelijkheid, vermogensrecht, etc.",
+        "Strafrechtelijke verdediging voor particulieren en bestuurders",
+        "Voorbereiding en procesvoering bij hoger beroep",
+        "Strategisch procesadvies: risico-inschatting vóór de rechtszaal",
+        "Discrete aanpak in zaken met gevoeligheid voor privacy of publiciteit"
+      ]
+    },
+    "corporate-commercial": {
+      "tagline": "De structuren die een onderneming dragen.",
+      "bullets": [
+        "Oprichting, herstructurering en governance van vennootschappen",
+        "Opstellen en beoordelen van commerciële contracten en samenwerkingsovereenkomsten",
+        "Aandeelhoudersovereenkomsten en corporate governance-vraagstukken",
+        "Fusies, overnames en due diligence-begeleiding",
+        "Doorlopend juridisch advies aan directies en raden van commissarissen"
+      ]
+    },
+    "regulatory-compliance": {
+      "tagline": "Navigeren door regelgeving, met vooruitzicht — niet met wrijving.",
+      "bullets": [
+        "Compliance-beoordelingen binnen lokale en internationale kaders",
+        "Begeleiding bij vergunningen, toezicht en regelgevende procedures",
+        "Opzetten van interne compliance-structuren en -beleid",
+        "Advies bij wijzigende wet- en regelgeving, sectorspecifiek",
+        "Voorkomen van risico's in plaats van reageren op incidenten"
+      ]
+    }
   }
 }

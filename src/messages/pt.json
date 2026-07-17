@@ -25,6 +25,7 @@
     "label": "Prática",
     "headline": "Aconselhamento nas questões que definem um futuro.",
     "subtitle": "Seis áreas, um único padrão. Cada mandato é conduzido pessoalmente, com o rigor e a confidencialidade que os nossos clientes esperam.",
+    "allAreas": "Todas as áreas de prática",
     "areas": [
       {"id": "dispute-resolution", "num": "01", "title": "Resolução de Litígios", "desc": "Representação ponderada e determinada quando a proteção exige uma posição firme."},
       {"id": "litigation", "num": "02", "title": "Contencioso", "desc": "Contencioso em direito civil e penal."},
@@ -167,5 +168,47 @@
       { "num": "IV", "title": "Supervisão contínua", "desc": "Monitorização da entrega, mantendo a visão no rumo certo" }
     ],
     "backLink": "Todas as áreas de prática"
+  },
+  "practiceDetail": {
+    "dispute-resolution": {
+      "tagline": "Medir antes de agir — e depois não hesitar.",
+      "bullets": [
+        "Representação em litígios comerciais, conflitos contratuais e desacordos entre acionistas",
+        "Negociação e acordo como primeira linha — contencioso quando é o único caminho",
+        "Arbitragem e pareceres vinculativos, inclusive em processos transfronteiriços",
+        "Proteção da reputação e dos interesses ao longo de todo o processo",
+        "Acompanhamento pessoal"
+      ]
+    },
+    "litigation": {
+      "tagline": "Contencioso em direito civil e penal, conduzido com precisão.",
+      "bullets": [
+        "Processos cíveis: litígios contratuais, responsabilidade civil, direito patrimonial e mais",
+        "Defesa criminal para particulares e administradores",
+        "Preparação e representação em processos de recurso",
+        "Aconselhamento estratégico em contencioso: avaliação de risco antes da sala de audiências",
+        "Uma abordagem discreta em assuntos sensíveis à privacidade ou à publicidade"
+      ]
+    },
+    "corporate-commercial": {
+      "tagline": "As estruturas que sustentam uma empresa.",
+      "bullets": [
+        "Constituição, reestruturação e governança de sociedades",
+        "Elaboração e revisão de contratos comerciais e acordos de parceria",
+        "Acordos de acionistas e questões de governança corporativa",
+        "Fusões, aquisições e apoio em due diligence",
+        "Aconselhamento jurídico contínuo a conselhos de administração e fiscais"
+      ]
+    },
+    "regulatory-compliance": {
+      "tagline": "Navegar pela regulação, com visão — sem atrito.",
+      "bullets": [
+        "Avaliações de compliance em quadros locais e internacionais",
+        "Aconselhamento sobre licenciamento, supervisão e procedimentos regulatórios",
+        "Implementação de estruturas e políticas internas de compliance",
+        "Aconselhamento sobre legislação e regulamentação em evolução, por setor",
+        "Prevenir riscos em vez de reagir a incidentes"
+      ]
+    }
   }
 }
