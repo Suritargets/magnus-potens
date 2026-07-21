@@ -86,6 +86,37 @@ export function Hero() {
         }}
       />
 
+      {/* Animated logo motion — sized well past the old bounded box and with
+          a soft radial mask so the rectangular edges fade into the section's
+          background instead of reading as a video "window". Positioned to
+          stay fully on-screen (no viewport-relative bleed past the edge). */}
+      <motion.div
+        className="hidden md:block absolute pointer-events-none"
+        aria-hidden
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2, delay: 0.8, ease: EASE }}
+        style={{
+          right: '2vw',
+          top: '50%',
+          translateY: '-50%',
+          y: reduce ? 0 : logoY,
+          width: 'min(42vw, 620px)',
+          aspectRatio: '16 / 9',
+          maskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 55%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 55%, transparent 100%)',
+        }}
+      >
+        <video
+          src="/logo-motion.mp4"
+          autoPlay={!reduce}
+          loop={!reduce}
+          muted
+          playsInline
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+      </motion.div>
+
       {/* Content */}
       <div className="relative z-10 max-w-[1280px] mx-auto px-8 md:px-14 w-full py-32">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
@@ -149,49 +180,6 @@ export function Hero() {
               >
                 {t('cta_secondary')}
               </a>
-            </motion.div>
-          </motion.div>
-
-          {/* Right column — animated logo mark */}
-          <motion.div
-            className="hidden md:flex items-center justify-center relative"
-            style={{ y: reduce ? 0 : logoY }}
-          >
-            {/* Gold glow blob */}
-            <motion.div
-              className="absolute pointer-events-none"
-              aria-hidden
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 2.4, delay: 1.1, ease: 'easeOut' }}
-              style={{
-                width: 420,
-                height: 420,
-                borderRadius: '50%',
-                background: 'radial-gradient(circle, rgba(199,158,107,0.28) 0%, transparent 65%)',
-                filter: 'blur(20px)',
-                animation: 'mpGlow 6s ease-in-out infinite',
-              }}
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: reduce ? 1 : 0.96, y: reduce ? 0 : 16 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 1.4, delay: 0.9, ease: EASE }}
-              style={{
-                position: 'relative',
-                width: 'min(90%, 640px)',
-                aspectRatio: '16 / 9',
-                overflow: 'hidden',
-              }}
-            >
-              <video
-                src="/logo-motion.mp4"
-                autoPlay={!reduce}
-                loop={!reduce}
-                muted
-                playsInline
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
             </motion.div>
           </motion.div>
         </div>
