@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { useTranslations, useLocale } from 'next-intl'
 import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
 
@@ -153,7 +152,7 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right column — logo mark */}
+          {/* Right column — animated logo mark */}
           <motion.div
             className="hidden md:flex items-center justify-center relative"
             style={{ y: reduce ? 0 : logoY }}
@@ -180,78 +179,19 @@ export function Hero() {
               transition={{ duration: 1.4, delay: 0.9, ease: EASE }}
               style={{
                 position: 'relative',
-                // Vaste, expliciete box (i.p.v. size-from-content) zodat de
-                // absoluut gepositioneerde spark-laag hieronder een
-                // eenduidig referentiekader heeft — anders resolvet de
-                // browser inset:0 onvoorspelbaar op een auto-sized ouder.
-                height: 'clamp(260px, 46vh, 440px)',
-                aspectRatio: '352 / 544',
+                width: 'min(90%, 640px)',
+                aspectRatio: '16 / 9',
+                overflow: 'hidden',
               }}
             >
-              {/* Rondcirkelend lichtpuntje — blijft buiten de contouren van
-                  het logo (cirkelstraal als percentage schaalt automatisch
-                  mee met de responsive hoogte hierboven). */}
-              {!reduce && (
-                <div className="hero-spark-layer absolute inset-0 pointer-events-none" aria-hidden>
-                  {[
-                    { delay: -0.5, opacity: 0.14, size: 3 },
-                    { delay: -0.34, opacity: 0.3, size: 4 },
-                    { delay: -0.18, opacity: 0.55, size: 5 },
-                    { delay: 0, opacity: 1, size: 7 },
-                  ].map((spark, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        position: 'absolute',
-                        width: spark.size,
-                        height: spark.size,
-                        borderRadius: '50%',
-                        background: '#F3D9A8',
-                        opacity: spark.opacity,
-                        boxShadow:
-                          '0 0 6px 2px rgba(243,217,168,0.9), 0 0 16px 6px rgba(199,158,107,0.6), 0 0 28px 10px rgba(199,158,107,0.25)',
-                        offsetPath: 'circle(76% at 50% 50%)',
-                        animation: 'mpOrbit 8.5s cubic-bezier(0.45, 0, 0.2, 1) infinite',
-                        animationDelay: `${spark.delay}s`,
-                      }}
-                    />
-                  ))}
-                </div>
-              )}
-
-              {/* Pulserende gloed op de contouren van het logo zelf (drop-shadow
-                  volgt de alpha-vorm van de PNG, i.t.t. een box-shadow) */}
-              <motion.div
-                animate={
-                  reduce
-                    ? undefined
-                    : {
-                        filter: [
-                          'drop-shadow(0 0 6px rgba(199,158,107,0.3)) drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
-                          'drop-shadow(0 0 24px rgba(221,187,133,0.7)) drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
-                          'drop-shadow(0 0 6px rgba(199,158,107,0.3)) drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
-                        ],
-                      }
-                }
-                transition={{ duration: 4.5, delay: 2.3, repeat: Infinity, ease: 'easeInOut' }}
-                style={{
-                  filter: reduce
-                    ? 'drop-shadow(0 0 14px rgba(199,158,107,0.45)) drop-shadow(0 30px 60px rgba(0,0,0,0.6))'
-                    : undefined,
-                }}
-              >
-                <Image
-                  src="/images/logo-mark.png"
-                  alt="Magnus & Potens monogram"
-                  width={340}
-                  height={420}
-                  priority
-                  style={{
-                    height: 'clamp(260px, 46vh, 440px)',
-                    width: 'auto',
-                  }}
-                />
-              </motion.div>
+              <video
+                src="/logo-motion.mp4"
+                autoPlay={!reduce}
+                loop={!reduce}
+                muted
+                playsInline
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
             </motion.div>
           </motion.div>
         </div>
