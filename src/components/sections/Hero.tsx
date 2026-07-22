@@ -10,7 +10,6 @@ export function Hero() {
   const locale = useLocale()
   const reduce = useReducedMotion()
   const { scrollY } = useScroll()
-  const logoY = useTransform(scrollY, [0, 700], [0, -70])
   const contentY = useTransform(scrollY, [0, 700], [0, 40])
 
   const entrance = (delay: number) => ({
@@ -86,29 +85,20 @@ export function Hero() {
         }}
       />
 
-      {/* Animated logo motion — sized well past the old bounded box and with
-          a soft radial mask so the rectangular edges fade into the section's
-          background instead of reading as a video "window". Positioned to
-          stay fully on-screen (no viewport-relative bleed past the edge). */}
+      {/* Full-bleed hero background video (tablet/desktop) — this video has
+          the grid-line pattern and right-positioned logo baked in, so it
+          IS the hero background rather than a bounded element sitting on
+          top of one; no mask/bleed math needed since it exactly fills the
+          section with no visible edge. */}
       <motion.div
-        className="hidden md:block absolute pointer-events-none"
+        className="hidden md:block absolute inset-0 pointer-events-none"
         aria-hidden
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 2, delay: 0.8, ease: EASE }}
-        style={{
-          right: '2vw',
-          top: '50%',
-          translateY: '-50%',
-          y: reduce ? 0 : logoY,
-          width: 'min(42vw, 620px)',
-          aspectRatio: '16 / 9',
-          maskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 55%, transparent 100%)',
-          WebkitMaskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 55%, transparent 100%)',
-        }}
+        transition={{ duration: 2, delay: 0.4, ease: EASE }}
       >
         <video
-          src="/logo-motion.mp4"
+          src="/logo-animation-side.mp4"
           autoPlay={!reduce}
           loop={!reduce}
           muted
@@ -122,6 +112,33 @@ export function Hero() {
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Left column */}
           <motion.div style={{ y: reduce ? 0 : contentY }}>
+            {/* Fallback logo animation for mobile/small screens — the
+                full-bleed side video needs real width to read correctly, so
+                below the md breakpoint we show the original centered logo
+                animation instead, modestly sized above the text. */}
+            <motion.div
+              className="md:hidden mb-8 relative pointer-events-none"
+              aria-hidden
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.4, delay: 0.3, ease: EASE }}
+              style={{
+                width: 'min(60%, 260px)',
+                aspectRatio: '16 / 9',
+                maskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 55%, transparent 100%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 55%, transparent 100%)',
+              }}
+            >
+              <video
+                src="/logo-motion.mp4"
+                autoPlay={!reduce}
+                loop={!reduce}
+                muted
+                playsInline
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+            </motion.div>
+
             {/* Tagline chip */}
             <motion.div className="mp-chip mb-10" {...entrance(0.15)}>
               <span className="mp-rule" />
