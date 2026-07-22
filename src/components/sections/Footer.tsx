@@ -4,10 +4,17 @@ import Image from 'next/image'
 import { useTranslations, useLocale } from 'next-intl'
 import { Stagger, StaggerItem } from '@/components/motion/Stagger'
 
+// Mirrors the header's main nav (Header.tsx) so the footer always lists the
+// full menu, not just a subset. Anchor links are locale-prefixed (not bare
+// "#firm") because the footer renders on every marketing page, not only the
+// homepage where those anchors live.
 const firmLinks = [
-  { labelKey: 'firm', href: '#firm' },
-  { labelKey: 'practice', href: '#practice' },
-  { labelKey: 'approach', href: '#approach' },
+  { labelKey: 'firm', getHref: (locale: string) => `/${locale}#firm` },
+  { labelKey: 'approach', getHref: (locale: string) => `/${locale}#approach` },
+  { labelKey: 'practice', getHref: (locale: string) => `/${locale}#practice` },
+  { labelKey: 'blog', getHref: (locale: string) => `/${locale}/blog` },
+  { labelKey: 'digitalTransformation', getHref: (locale: string) => `/${locale}/practice/digital-transformation` },
+  { labelKey: 'consultation', getHref: (locale: string) => `/${locale}/consultation` },
 ] as const
 
 export function Footer() {
@@ -77,9 +84,9 @@ export function Footer() {
             </p>
             <ul className="space-y-3">
               {firmLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.labelKey}>
                   <a
-                    href={link.href}
+                    href={link.getHref(locale)}
                     className="text-[13px] transition-colors duration-200"
                     style={{
                       fontFamily: 'var(--font-jost)',

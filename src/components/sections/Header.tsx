@@ -155,6 +155,7 @@ export function Header() {
                         padding: '10px 16px',
                         fontFamily: 'var(--font-jost)',
                         fontSize: 12,
+                        fontWeight: 600,
                         color: '#B7B2A8',
                         textDecoration: 'none',
                       }}
@@ -321,7 +322,7 @@ export function Header() {
                         href={slug ? `/${locale}${slug}` : `/${locale}#practice`}
                         onClick={() => { setOpen(false); setMobilePracticeOpen(false) }}
                         className="block px-3 py-2.5 text-[12px] text-mp-muted hover:text-mp-gold transition-colors"
-                        style={{ fontFamily: 'var(--font-jost)' }}
+                        style={{ fontFamily: 'var(--font-jost)', fontWeight: 600 }}
                       >
                         {area.title}
                       </Link>

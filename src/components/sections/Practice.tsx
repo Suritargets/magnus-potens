@@ -90,7 +90,7 @@ export function Practice() {
                   {area.num}
                 </p>
                 <h3
-                  className="text-[1.15rem] leading-[1.2] mb-4 font-normal"
+                  className="text-[1.15rem] leading-[1.2] mb-4 font-semibold"
                   style={{
                     fontFamily: 'var(--font-cormorant)',
                     color: '#1A1814',
