@@ -117,13 +117,13 @@ export function Hero() {
                 below the md breakpoint we show the original centered logo
                 animation instead, modestly sized above the text. */}
             <motion.div
-              className="md:hidden mb-8 relative pointer-events-none"
+              className="md:hidden mx-auto mb-8 relative pointer-events-none"
               aria-hidden
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.4, delay: 0.3, ease: EASE }}
               style={{
-                width: 'min(60%, 260px)',
+                width: 'min(85%, 380px)',
                 aspectRatio: '16 / 9',
                 maskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 55%, transparent 100%)',
                 WebkitMaskImage: 'radial-gradient(ellipse 65% 70% at 50% 50%, black 55%, transparent 100%)',
