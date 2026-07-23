@@ -1,3 +1,5 @@
+'use client'
+
 import { useTranslations } from 'next-intl'
 import { ContactForm } from './ContactForm'
 import { Reveal } from '@/components/motion/Reveal'
