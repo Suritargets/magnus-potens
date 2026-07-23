@@ -74,6 +74,7 @@ export async function saveHomepageContent(
       footer: {
         tagline: get('footer_tagline'),
         motto: get('footer_motto'),
+        copyright: get('footer_copyright'),
       },
     }
 

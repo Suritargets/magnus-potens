@@ -40,7 +40,7 @@ export interface HomepageOverride {
   // Only the free-text copy — the footer's nav links always mirror the real
   // site routes (see Footer.tsx firmLinks/areas), so they stay code-driven
   // rather than admin-editable free text that could drift out of sync.
-  footer?: Partial<{ tagline: string; motto: string }>
+  footer?: Partial<{ tagline: string; motto: string; copyright: string }>
 }
 
 const OVERRIDABLE_SECTIONS = ['hero', 'firm', 'practice', 'approach', 'slogan', 'contact', 'footer'] as const

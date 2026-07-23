@@ -147,6 +147,7 @@ function LocaleForm({ locale, data }: { locale: string; data: Required<HomepageO
       <SectionCard title="Footer">
         <Field label="Tagline" name="footer_tagline" defaultValue={data.footer.tagline ?? ''} />
         <Field label="Motto" name="footer_motto" defaultValue={data.footer.motto ?? ''} />
+        <Field label="Copyright" name="footer_copyright" defaultValue={data.footer.copyright ?? ''} />
       </SectionCard>
 
       <button
