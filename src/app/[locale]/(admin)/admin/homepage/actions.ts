@@ -71,6 +71,10 @@ export async function saveHomepageContent(
         address_label: get('contact_address_label'),
         address: get('contact_address'),
       },
+      footer: {
+        tagline: get('footer_tagline'),
+        motto: get('footer_motto'),
+      },
     }
 
     if (!content.hero?.headline) return { success: false, error: 'Hero headline is required.' }

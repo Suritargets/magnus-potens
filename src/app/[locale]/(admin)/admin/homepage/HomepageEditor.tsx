@@ -144,6 +144,11 @@ function LocaleForm({ locale, data }: { locale: string; data: Required<HomepageO
         </div>
       </SectionCard>
 
+      <SectionCard title="Footer">
+        <Field label="Tagline" name="footer_tagline" defaultValue={data.footer.tagline ?? ''} />
+        <Field label="Motto" name="footer_motto" defaultValue={data.footer.motto ?? ''} />
+      </SectionCard>
+
       <button
         type="submit"
         disabled={pending}

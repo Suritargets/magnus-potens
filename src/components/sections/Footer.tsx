@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useTranslations, useLocale } from 'next-intl'
 import { Stagger, StaggerItem } from '@/components/motion/Stagger'
+import { PRACTICE_DETAIL_SLUGS } from '@/lib/practice-links'
 
 // Mirrors the header's main nav (Header.tsx) so the footer always lists the
 // full menu, not just a subset. Anchor links are locale-prefixed (not bare
@@ -17,10 +18,19 @@ const firmLinks = [
   { labelKey: 'consultation', getHref: (locale: string) => `/${locale}/consultation` },
 ] as const
 
+interface PracticeArea {
+  id: string
+  num: string
+  title: string
+  desc: string
+}
+
 export function Footer() {
   const t = useTranslations('footer')
   const tNav = useTranslations('nav')
+  const tPractice = useTranslations('practice')
   const locale = useLocale()
+  const areas = tPractice.raw('areas') as PracticeArea[]
 
   const legalLinks = [
     { label: t('privacy_label'), slug: 'privacy' },
@@ -36,9 +46,9 @@ export function Footer() {
       }}
     >
       <div className="max-w-[1280px] mx-auto px-8 md:px-14">
-        <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mb-14">
+        <Stagger className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-10 mb-14">
           {/* Brand column */}
-          <StaggerItem className="md:col-span-1">
+          <StaggerItem className="md:col-span-2">
             <div className="flex items-center gap-4 mb-5">
               <Image
                 src="/images/logo-mark.png"
@@ -100,6 +110,42 @@ export function Footer() {
                   </a>
                 </li>
               ))}
+            </ul>
+          </StaggerItem>
+
+          {/* Practice areas */}
+          <StaggerItem>
+            <p
+              className="text-[9px] tracking-[0.25em] uppercase mb-6"
+              style={{
+                fontFamily: 'var(--font-jost)',
+                fontWeight: 500,
+                color: 'rgba(199,158,107,0.5)',
+              }}
+            >
+              {tPractice('label')}
+            </p>
+            <ul className="space-y-3">
+              {areas.map((area) => {
+                const slug = PRACTICE_DETAIL_SLUGS[area.id]
+                return (
+                  <li key={area.id}>
+                    <a
+                      href={slug ? `/${locale}${slug}` : `/${locale}#practice`}
+                      className="text-[13px] transition-colors duration-200"
+                      style={{
+                        fontFamily: 'var(--font-jost)',
+                        fontWeight: 300,
+                        color: '#6E6A63',
+                      }}
+                      onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#C79E6B' }}
+                      onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#6E6A63' }}
+                    >
+                      {area.title}
+                    </a>
+                  </li>
+                )
+              })}
             </ul>
           </StaggerItem>
 
