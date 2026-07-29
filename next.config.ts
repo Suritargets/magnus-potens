@@ -67,7 +67,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/_next/static/(.*)',
-        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+        headers: [{ key: 'Cache-Control', value: process.env.NODE_ENV === 'production' ? 'public, max-age=31536000, immutable' : 'no-store' }],
       },
       {
         source: '/api/(.*)',

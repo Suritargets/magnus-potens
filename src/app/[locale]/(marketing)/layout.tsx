@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import { Header } from '@/components/sections/Header'
-import { Footer } from '@/components/sections/Footer'
+import { Footer } from '@/components/sections/FooterSection'
 import { CookieConsent } from '@/components/sections/CookieConsent'
 import { BackToTop } from '@/components/sections/BackToTop'
 import { PageViewTracker } from '@/components/PageViewTracker'

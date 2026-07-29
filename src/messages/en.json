@@ -39,10 +39,10 @@
     "label": "The Approach",
     "headline": "Four principles, drawn from the mark itself.",
     "pillars": [
-      {"num": "01", "tag": "ACCESS", "title": "The Open Door", "desc": "An entry into possibility. We open the right path through complex legal and advisory matters — with confidence and care."},
+      {"num": "01", "tag": "ACCESS", "title": "The Open Door", "desc": "An entry into possibility. We open doors through complex legal and advisory matters — with confidence and care."},
       {"num": "02", "tag": "DIRECTION", "title": "The Path Forward", "desc": "Movement with intent. Our advisory role is to guide clients toward clear, purposeful decisions — never merely react to them."},
-      {"num": "03", "tag": "PROTECTION", "title": "The Shield", "desc": "Structure and security. The strength of our counsel is a form of protection — the foundation beneath every decision we guide."},
-      {"num": "04", "tag": "EXCELLENCE", "title": "Our Strength", "desc": "Discretion, and timeless authority — counsel that is executive, refined, and unmistakably international."}
+      {"num": "03", "tag": "PROTECTION", "title": "The Shield", "desc": "Structure and security. The strength of our counsel is the foundation beneath every decision we guide."},
+      {"num": "04", "tag": "EXCELLENCE", "title": "Our Strength", "desc": "Discretion, and timeless authority — counsel that is executive, refined, and international."}
     ]
   },
   "slogan": {
@@ -55,6 +55,8 @@
     "description": "Every engagement begins in confidence. Share what you are facing, and we will respond personally — with discretion, and without obligation.",
     "enquiries_label": "Enquiries",
     "email": "info@magnus-potens.com",
+    "phone_label": "Phone",
+    "phone": "+597 855 9190",
     "appointment_label": "By appointment",
     "website": "magnus-potens.com",
     "address_label": "Address",

@@ -78,9 +78,51 @@ export function Footer() {
                 </p>
               </div>
             </div>
+
+            <div className="mt-6 space-y-4">
+              <div>
+                <p className="text-[9px] tracking-[0.25em] uppercase mb-1" style={{ fontFamily: 'var(--font-jost)', fontWeight: 500, color: 'rgba(199,158,107,0.5)' }}>
+                  Enquiries
+                </p>
+                <a
+                  href="mailto:info@magnus-potens.com"
+                  className="text-[13px] transition-colors duration-200"
+                  style={{ fontFamily: 'var(--font-jost)', fontWeight: 300, color: '#6E6A63' }}
+                  onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#C79E6B' }}
+                  onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#6E6A63' }}
+                >
+                  info@magnus-potens.com
+                </a>
+                <a
+                  href="tel:+5978559190"
+                  className="text-[13px] transition-colors duration-200 block mt-1"
+                  style={{ fontFamily: 'var(--font-jost)', fontWeight: 300, color: '#6E6A63' }}
+                  onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#C79E6B' }}
+                  onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#6E6A63' }}
+                >
+                  +597 855 9190
+                </a>
+              </div>
+              <div>
+                <p className="text-[9px] tracking-[0.25em] uppercase mb-1" style={{ fontFamily: 'var(--font-jost)', fontWeight: 500, color: 'rgba(199,158,107,0.5)' }}>
+                  By appointment
+                </p>
+                <p className="text-[13px]" style={{ fontFamily: 'var(--font-jost)', fontWeight: 300, color: '#6E6A63' }}>
+                  magnus-potens.com
+                </p>
+              </div>
+              <div>
+                <p className="text-[9px] tracking-[0.25em] uppercase mb-1" style={{ fontFamily: 'var(--font-jost)', fontWeight: 500, color: 'rgba(199,158,107,0.5)' }}>
+                  Address
+                </p>
+                <p className="text-[13px]" style={{ fontFamily: 'var(--font-jost)', fontWeight: 300, color: '#6E6A63' }}>
+                  Ming Doelmanstraat # 15, Paramaribo, Suriname
+                </p>
+              </div>
+            </div>
           </StaggerItem>
 
-          {/* Firm links */}
+          {/* Firm nav links */}
           <StaggerItem>
             <p
               className="text-[9px] tracking-[0.25em] uppercase mb-6"

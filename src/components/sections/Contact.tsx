@@ -81,6 +81,30 @@ export function Contact() {
                     color: 'rgba(199,158,107,0.6)',
                   }}
                 >
+                  {t('phone_label')}
+                </p>
+                <a
+                  href={`tel:${t('phone').replace(/\s/g, '')}`}
+                  className="text-[15px] transition-colors hover:text-mp-gold"
+                  style={{
+                    fontFamily: 'var(--font-jost)',
+                    fontWeight: 300,
+                    color: '#E9E3D6',
+                  }}
+                >
+                  {t('phone')}
+                </a>
+              </div>
+
+              <div>
+                <p
+                  className="text-[9px] tracking-[0.25em] uppercase mb-2"
+                  style={{
+                    fontFamily: 'var(--font-jost)',
+                    fontWeight: 500,
+                    color: 'rgba(199,158,107,0.6)',
+                  }}
+                >
                   {t('appointment_label')}
                 </p>
                 <p
