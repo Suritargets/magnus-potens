@@ -55,6 +55,8 @@
     "description": "每一次委托都始于信任。请告知我们您所面临的问题,我们将以审慎、无任何义务的方式亲自回复。",
     "enquiries_label": "咨询",
     "email": "info@magnus-potens.com",
+    "phone_label": "电话",
+    "phone": "+597 552 146",
     "appointment_label": "预约制",
     "website": "magnus-potens.com",
     "address_label": "地址",
