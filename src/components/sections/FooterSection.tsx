@@ -49,35 +49,36 @@ export function Footer() {
         <Stagger className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-10 mb-14">
           {/* Brand column */}
           <StaggerItem className="md:col-span-2">
-            <div className="flex items-center gap-4 mb-5">
+            <div className="flex items-center gap-3 mb-4">
               <Image
                 src="/images/logo-mark.png"
                 alt="Magnus & Potens"
-                width={44}
-                height={54}
-                style={{ height: 54, width: 'auto' }}
+                width={36}
+                height={44}
+                className="object-contain"
+                style={{ filter: 'drop-shadow(0 0 6px rgba(199,158,107,0.25))' }}
               />
-              <div className="flex flex-col leading-tight">
+              <div className="flex flex-col leading-none">
                 <p
-                  className="text-[18px] tracking-[0.26em]"
+                  className="text-[14px] tracking-[0.22em]"
                   style={{ fontFamily: 'var(--font-marcellus)', color: '#E9E3D6' }}
                 >
                   MAGNUS &amp; POTENS
                 </p>
                 <p
-                  className="text-[9.5px] tracking-[0.42em] mt-1"
-                  style={{ fontFamily: 'var(--font-jost)', fontWeight: 400, color: '#C79E6B' }}
+                  className="text-[9px] tracking-[0.28em] mt-[2px]"
+                  style={{ fontFamily: 'var(--font-jost)', fontWeight: 300, color: '#C79E6B' }}
                 >
-                  LAW FIRM &nbsp;&nbsp;|&nbsp;&nbsp; ADVISORS
-                </p>
-                <p
-                  className="text-[17px] mt-3"
-                  style={{ fontFamily: 'var(--font-cormorant)', fontStyle: 'italic', color: '#8C877F' }}
-                >
-                  {t('tagline')}
+                  LAW FIRM &nbsp;|&nbsp; ADVISORS
                 </p>
               </div>
             </div>
+            <p
+              className="text-[15px] mb-2"
+              style={{ fontFamily: 'var(--font-cormorant)', fontStyle: 'italic', color: '#8C877F' }}
+            >
+              {t('tagline')}
+            </p>
 
             <div className="mt-6 space-y-4">
               <div>
