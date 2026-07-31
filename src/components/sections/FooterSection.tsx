@@ -94,13 +94,13 @@ export function Footer() {
                   info@magnus-potens.com
                 </a>
                 <a
-                  href="tel:+5978559190"
+                  href="tel:+597552146"
                   className="text-[13px] transition-colors duration-200 block mt-1"
                   style={{ fontFamily: 'var(--font-jost)', fontWeight: 300, color: '#6E6A63' }}
                   onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#C79E6B' }}
                   onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#6E6A63' }}
                 >
-                  +597 855 9190
+                  +597 552 146
                 </a>
               </div>
               <div>
