@@ -29,6 +29,7 @@ export function Footer() {
   const t = useTranslations('footer')
   const tNav = useTranslations('nav')
   const tPractice = useTranslations('practice')
+  const tContact = useTranslations('contact')
   const locale = useLocale()
   const areas = tPractice.raw('areas') as PracticeArea[]
 
@@ -56,7 +57,7 @@ export function Footer() {
                 width={36}
                 height={44}
                 className="object-contain"
-                style={{ filter: 'drop-shadow(0 0 6px rgba(199,158,107,0.25))' }}
+                style={{ width: 'auto', height: 44, filter: 'drop-shadow(0 0 6px rgba(199,158,107,0.25))' }}
               />
               <div className="flex flex-col leading-none">
                 <p
@@ -83,41 +84,41 @@ export function Footer() {
             <div className="mt-6 space-y-4">
               <div>
                 <p className="text-[9px] tracking-[0.25em] uppercase mb-1" style={{ fontFamily: 'var(--font-jost)', fontWeight: 500, color: 'rgba(199,158,107,0.5)' }}>
-                  Enquiries
+                  {tContact('enquiries_label')}
                 </p>
                 <a
-                  href="mailto:info@magnus-potens.com"
+                  href={`mailto:${tContact('email')}`}
                   className="text-[13px] transition-colors duration-200"
                   style={{ fontFamily: 'var(--font-jost)', fontWeight: 300, color: '#6E6A63' }}
                   onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#C79E6B' }}
                   onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#6E6A63' }}
                 >
-                  info@magnus-potens.com
+                  {tContact('email')}
                 </a>
                 <a
-                  href="tel:+597552146"
+                  href={`tel:${tContact('phone').replace(/\s/g, '')}`}
                   className="text-[13px] transition-colors duration-200 block mt-1"
                   style={{ fontFamily: 'var(--font-jost)', fontWeight: 300, color: '#6E6A63' }}
                   onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#C79E6B' }}
                   onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#6E6A63' }}
                 >
-                  +597 552 146
+                  {tContact('phone')}
                 </a>
               </div>
               <div>
                 <p className="text-[9px] tracking-[0.25em] uppercase mb-1" style={{ fontFamily: 'var(--font-jost)', fontWeight: 500, color: 'rgba(199,158,107,0.5)' }}>
-                  By appointment
+                  {tContact('appointment_label')}
                 </p>
                 <p className="text-[13px]" style={{ fontFamily: 'var(--font-jost)', fontWeight: 300, color: '#6E6A63' }}>
-                  magnus-potens.com
+                  {tContact('website')}
                 </p>
               </div>
               <div>
                 <p className="text-[9px] tracking-[0.25em] uppercase mb-1" style={{ fontFamily: 'var(--font-jost)', fontWeight: 500, color: 'rgba(199,158,107,0.5)' }}>
-                  Address
+                  {tContact('address_label')}
                 </p>
                 <p className="text-[13px]" style={{ fontFamily: 'var(--font-jost)', fontWeight: 300, color: '#6E6A63' }}>
-                  Ming Doelmanstraat # 15, Paramaribo, Suriname
+                  {tContact('address')}
                 </p>
               </div>
             </div>

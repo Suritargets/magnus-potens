@@ -83,7 +83,7 @@ export function Header() {
             width={36}
             height={44}
             className="object-contain"
-            style={{ filter: 'drop-shadow(0 0 6px rgba(199,158,107,0.25))' }}
+            style={{ width: 'auto', height: 44, filter: 'drop-shadow(0 0 6px rgba(199,158,107,0.25))' }}
             priority
           />
           <div className="flex flex-col leading-none">
