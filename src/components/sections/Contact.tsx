@@ -61,11 +61,11 @@ export function Contact() {
                 </p>
                 <a
                   href={`mailto:${t('email')}`}
-                  className="text-[15px] transition-colors hover:text-mp-gold"
+                  className="text-[14px] transition-colors hover:text-mp-gold"
                   style={{
                     fontFamily: 'var(--font-jost)',
                     fontWeight: 300,
-                    color: '#E9E3D6',
+                    color: '#8C877F',
                   }}
                 >
                   {t('email')}
@@ -85,11 +85,11 @@ export function Contact() {
                 </p>
                 <a
                   href={`tel:${t('phone').replace(/\s/g, '')}`}
-                  className="text-[15px] transition-colors hover:text-mp-gold"
+                  className="text-[14px] transition-colors hover:text-mp-gold"
                   style={{
                     fontFamily: 'var(--font-jost)',
                     fontWeight: 300,
-                    color: '#E9E3D6',
+                    color: '#8C877F',
                   }}
                 >
                   {t('phone')}
