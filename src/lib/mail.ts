@@ -149,7 +149,7 @@ function layout(title: string, body: string): string {
       <!-- Logo header -->
       <tr><td style="padding-bottom:28px;border-bottom:1px solid ${C.border};text-align:center;">
         <p style="margin:0 0 5px;font-family:Arial,sans-serif;font-size:13px;letter-spacing:0.3em;color:${C.gold};text-transform:uppercase;">MAGNUS &amp; POTENS</p>
-        <p style="margin:0;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.4em;color:${C.muted};text-transform:uppercase;">LAW &nbsp;|&nbsp; ADVISORS</p>
+        <p style="margin:0;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.4em;color:${C.muted};text-transform:uppercase;">LAW FIRM &nbsp;|&nbsp; ADVISORS</p>
       </td></tr>
 
       <!-- Content -->

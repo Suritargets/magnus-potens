@@ -34,7 +34,7 @@ export default async function SignInPage({ params }: Props) {
             margin: 0,
           }}
         >
-          LAW &nbsp;|&nbsp; ADVISORS
+          LAW FIRM &nbsp;|&nbsp; ADVISORS
         </p>
       </div>
 
