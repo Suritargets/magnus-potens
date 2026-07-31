@@ -68,7 +68,7 @@ export function Footer() {
                   className="text-[9.5px] tracking-[0.42em] mt-1"
                   style={{ fontFamily: 'var(--font-jost)', fontWeight: 400, color: '#C79E6B' }}
                 >
-                  LAW &nbsp;&nbsp;|&nbsp;&nbsp; ADVISORS
+                  LAW FIRM &nbsp;&nbsp;|&nbsp;&nbsp; ADVISORS
                 </p>
                 <p
                   className="text-[17px] mt-3"

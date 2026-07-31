@@ -97,7 +97,7 @@ export function Header() {
               className="text-[9px] tracking-[0.28em] text-mp-gold mt-[2px]"
               style={{ fontFamily: 'var(--font-jost)', fontWeight: 300 }}
             >
-              LAW &nbsp;|&nbsp; ADVISORS
+              LAW FIRM &nbsp;|&nbsp; ADVISORS
             </span>
           </div>
         </Link>
